@@ -6,7 +6,7 @@ body { padding: 0 0 56px; overflow-x: clip; }
 main { max-width: 1000px; padding: 0 20px; }
 
 .hero {
-  position: relative; text-align: center; margin: 0 calc(50% - 50vw) 0; padding: 64px 20px 150px;
+  position: relative; display: block; text-align: center; margin: 0 calc(50% - 50vw) 0; padding: 64px 20px 44px;
   background:
     radial-gradient(780px 380px at 82% -8%, color-mix(in srgb, var(--accent) 20%, transparent), transparent 70%),
     radial-gradient(640px 340px at 8% 6%, color-mix(in srgb, var(--accent) 11%, transparent), transparent 70%);
@@ -16,8 +16,11 @@ main { max-width: 1000px; padding: 0 20px; }
   box-shadow: 0 14px 34px color-mix(in srgb, var(--accent) 30%, transparent), 0 2px 6px rgba(0, 0, 0, .12);
 }
 .hero h1 { font-size: clamp(40px, 6.4vw, 62px); line-height: 1.04; margin: 0 0 14px; letter-spacing: -1.4px; font-weight: 750; }
-.hero .tagline { font-size: clamp(18px, 2.3vw, 22px); line-height: 1.4; max-width: 30em; margin: 0 auto; color: var(--muted); }
-.hero .family-stores { margin: 30px 0 8px; gap: 14px; }
+.hero:has(+ .shot) { padding-bottom: 150px; }
+.hero > div { text-align: center; }
+.hero .family-stores.start, .hero nav.links { justify-content: center; }
+.hero .tagline, .hero .sub { font-size: clamp(18px, 2.3vw, 22px); line-height: 1.4; max-width: 30em; margin: 0 auto; color: var(--muted); }
+.hero .family-stores, .hero .family-stores.start { margin: 30px 0 8px; gap: 14px; }
 .hero nav.links { margin-top: 22px; }
 nav.links a { padding: 9px 16px; font-size: 15px; }
 
