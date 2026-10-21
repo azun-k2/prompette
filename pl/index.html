@@ -8,7 +8,6 @@
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="../icon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="../icon-180.png">
-<link rel="stylesheet" href="../style.css">
 <!-- family:head --><link rel="stylesheet" href="../family/family.css">
 <link rel="stylesheet" href="../family/modern.css">
 <link rel="alternate" hreflang="en" href="https://prompette.khangazun.com/">
@@ -48,12 +47,14 @@
 <link rel="alternate" hreflang="x-default" href="https://prompette.khangazun.com/">
 <script src="../family/family.js" defer data-lang="pl" data-page="index.html" data-langs="en,ar,ca,cs,da,de,el,es,fi,fr,he,hi,hr,hu,id,it,ja,ko,ms,nb,nl,pl,pt-br,pt-pt,ro,ru,sk,sv,th,tr,uk,vi,zh-hans,zh-hant"></script>
 <!-- /family:head -->
+<link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <main>
 <div class="hero">
+  <div class="hero-pill">⚡ Bez dodatkowego sprzętu · W 100% niewidoczny podczas udostępniania ekranu</div>
   <img class="icon" src="../icon-512.png" alt="" width="112" height="112">
-  <h1>Prompette</h1>
+  <h1>Patrz prosto w obiektyw.<br><span class="gradient-text">Czytaj tekst tuż pod kamerą.</span></h1>
   <p class="tagline">Czytaj tekst tuż pod kamerą.</p>
   <!-- family:stores -->
   <div class="family-stores">
@@ -62,6 +63,7 @@
     <a class="family-store" href="https://play.google.com/store/apps/details?id=azun.prompette.app"><img src="../family/badges/play-pl.png" alt="Pobierz z Google Play" height="46"></a>
   </div>
   <!-- /family:stores -->
+  <p class="platform-banner">Dostępne na Maca, iPhone'a, iPada i Androida</p>
 <nav class="links">
     <a href="./">Strona główna</a>
     <a href="support.html">Pomoc</a>
@@ -109,9 +111,78 @@
   </nav>
 </div>
 
+
+<div class="demo-wrapper">
+  <div class="demo-controls">
+    <button type="button" class="demo-toggle-btn active" id="btn-owner-view" onclick="setDemoView('owner')">
+      👀 Twój ekran (z prompterem)
+    </button>
+    <button type="button" class="demo-toggle-btn" id="btn-audience-view" onclick="setDemoView('audience')">
+      🎥 Widok uczestników Zoom / Meet (100% niewidoczny!)
+    </button>
+  </div>
+
+  <div class="macbook-frame">
+    <div class="macbook-screen">
+      <div class="notch">
+        <div class="lens"><div class="lens-green"></div></div>
+      </div>
+
+      <div class="prompter-strip" id="prompter-strip">
+        <div class="script-scroller">
+          <p>Dzień dobry wszystkim, dziękuję za udział w dzisiejszej prezentacji.</p>
+          <p><span class="cue-chip cue-smile">Uśmiech 😊</span> Mamy przełomowe wieści dla całego zespołu.</p>
+          <p><span class="cue-chip cue-pause">Pauza 2s</span> Jak widać w naszym raporcie kwartalnym...</p>
+          <p><span class="cue-chip cue-slide">Slajd 3</span> Produktywność wzrosła o ponad 45% we wszystkich działach.</p>
+          <p>Chcę osobiście podziękować każdemu z Was za zaangażowanie.</p>
+        </div>
+      </div>
+
+      <div class="screen-app-window">
+        <div class="window-dots">
+          <div class="dot dot-red"></div>
+          <div class="dot dot-yellow"></div>
+          <div class="dot dot-green"></div>
+        </div>
+        <div style="font-size:13px; color:var(--muted); text-align:left;">
+          <p style="margin:0 0 6px; font-weight:700; color:var(--ink);">Okno Keynote / rozmowy Zoom / prezentacji</p>
+          <p style="margin:0;">Twoje slajdy lub udostępniane okna są tutaj. Prompette dyskretnie wisi tuż pod Twoją kamerą.</p>
+        </div>
+      </div>
+
+      <div class="screen-share-tag" id="share-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#28ca41" stroke-width="2.5"><circle cx="12" cy="10" r="8"/><path d="m9 11 2 2 4-4"/></svg>
+        <span id="share-status-text">Prompter widoczny wyłącznie dla Twoich oczu</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function setDemoView(mode) {
+  var strip = document.getElementById('prompter-strip');
+  var btnOwner = document.getElementById('btn-owner-view');
+  var btnAudience = document.getElementById('btn-audience-view');
+  var statusText = document.getElementById('share-status-text');
+
+  if (mode === 'audience') {
+    strip.classList.add('hidden-by-share');
+    btnAudience.classList.add('active');
+    btnOwner.classList.remove('active');
+    statusText.textContent = "Uczestnicy widzą czysty ekran — 0% wycieku tekstu";
+  } else {
+    strip.classList.remove('hidden-by-share');
+    btnOwner.classList.add('active');
+    btnAudience.classList.remove('active');
+    statusText.textContent = "Prompter widoczny wyłącznie dla Twoich oczu";
+  }
+}
+</script>
+
 <!-- family:shot --><figure class="shot"><img src="../img/hero.jpg" alt="" width="1600" height="833"></figure><!-- /family:shot -->
-<section class="card">
-  <h2>Co robi</h2>
+<section class="card" id="modes">
+  <h2>Trzy inteligentne sposoby przewijania</h2>
+  <p class="section-lead">Niezależnie od tego, czy trzymasz się ścisłego czasu, czy mówisz swobodnie — Prompette dopasuje się do Ciebie.</p>
   <p>Prompette pokazuje Twój skrypt na wąskim pasku, który zwisa z wycięcia Twojego MacBooka tuż pod kamerą, dzięki czemu podczas rozmów, nagrań i wystąpień Twój wzrok zostaje blisko obiektywu. Pasek nigdy nie pojawia się podczas udostępniania ekranu ani w nagraniach ekranu.</p>
   <ul>
     <li><strong>Trzy sposoby przewijania.</strong> Z ustawioną przez Ciebie prędkością; tylko gdy mówisz, według głośności Twojego głosu; albo słowo po słowie, podążając za tym, co mówisz, dzięki rozpoznawaniu mowy działającemu w całości na Twoim Macu.</li>
@@ -122,7 +193,50 @@
   <p class="note">Wymaga macOS 14 Sonoma lub nowszego; aplikacja na iPhone’a i iPada wymaga iOS 17 lub nowszego, a aplikacja na Androida — Androida 8.0 lub nowszego. Jeden zakup obejmuje Maca, iPhone’a i iPada; aplikację na Androida kupuje się osobno w Google Play.</p>
 </section>
 
-<section class="card">
+<div class="comparison-card" id="comparison">
+  <div class="comp-title">Tradycyjne telepromptery a Prompette</div>
+  <p class="section-lead">Profesjonalny kontakt wzrokowy bez ciężkiego sprzętu studyjnego.</p>
+  <div class="table-scroll">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Aspekt</th>
+          <th>Tradycyjny prompter ze szkłem</th>
+          <th class="highlight-col">Prompette</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Koszt sprzętu</strong></td>
+          <td>Od 600 do 2000 zł za szkło półprzepuszczalne i statyw</td>
+          <td class="highlight-col"><strong>0 zł na dodatkowy sprzęt</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Czas montażu</strong></td>
+          <td>15–30 minut na ustawianie statywu i ekranu</td>
+          <td class="highlight-col"><strong>1 kliknięcie (zawieszony tuż pod notchem)</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Dzielenie ekranu</strong></td>
+          <td>Wymaga drugiego monitora lub ryzyko wpadki</td>
+          <td class="highlight-col"><strong>100% niewidoczny w Zoom, Teams i OBS</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Kontrola tempa</strong></td>
+          <td>Pedał lub niewygodny pilot w dłoni</td>
+          <td class="highlight-col"><strong>Głosem, sztuczną inteligencją i pilotem w iPhone</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Mobilność</strong></td>
+          <td>Ciężka torba z podatnym na stłuczenie szkłem</td>
+          <td class="highlight-col"><strong>Zawsze gotowy na pasku menu Maca</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<section class="card" id="privacy">
   <h2>Prywatność w jednym akapicie</h2>
   <p>Prompette nie ma konta ani śledzenia i nigdy nigdzie nie wysyła Twoich skryptów ani Twojego głosu. Mikrofon jest używany tylko na Macu, w wybranym przez Ciebie trybie głosowym i trybie podążania, a mowa jest rozpoznawana na Twoim Macu. Pilot na telefonie lub tablecie łączy się z Twoim Makiem wyłącznie przez Twoją własną sieć lokalną. Pełna <a href="privacy.html">polityka prywatności</a> mówi to samo, tylko obszerniej.</p>
 </section>

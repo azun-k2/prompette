@@ -8,7 +8,6 @@
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="../icon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="../icon-180.png">
-<link rel="stylesheet" href="../style.css">
 <!-- family:head --><link rel="stylesheet" href="../family/family.css">
 <link rel="stylesheet" href="../family/modern.css">
 <link rel="alternate" hreflang="en" href="https://prompette.khangazun.com/">
@@ -48,12 +47,14 @@
 <link rel="alternate" hreflang="x-default" href="https://prompette.khangazun.com/">
 <script src="../family/family.js" defer data-lang="sv" data-page="index.html" data-langs="en,ar,ca,cs,da,de,el,es,fi,fr,he,hi,hr,hu,id,it,ja,ko,ms,nb,nl,pl,pt-br,pt-pt,ro,ru,sk,sv,th,tr,uk,vi,zh-hans,zh-hant"></script>
 <!-- /family:head -->
+<link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <main>
 <div class="hero">
+  <div class="hero-pill">⚡ Ingen extra hårdvara krävs · 100 % osynlig vid skärmdelning</div>
   <img class="icon" src="../icon-512.png" alt="" width="112" height="112">
-  <h1>Prompette</h1>
+  <h1>Titta rakt in i linsen.<br><span class="gradient-text">Läs ditt manus precis under kameran.</span></h1>
   <p class="tagline">Läs ditt manus precis under kameran.</p>
   <!-- family:stores -->
   <div class="family-stores">
@@ -62,6 +63,7 @@
     <a class="family-store" href="https://play.google.com/store/apps/details?id=azun.prompette.app"><img src="../family/badges/play-sv.png" alt="Ladda ned på Google Play" height="46"></a>
   </div>
   <!-- /family:stores -->
+  <p class="platform-banner">Tillgänglig för Mac, iPhone, iPad och Android</p>
 <nav class="links">
     <a href="./">Hem</a>
     <a href="support.html">Support</a>
@@ -109,9 +111,78 @@
   </nav>
 </div>
 
+
+<div class="demo-wrapper">
+  <div class="demo-controls">
+    <button type="button" class="demo-toggle-btn active" id="btn-owner-view" onclick="setDemoView('owner')">
+      👀 Din skärm (med prompter)
+    </button>
+    <button type="button" class="demo-toggle-btn" id="btn-audience-view" onclick="setDemoView('audience')">
+      🎥 Zoom- / Meet-deltagarnas vy (100 % osynlig!)
+    </button>
+  </div>
+
+  <div class="macbook-frame">
+    <div class="macbook-screen">
+      <div class="notch">
+        <div class="lens"><div class="lens-green"></div></div>
+      </div>
+
+      <div class="prompter-strip" id="prompter-strip">
+        <div class="script-scroller">
+          <p>Välkomna allihop, tack för att ni deltar i dagens presentation.</p>
+          <p><span class="cue-chip cue-smile">Le 😊</span> Vi har banbrytande nyheter att dela med hela teamet.</p>
+          <p><span class="cue-chip cue-pause">Paus 2s</span> Som ni kan se i vår kvartalsrapport...</p>
+          <p><span class="cue-chip cue-slide">Bild 3</span> Produktiviteten har ökat med över 45 % i samtliga avdelningar.</p>
+          <p>Jag vill personligen tacka er alla för ett fantastiskt engagemang.</p>
+        </div>
+      </div>
+
+      <div class="screen-app-window">
+        <div class="window-dots">
+          <div class="dot dot-red"></div>
+          <div class="dot dot-yellow"></div>
+          <div class="dot dot-green"></div>
+        </div>
+        <div style="font-size:13px; color:var(--muted); text-align:left;">
+          <p style="margin:0 0 6px; font-weight:700; color:var(--ink);">Keynote- / Zoom- / presentationsfönster</p>
+          <p style="margin:0;">Dina delade bilder eller fönster visas här. Prompette ligger diskret placerad precis under webbkameran.</p>
+        </div>
+      </div>
+
+      <div class="screen-share-tag" id="share-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#28ca41" stroke-width="2.5"><circle cx="12" cy="10" r="8"/><path d="m9 11 2 2 4-4"/></svg>
+        <span id="share-status-text">Promptern syns bara för dina ögon</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function setDemoView(mode) {
+  var strip = document.getElementById('prompter-strip');
+  var btnOwner = document.getElementById('btn-owner-view');
+  var btnAudience = document.getElementById('btn-audience-view');
+  var statusText = document.getElementById('share-status-text');
+
+  if (mode === 'audience') {
+    strip.classList.add('hidden-by-share');
+    btnAudience.classList.add('active');
+    btnOwner.classList.remove('active');
+    statusText.textContent = "Publiken ser en ren skärm — 0 % textläckage";
+  } else {
+    strip.classList.remove('hidden-by-share');
+    btnOwner.classList.add('active');
+    btnAudience.classList.remove('active');
+    statusText.textContent = "Promptern syns bara för dina ögon";
+  }
+}
+</script>
+
 <!-- family:shot --><figure class="shot"><img src="../img/hero.jpg" alt="" width="1600" height="833"></figure><!-- /family:shot -->
-<section class="card">
-  <h2>Vad den gör</h2>
+<section class="card" id="modes">
+  <h2>Tre intelligenta sätt att rulla manuset</h2>
+  <p class="section-lead">Oavsett om du följer en strikt tidsplan eller talar fritt anpassar sig Prompette efter dig.</p>
   <p>Prompette visar ditt manus i en smal remsa som hänger från notchen på din MacBook, precis under kameran, så att blicken stannar nära linsen under samtal, inspelningar och föredrag. Den syns aldrig vid skärmdelning eller i skärminspelningar.</p>
   <ul>
     <li><strong>Tre sätt att rulla.</strong> I en hastighet du väljer; bara medan du talar, styrt av hur starkt din röst hörs; eller ord för ord, där den följer det du säger med taligenkänning som sker helt på din Mac.</li>
@@ -122,7 +193,50 @@
   <p class="note">Kräver macOS 14 Sonoma eller senare; appen för iPhone och iPad kräver iOS 17 eller senare, och Android-appen Android 8.0 eller senare. Ett köp gäller för Mac, iPhone och iPad; Android-appen köps separat på Google Play.</p>
 </section>
 
-<section class="card">
+<div class="comparison-card" id="comparison">
+  <div class="comp-title">Traditionella teleprompters jämfört med Prompette</div>
+  <p class="section-lead">Professionell ögonkontakt utan otymplig studioutrustning.</p>
+  <div class="table-scroll">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Aspekt</th>
+          <th>Traditionell teleprompter med glas</th>
+          <th class="highlight-col">Prompette</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Hårdvarukostnad</strong></td>
+          <td>1 500 – 5 000 kr för specialglas och rigg</td>
+          <td class="highlight-col"><strong>0 kr i extra hårdvara</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Monteringstid</strong></td>
+          <td>15–30 minuter med stativ och injustering</td>
+          <td class="highlight-col"><strong>1 klick (hänger direkt under sensorhuset)</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Sekretess vid skärmdelning</strong></td>
+          <td>Kräver två skärmar eller risk att fönster syns</td>
+          <td class="highlight-col"><strong>100 % osynlig i Zoom, Teams och OBS</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Hastighetskontroll</strong></td>
+          <td>Fotpedal eller klumpig handkontroll</td>
+          <td class="highlight-col"><strong>Röststyrd, taligenkänning & iPhone-fjärrkontroll</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Smidighet</strong></td>
+          <td>Tung väska med ömtåligt glas</td>
+          <td class="highlight-col"><strong>Finns alltid i menyraden på din Mac</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<section class="card" id="privacy">
   <h2>Integritet i ett stycke</h2>
   <p>Prompette har inget konto och ingen spårning och skickar aldrig dina manus eller din röst någonstans. Mikrofonen används bara på Macen, i röst- och följläget när du väljer dem, och talet känns igen på din Mac. Fjärrkontrollen på din telefon eller surfplatta pratar med din Mac bara via ditt eget lokala nätverk. Den fullständiga <a href="privacy.html">integritetspolicyn</a> säger samma sak mer utförligt.</p>
 </section>

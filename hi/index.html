@@ -8,7 +8,6 @@
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="../icon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="../icon-180.png">
-<link rel="stylesheet" href="../style.css">
 <!-- family:head --><link rel="stylesheet" href="../family/family.css">
 <link rel="stylesheet" href="../family/modern.css">
 <link rel="alternate" hreflang="en" href="https://prompette.khangazun.com/">
@@ -48,12 +47,14 @@
 <link rel="alternate" hreflang="x-default" href="https://prompette.khangazun.com/">
 <script src="../family/family.js" defer data-lang="hi" data-page="index.html" data-langs="en,ar,ca,cs,da,de,el,es,fi,fr,he,hi,hr,hu,id,it,ja,ko,ms,nb,nl,pl,pt-br,pt-pt,ro,ru,sk,sv,th,tr,uk,vi,zh-hans,zh-hant"></script>
 <!-- /family:head -->
+<link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <main>
 <div class="hero">
+  <div class="hero-pill">⚡ किसी अतिरिक्त हार्डवेयर की आवश्यकता नहीं · स्क्रीन शेयरिंग में 100% अदृश्य</div>
   <img class="icon" src="../icon-512.png" alt="" width="112" height="112">
-  <h1>Prompette</h1>
+  <h1>सीधे लेंस में देखें।<br><span class="gradient-text">कैमरे के ठीक नीचे अपनी स्क्रिप्ट पढ़ें।</span></h1>
   <p class="tagline">अपनी स्क्रिप्ट कैमरे के ठीक नीचे पढ़ें।</p>
   <!-- family:stores -->
   <div class="family-stores">
@@ -62,6 +63,7 @@
     <a class="family-store" href="https://play.google.com/store/apps/details?id=azun.prompette.app"><img src="../family/badges/play-hi.png" alt="इसे Google Play पर पाएं" height="46"></a>
   </div>
   <!-- /family:stores -->
+  <p class="platform-banner">Mac, iPhone, iPad और Android के लिए उपलब्ध</p>
 <nav class="links">
     <a href="./">होम</a>
     <a href="support.html">सहायता</a>
@@ -109,9 +111,78 @@
   </nav>
 </div>
 
+
+<div class="demo-wrapper">
+  <div class="demo-controls">
+    <button type="button" class="demo-toggle-btn active" id="btn-owner-view" onclick="setDemoView('owner')">
+      👀 आपकी स्क्रीन (प्रॉम्प्टर के साथ)
+    </button>
+    <button type="button" class="demo-toggle-btn" id="btn-audience-view" onclick="setDemoView('audience')">
+      🎥 Zoom / Meet दर्शकों का दृश्य (100% अदृश्य!)
+    </button>
+  </div>
+
+  <div class="macbook-frame">
+    <div class="macbook-screen">
+      <div class="notch">
+        <div class="lens"><div class="lens-green"></div></div>
+      </div>
+
+      <div class="prompter-strip" id="prompter-strip">
+        <div class="script-scroller">
+          <p>नमस्ते आप सभी को, आज की प्रस्तुति में शामिल होने के लिए धन्यवाद।</p>
+          <p><span class="cue-chip cue-smile">मुस्कान 😊</span> हमारे पास पूरी टीम के साथ साझा करने के लिए एक शानदार खबर है।</p>
+          <p><span class="cue-chip cue-pause">2 सेकंड रुकें</span> जैसा कि आप हमारी प्रगति रिपोर्ट में देख सकते हैं...</p>
+          <p><span class="cue-chip cue-slide">स्लाइड 3</span> सभी विभागों में उत्पादकता में 45% से अधिक की वृद्धि हुई है।</p>
+          <p>मैं इस समर्पण के लिए प्रत्येक सदस्य का व्यक्तिगत रूप से धन्यवाद करता हूँ।</p>
+        </div>
+      </div>
+
+      <div class="screen-app-window">
+        <div class="window-dots">
+          <div class="dot dot-red"></div>
+          <div class="dot dot-yellow"></div>
+          <div class="dot dot-green"></div>
+        </div>
+        <div style="font-size:13px; color:var(--muted); text-align:left;">
+          <p style="margin:0 0 6px; font-weight:700; color:var(--ink);">Keynote / Zoom कॉल / प्रस्तुति विंडो</p>
+          <p style="margin:0;">आपकी प्रस्तुत स्लाइड यहाँ दिखाई देती हैं। Prompette आपके वेबकैम के ठीक नीचे आसानी से बना रहता है।</p>
+        </div>
+      </div>
+
+      <div class="screen-share-tag" id="share-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#28ca41" stroke-width="2.5"><circle cx="12" cy="10" r="8"/><path d="m9 11 2 2 4-4"/></svg>
+        <span id="share-status-text">प्रॉम्प्टर केवल आपकी आँखों को दिखाई देता है</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function setDemoView(mode) {
+  var strip = document.getElementById('prompter-strip');
+  var btnOwner = document.getElementById('btn-owner-view');
+  var btnAudience = document.getElementById('btn-audience-view');
+  var statusText = document.getElementById('share-status-text');
+
+  if (mode === 'audience') {
+    strip.classList.add('hidden-by-share');
+    btnAudience.classList.add('active');
+    btnOwner.classList.remove('active');
+    statusText.textContent = "दर्शक केवल स्पष्ट स्क्रीन देखते हैं — 0% स्क्रिप्ट रिसाव";
+  } else {
+    strip.classList.remove('hidden-by-share');
+    btnOwner.classList.add('active');
+    btnAudience.classList.remove('active');
+    statusText.textContent = "प्रॉम्प्टर केवल आपकी आँखों को दिखाई देता है";
+  }
+}
+</script>
+
 <!-- family:shot --><figure class="shot"><img src="../img/hero.jpg" alt="" width="1600" height="833"></figure><!-- /family:shot -->
-<section class="card">
-  <h2>यह क्या करता है</h2>
+<section class="card" id="modes">
+  <h2>स्क्रॉल करने के तीन बुद्धिमान तरीके</h2>
+  <p class="section-lead">चाहे आप सख्त समय सीमा का पालन करें या सहजता से बोलें, Prompette आपके अनुकूल ढल जाता है।</p>
   <p>Prompette आपकी स्क्रिप्ट को एक पतली स्ट्रिप में दिखाता है जो आपके MacBook के नॉच से, कैमरे के ठीक नीचे लटकती है, ताकि कॉल, रिकॉर्डिंग और भाषणों के दौरान आपकी नज़र लेंस के पास रहे। यह स्क्रीन शेयरिंग या स्क्रीन रिकॉर्डिंग में कभी दिखाई नहीं देती।</p>
   <ul>
     <li><strong>स्क्रॉल करने के तीन तरीके।</strong> आपकी तय की हुई गति पर; सिर्फ़ तब जब आप बोल रहे हों, आपकी आवाज़ की तीव्रता के हिसाब से; या शब्द-दर-शब्द, आपके बोले हुए के साथ-साथ, ऐसी वाक् पहचान से जो पूरी तरह आपके Mac पर होती है।</li>
@@ -122,7 +193,50 @@
   <p class="note">macOS 14 Sonoma या बाद का आवश्यक है; iPhone और iPad ऐप के लिए iOS 17 या बाद का, और Android ऐप के लिए Android 8.0 या बाद का आवश्यक है। एक ही ख़रीद में Mac, iPhone और iPad शामिल हैं; Android ऐप Google Play पर अलग से ख़रीदा जाता है।</p>
 </section>
 
-<section class="card">
+<div class="comparison-card" id="comparison">
+  <div class="comp-title">पारंपरिक टेलीप्रॉम्प्टर बनाम Prompette</div>
+  <p class="section-lead">भारी स्टूडियो उपकरणों के बिना पेशेवर आई-कॉन्टैक्ट।</p>
+  <div class="table-scroll">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>पहलू</th>
+          <th>पारंपरिक ग्लास टेलीप्रॉम्प्टर</th>
+          <th class="highlight-col">Prompette</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>हार्डवेयर लागत</strong></td>
+          <td>कांच और स्टैंड के लिए ₹12,000 से ₹40,000</td>
+          <td class="highlight-col"><strong>अतिरिक्त हार्डवेयर की लागत ₹0</strong></td>
+        </tr>
+        <tr>
+          <td><strong>सेटअप का समय</strong></td>
+          <td>ट्राइपॉड और संरेखण में 15–30 मिनट</td>
+          <td class="highlight-col"><strong>1 क्लिक (सीधे नॉच के नीचे फिट बैठता है)</strong></td>
+        </tr>
+        <tr>
+          <td><strong>स्क्रीन शेयरिंग प्राइवेसी</strong></td>
+          <td>दो स्क्रीन की आवश्यकता या विंडो दिखने का जोखिम</td>
+          <td class="highlight-col"><strong>Zoom, Teams और OBS में 100% अदृश्य</strong></td>
+        </tr>
+        <tr>
+          <td><strong>गति नियंत्रण</strong></td>
+          <td>फुट पैडल या अजीब हैंडहेल्ड रिमोट</td>
+          <td class="highlight-col"><strong>आवाज के अनुसार, डिवाइस पर AI और iPhone रिमोट</strong></td>
+        </tr>
+        <tr>
+          <td><strong>पोर्टेबिलिटी</strong></td>
+          <td>नाज़ुक कांच के साथ भारी बैग</td>
+          <td class="highlight-col"><strong>आपके Mac के मेनू बार में हमेशा तैयार</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<section class="card" id="privacy">
   <h2>एक पैराग्राफ़ में गोपनीयता</h2>
   <p>Prompette में न कोई खाता है, न ट्रैकिंग, और यह आपकी स्क्रिप्ट्स या आपकी आवाज़ कभी कहीं नहीं भेजता। माइक्रोफ़ोन सिर्फ़ Mac पर, वॉइस और फ़ॉलो मोड में इस्तेमाल होता है, जब आप उन्हें चुनते हैं, और बोली की पहचान आपके Mac पर होती है। आपके फ़ोन या टैबलेट पर रिमोट आपके Mac से सिर्फ़ आपके अपने लोकल नेटवर्क पर बात करता है। पूरी <a href="privacy.html">गोपनीयता नीति</a> यही बात विस्तार से कहती है।</p>
 </section>

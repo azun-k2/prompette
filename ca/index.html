@@ -8,7 +8,6 @@
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="../icon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="../icon-180.png">
-<link rel="stylesheet" href="../style.css">
 <!-- family:head --><link rel="stylesheet" href="../family/family.css">
 <link rel="stylesheet" href="../family/modern.css">
 <link rel="alternate" hreflang="en" href="https://prompette.khangazun.com/">
@@ -48,12 +47,14 @@
 <link rel="alternate" hreflang="x-default" href="https://prompette.khangazun.com/">
 <script src="../family/family.js" defer data-lang="ca" data-page="index.html" data-langs="en,ar,ca,cs,da,de,el,es,fi,fr,he,hi,hr,hu,id,it,ja,ko,ms,nb,nl,pl,pt-br,pt-pt,ro,ru,sk,sv,th,tr,uk,vi,zh-hans,zh-hant"></script>
 <!-- /family:head -->
+<link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <main>
 <div class="hero">
+  <div class="hero-pill">⚡ Sense maquinari addicional · 100% invisible en compartir pantalla</div>
   <img class="icon" src="../icon-512.png" alt="" width="112" height="112">
-  <h1>Prompette</h1>
+  <h1>Mira directament a la lent.<br><span class="gradient-text">Llegeix el guió just sota la càmera.</span></h1>
   <p class="tagline">Llegeix el teu guió just a sota de la càmera.</p>
   <!-- family:stores -->
   <div class="family-stores">
@@ -62,6 +63,7 @@
     <a class="family-store" href="https://play.google.com/store/apps/details?id=azun.prompette.app"><img src="../family/badges/play-ca.png" alt="Disponible a Google Play" height="46"></a>
   </div>
   <!-- /family:stores -->
+  <p class="platform-banner">Disponible per a Mac, iPhone, iPad i Android</p>
 <nav class="links">
     <a href="./">Inici</a>
     <a href="support.html">Assistència</a>
@@ -109,9 +111,78 @@
   </nav>
 </div>
 
+
+<div class="demo-wrapper">
+  <div class="demo-controls">
+    <button type="button" class="demo-toggle-btn active" id="btn-owner-view" onclick="setDemoView('owner')">
+      👀 La teva pantalla (amb apuntador)
+    </button>
+    <button type="button" class="demo-toggle-btn" id="btn-audience-view" onclick="setDemoView('audience')">
+      🎥 Vista de l'audiència a Zoom / Meet (100% invisible!)
+    </button>
+  </div>
+
+  <div class="macbook-frame">
+    <div class="macbook-screen">
+      <div class="notch">
+        <div class="lens"><div class="lens-green"></div></div>
+      </div>
+
+      <div class="prompter-strip" id="prompter-strip">
+        <div class="script-scroller">
+          <p>Hola a tothom, gràcies per acompanyar-nos en la presentació d'avui.</p>
+          <p><span class="cue-chip cue-smile">Somriure 😊</span> Tenim notícies excel·lents per compartir amb tot l'equip.</p>
+          <p><span class="cue-chip cue-pause">Pausa 2s</span> Com podeu comprovar en el nostre informe trimestral...</p>
+          <p><span class="cue-chip cue-slide">Diapositiva 3</span> La productivitat ha augmentat més d'un 45% a tots els departaments.</p>
+          <p>Vull agrair personalment a cadascun de vosaltres la vostra dedicació.</p>
+        </div>
+      </div>
+
+      <div class="screen-app-window">
+        <div class="window-dots">
+          <div class="dot dot-red"></div>
+          <div class="dot dot-yellow"></div>
+          <div class="dot dot-green"></div>
+        </div>
+        <div style="font-size:13px; color:var(--muted); text-align:left;">
+          <p style="margin:0 0 6px; font-weight:700; color:var(--ink);">Finestra de Keynote / Trucada Zoom / Presentació</p>
+          <p style="margin:0;">Les teves diapositives o finestres compartides es mostren aquí. Prompette queda discretament sota la webcam.</p>
+        </div>
+      </div>
+
+      <div class="screen-share-tag" id="share-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#28ca41" stroke-width="2.5"><circle cx="12" cy="10" r="8"/><path d="m9 11 2 2 4-4"/></svg>
+        <span id="share-status-text">Apuntador visible només per als teus ulls</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function setDemoView(mode) {
+  var strip = document.getElementById('prompter-strip');
+  var btnOwner = document.getElementById('btn-owner-view');
+  var btnAudience = document.getElementById('btn-audience-view');
+  var statusText = document.getElementById('share-status-text');
+
+  if (mode === 'audience') {
+    strip.classList.add('hidden-by-share');
+    btnAudience.classList.add('active');
+    btnOwner.classList.remove('active');
+    statusText.textContent = "L'audiència veu una pantalla neta: 0% de text filtrat";
+  } else {
+    strip.classList.remove('hidden-by-share');
+    btnOwner.classList.add('active');
+    btnAudience.classList.remove('active');
+    statusText.textContent = "Apuntador visible només per als teus ulls";
+  }
+}
+</script>
+
 <!-- family:shot --><figure class="shot"><img src="../img/hero.jpg" alt="" width="1600" height="833"></figure><!-- /family:shot -->
-<section class="card">
-  <h2>Què fa</h2>
+<section class="card" id="modes">
+  <h2>Tres maneres intel·ligents de desplaçament</h2>
+  <p class="section-lead">Tant si segueixes un minutatge estricte com si parles amb naturalitat, Prompette s'adapta a tu.</p>
   <p>Prompette mostra el teu guió en una franja estreta que penja de l’osca del teu MacBook, just a sota de la càmera, perquè els teus ulls es quedin a prop de l’objectiu en trucades, gravacions i xerrades. No apareix mai quan comparteixes la pantalla ni en les gravacions de pantalla.</p>
   <ul>
     <li><strong>Tres maneres de desplaçar-se.</strong> A la velocitat que triïs; només mentre parles, segons el volum de la teva veu; o paraula per paraula, seguint el que dius amb un reconeixement de veu que funciona completament al teu Mac.</li>
@@ -122,7 +193,50 @@
   <p class="note">Requereix macOS 14 Sonoma o posterior; l’app per a iPhone i iPad requereix iOS 17 o posterior, i l’app per a Android, Android 8.0 o posterior. Una sola compra serveix per al Mac, l’iPhone i l’iPad; l’app per a Android es compra a part a Google Play.</p>
 </section>
 
-<section class="card">
+<div class="comparison-card" id="comparison">
+  <div class="comp-title">Teleapuntadors tradicionals enfront de Prompette</div>
+  <p class="section-lead">Contacte visual professional sense l'embalum de l'equip d'estudi.</p>
+  <div class="table-scroll">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Aspecte</th>
+          <th>Teleapuntador clàssic amb vidre</th>
+          <th class="highlight-col">Prompette</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Cost del maquinari</strong></td>
+          <td>150 € a 500 € per vidre divisor i estructura</td>
+          <td class="highlight-col"><strong>0 € en maquinari addicional</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Temps de muntatge</strong></td>
+          <td>15–30 minuts amb trípode i alineació</td>
+          <td class="highlight-col"><strong>1 clic (penja just sota la pestanya)</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Privadesa en compartir</strong></td>
+          <td>Requereix dos monitors o risc d'obrir finestres</td>
+          <td class="highlight-col"><strong>100% invisible a Zoom, Teams i OBS</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Control del ritme</strong></td>
+          <td>Pedal o comandament manual molest</td>
+          <td class="highlight-col"><strong>Per veu, IA de reconeixement i comandament a l'iPhone</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Portabilitat</strong></td>
+          <td>Bossa feixuga amb vidre molt fràgil</td>
+          <td class="highlight-col"><strong>Sempre a la barra de menús del teu Mac</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<section class="card" id="privacy">
   <h2>La privadesa en un paràgraf</h2>
   <p>Prompette no té cap compte ni seguiment, i mai no envia els teus guions ni la teva veu enlloc. El micròfon només es fa servir al Mac, als modes veu i seguiment, quan tu els tries, i la parla es reconeix al teu Mac. El comandament al teu telèfon o tauleta es comunica amb el teu Mac només a través de la teva pròpia xarxa local. La <a href="privacy.html">política de privadesa</a> completa diu el mateix amb més detall.</p>
 </section>

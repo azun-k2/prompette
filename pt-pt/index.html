@@ -8,7 +8,6 @@
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="../icon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="../icon-180.png">
-<link rel="stylesheet" href="../style.css">
 <!-- family:head --><link rel="stylesheet" href="../family/family.css">
 <link rel="stylesheet" href="../family/modern.css">
 <link rel="alternate" hreflang="en" href="https://prompette.khangazun.com/">
@@ -48,12 +47,14 @@
 <link rel="alternate" hreflang="x-default" href="https://prompette.khangazun.com/">
 <script src="../family/family.js" defer data-lang="pt-pt" data-page="index.html" data-langs="en,ar,ca,cs,da,de,el,es,fi,fr,he,hi,hr,hu,id,it,ja,ko,ms,nb,nl,pl,pt-br,pt-pt,ro,ru,sk,sv,th,tr,uk,vi,zh-hans,zh-hant"></script>
 <!-- /family:head -->
+<link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <main>
 <div class="hero">
+  <div class="hero-pill">⚡ Sem hardware adicional · 100% invisível na partilha de ecrã</div>
   <img class="icon" src="../icon-512.png" alt="" width="112" height="112">
-  <h1>Prompette</h1>
+  <h1>Olhe diretamente para a lente.<br><span class="gradient-text">Leia o seu guião logo abaixo da câmara.</span></h1>
   <p class="tagline">Leia o seu guião mesmo por baixo da câmara.</p>
   <!-- family:stores -->
   <div class="family-stores">
@@ -62,6 +63,7 @@
     <a class="family-store" href="https://play.google.com/store/apps/details?id=azun.prompette.app"><img src="../family/badges/play-pt-pt.png" alt="Disponível no Google Play" height="46"></a>
   </div>
   <!-- /family:stores -->
+  <p class="platform-banner">Disponível para Mac, iPhone, iPad e Android</p>
 <nav class="links">
     <a href="./">Início</a>
     <a href="support.html">Suporte</a>
@@ -109,9 +111,78 @@
   </nav>
 </div>
 
+
+<div class="demo-wrapper">
+  <div class="demo-controls">
+    <button type="button" class="demo-toggle-btn active" id="btn-owner-view" onclick="setDemoView('owner')">
+      👀 O seu ecrã (com o teleponto)
+    </button>
+    <button type="button" class="demo-toggle-btn" id="btn-audience-view" onclick="setDemoView('audience')">
+      🎥 Vista dos participantes no Zoom / Meet (100% invisível!)
+    </button>
+  </div>
+
+  <div class="macbook-frame">
+    <div class="macbook-screen">
+      <div class="notch">
+        <div class="lens"><div class="lens-green"></div></div>
+      </div>
+
+      <div class="prompter-strip" id="prompter-strip">
+        <div class="script-scroller">
+          <p>Olá a todos, obrigado por participarem na apresentação de hoje.</p>
+          <p><span class="cue-chip cue-smile">Sorria 😊</span> Temos excelentes notícias para partilhar com toda a equipa.</p>
+          <p><span class="cue-chip cue-pause">Pausa 2s</span> Como podem constatar no nosso relatório intercalar...</p>
+          <p><span class="cue-chip cue-slide">Diapositivo 3</span> A produtividade aumentou mais de 45% em todas as áreas.</p>
+          <p>Agradeço a cada um de vós pela dedicação constante.</p>
+        </div>
+      </div>
+
+      <div class="screen-app-window">
+        <div class="window-dots">
+          <div class="dot dot-red"></div>
+          <div class="dot dot-yellow"></div>
+          <div class="dot dot-green"></div>
+        </div>
+        <div style="font-size:13px; color:var(--muted); text-align:left;">
+          <p style="margin:0 0 6px; font-weight:700; color:var(--ink);">Janela do Keynote / Chamada Zoom / Apresentação</p>
+          <p style="margin:0;">Os seus diapositivos ou janelas partilhadas surgem aqui. O Prompette fica discreto logo abaixo da câmara.</p>
+        </div>
+      </div>
+
+      <div class="screen-share-tag" id="share-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#28ca41" stroke-width="2.5"><circle cx="12" cy="10" r="8"/><path d="m9 11 2 2 4-4"/></svg>
+        <span id="share-status-text">Teleponto visível apenas para os seus olhos</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function setDemoView(mode) {
+  var strip = document.getElementById('prompter-strip');
+  var btnOwner = document.getElementById('btn-owner-view');
+  var btnAudience = document.getElementById('btn-audience-view');
+  var statusText = document.getElementById('share-status-text');
+
+  if (mode === 'audience') {
+    strip.classList.add('hidden-by-share');
+    btnAudience.classList.add('active');
+    btnOwner.classList.remove('active');
+    statusText.textContent = "A audiência vê o ecrã limpo — 0% de texto visível";
+  } else {
+    strip.classList.remove('hidden-by-share');
+    btnOwner.classList.add('active');
+    btnAudience.classList.remove('active');
+    statusText.textContent = "Teleponto visível apenas para os seus olhos";
+  }
+}
+</script>
+
 <!-- family:shot --><figure class="shot"><img src="../img/hero.jpg" alt="" width="1600" height="833"></figure><!-- /family:shot -->
-<section class="card">
-  <h2>O que faz</h2>
+<section class="card" id="modes">
+  <h2>Três formas inteligentes de deslocamento</h2>
+  <p class="section-lead">Quer siga um guião ao segundo ou fale com naturalidade, o Prompette adapta-se a si.</p>
   <p>O Prompette mostra o seu guião numa faixa estreita pendurada no notch do seu MacBook, mesmo por baixo da câmara, para que os seus olhos fiquem perto da objetiva em chamadas, gravações e palestras. Nunca aparece na partilha de ecrã nem nas gravações de ecrã.</p>
   <ul>
     <li><strong>Três formas de avançar.</strong> À velocidade que definir; só enquanto fala, pelo volume da sua voz; ou palavra a palavra, acompanhando o que diz com um reconhecimento de voz feito inteiramente no seu Mac.</li>
@@ -122,7 +193,50 @@
   <p class="note">Requer macOS 14 Sonoma ou posterior; a app para iPhone e iPad requer iOS 17 ou posterior, e a app para Android, Android 8.0 ou posterior. Uma só compra abrange o Mac, o iPhone e o iPad; a app para Android é uma compra à parte no Google Play.</p>
 </section>
 
-<section class="card">
+<div class="comparison-card" id="comparison">
+  <div class="comp-title">Telepontos tradicionais vs Prompette</div>
+  <p class="section-lead">Contacto visual profissional sem o peso de equipamentos de estúdio.</p>
+  <div class="table-scroll">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Aspeto</th>
+          <th>Teleponto tradicional de espelho</th>
+          <th class="highlight-col">Prompette</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Custo de equipamento</strong></td>
+          <td>150 € a 500 € por vidro divisor e estrutura</td>
+          <td class="highlight-col"><strong>0 € em equipamento adicional</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Tempo de montagem</strong></td>
+          <td>15–30 minutos a alinhar tripé e ecrã</td>
+          <td class="highlight-col"><strong>1 clique (fica logo sob o entalhe)</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Privacidade ao partilhar</strong></td>
+          <td>Exige dois ecrãs ou risco de mostrar janelas</td>
+          <td class="highlight-col"><strong>100% invisível no Zoom, Teams e OBS</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Controlo de ritmo</strong></td>
+          <td>Pedal ou comando manual incómodo</td>
+          <td class="highlight-col"><strong>Pela voz, IA no dispositivo e comando por iPhone</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Portabilidade</strong></td>
+          <td>Saco pesado com vidro que parte com facilidade</td>
+          <td class="highlight-col"><strong>Sempre na barra de menus do Mac</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<section class="card" id="privacy">
   <h2>A privacidade num parágrafo</h2>
   <p>O Prompette não tem conta nem rastreio, e nunca envia os seus guiões nem a sua voz para lado nenhum. O microfone só é usado no Mac, nos modos voz e seguir, quando os escolhe, e a fala é reconhecida no seu Mac. O comando no seu telemóvel ou tablet comunica com o seu Mac apenas através da sua própria rede local. A <a href="privacy.html">política de privacidade</a> completa diz o mesmo com mais pormenor.</p>
 </section>

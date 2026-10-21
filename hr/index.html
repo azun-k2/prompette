@@ -8,7 +8,6 @@
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="../icon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="../icon-180.png">
-<link rel="stylesheet" href="../style.css">
 <!-- family:head --><link rel="stylesheet" href="../family/family.css">
 <link rel="stylesheet" href="../family/modern.css">
 <link rel="alternate" hreflang="en" href="https://prompette.khangazun.com/">
@@ -48,12 +47,14 @@
 <link rel="alternate" hreflang="x-default" href="https://prompette.khangazun.com/">
 <script src="../family/family.js" defer data-lang="hr" data-page="index.html" data-langs="en,ar,ca,cs,da,de,el,es,fi,fr,he,hi,hr,hu,id,it,ja,ko,ms,nb,nl,pl,pt-br,pt-pt,ro,ru,sk,sv,th,tr,uk,vi,zh-hans,zh-hant"></script>
 <!-- /family:head -->
+<link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <main>
 <div class="hero">
+  <div class="hero-pill">⚡ Bez dodatnog hardvera · 100% nevidljivo pri dijeljenju zaslona</div>
   <img class="icon" src="../icon-512.png" alt="" width="112" height="112">
-  <h1>Prompette</h1>
+  <h1>Gledajte ravno u leću.<br><span class="gradient-text">Čitajte skriptu točno ispod kamere.</span></h1>
   <p class="tagline">Čitaj skriptu točno ispod kamere.</p>
   <!-- family:stores -->
   <div class="family-stores">
@@ -62,6 +63,7 @@
     <a class="family-store" href="https://play.google.com/store/apps/details?id=azun.prompette.app"><img src="../family/badges/play-hr.png" alt="Nabavite na Google Playu" height="46"></a>
   </div>
   <!-- /family:stores -->
+  <p class="platform-banner">Dostupno za Mac, iPhone, iPad i Android</p>
 <nav class="links">
     <a href="./">Početna</a>
     <a href="support.html">Podrška</a>
@@ -109,9 +111,78 @@
   </nav>
 </div>
 
+
+<div class="demo-wrapper">
+  <div class="demo-controls">
+    <button type="button" class="demo-toggle-btn active" id="btn-owner-view" onclick="setDemoView('owner')">
+      👀 Vaš zaslon (s prompterom)
+    </button>
+    <button type="button" class="demo-toggle-btn" id="btn-audience-view" onclick="setDemoView('audience')">
+      🎥 Pogled publike na Zoom / Meet (100% nevidljivo!)
+    </button>
+  </div>
+
+  <div class="macbook-frame">
+    <div class="macbook-screen">
+      <div class="notch">
+        <div class="lens"><div class="lens-green"></div></div>
+      </div>
+
+      <div class="prompter-strip" id="prompter-strip">
+        <div class="script-scroller">
+          <p>Pozdrav svima, hvala vam na sudjelovanju u današnjoj prezentaciji.</p>
+          <p><span class="cue-chip cue-smile">Osmijeh 😊</span> Imamo sjajne vijesti koje želimo podijeliti s cijelim timom.</p>
+          <p><span class="cue-chip cue-pause">Pauza 2s</span> Kao što se vidi u našem kvartalnom izvješću...</p>
+          <p><span class="cue-chip cue-slide">Slajd 3</span> Produktivnost je porasla za više od 45% u svim odjelima.</p>
+          <p>Želim se osobno zahvaliti svima vama na trudu i predanosti.</p>
+        </div>
+      </div>
+
+      <div class="screen-app-window">
+        <div class="window-dots">
+          <div class="dot dot-red"></div>
+          <div class="dot dot-yellow"></div>
+          <div class="dot dot-green"></div>
+        </div>
+        <div style="font-size:13px; color:var(--muted); text-align:left;">
+          <p style="margin:0 0 6px; font-weight:700; color:var(--ink);">Prozor prezentacije Keynote / Zoom poziva</p>
+          <p style="margin:0;">Vaši podijeljeni slajdovi nalaze se ovdje. Prompette stoji diskretno točno ispod web kamere.</p>
+        </div>
+      </div>
+
+      <div class="screen-share-tag" id="share-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#28ca41" stroke-width="2.5"><circle cx="12" cy="10" r="8"/><path d="m9 11 2 2 4-4"/></svg>
+        <span id="share-status-text">Prompter je vidljiv samo vašim očima</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function setDemoView(mode) {
+  var strip = document.getElementById('prompter-strip');
+  var btnOwner = document.getElementById('btn-owner-view');
+  var btnAudience = document.getElementById('btn-audience-view');
+  var statusText = document.getElementById('share-status-text');
+
+  if (mode === 'audience') {
+    strip.classList.add('hidden-by-share');
+    btnAudience.classList.add('active');
+    btnOwner.classList.remove('active');
+    statusText.textContent = "Publika vidi čist zaslon — 0% curenja teksta";
+  } else {
+    strip.classList.remove('hidden-by-share');
+    btnOwner.classList.add('active');
+    btnAudience.classList.remove('active');
+    statusText.textContent = "Prompter je vidljiv samo vašim očima";
+  }
+}
+</script>
+
 <!-- family:shot --><figure class="shot"><img src="../img/hero.jpg" alt="" width="1600" height="833"></figure><!-- /family:shot -->
-<section class="card">
-  <h2>Što radi</h2>
+<section class="card" id="modes">
+  <h2>Tri pametna načina pomicanja teksta</h2>
+  <p class="section-lead">Bilo da pratite točan tajming ili govorite spontano, Prompette se prilagođava vama.</p>
   <p>Prompette prikazuje tvoju skriptu u uskoj traci koja visi s ureza tvog MacBooka, točno ispod kamere, pa ti pogled tijekom poziva, snimanja i predavanja ostaje blizu objektiva. Nikad se ne pojavljuje pri dijeljenju zaslona ni u snimkama zaslona.</p>
   <ul>
     <li><strong>Tri načina pomicanja.</strong> Brzinom koju zadaš; samo dok govoriš, prema glasnoći tvog glasa; ili riječ po riječ, prateći ono što govoriš uz prepoznavanje govora koje se u potpunosti odvija na tvom Macu.</li>
@@ -122,7 +193,50 @@
   <p class="note">Potreban je macOS 14 Sonoma ili noviji; aplikaciji za iPhone i iPad potreban je iOS 17 ili noviji, a aplikaciji za Android Android 8.0 ili noviji. Jedna kupnja pokriva Mac, iPhone i iPad; aplikacija za Android kupuje se zasebno na Google Playu.</p>
 </section>
 
-<section class="card">
+<div class="comparison-card" id="comparison">
+  <div class="comp-title">Tradicionalni teleprompteri u usporedbi s Prompetteom</div>
+  <p class="section-lead">Profesionalan kontakt očima bez glomazne studijske opreme.</p>
+  <div class="table-scroll">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Značajka</th>
+          <th>Klasični teleprompter sa staklom</th>
+          <th class="highlight-col">Prompette</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Trošak opreme</strong></td>
+          <td>150 € do 500 € za polupropusno staklo i nosače</td>
+          <td class="highlight-col"><strong>0 € troškova za dodatni hardver</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Vrijeme postavljanja</strong></td>
+          <td>15–30 minuta za namještanje stalka i ekrana</td>
+          <td class="highlight-col"><strong>1 klik (visi točno ispod ureza ekrana)</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Privatnost pri dijeljenju</strong></td>
+          <td>Zahtijeva dva zaslona ili rizik od prikaza prozora</td>
+          <td class="highlight-col"><strong>100% nevidljivo u aplikacijama Zoom, Teams i OBS</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Kontrola brzine</strong></td>
+          <td>Nožna pedala ili nepraktičan ručni upravljač</td>
+          <td class="highlight-col"><strong>Glasom, AI prepoznavanjem i iPhone daljinskim</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Prenosivost</strong></td>
+          <td>Teška torba s osjetljivim staklom</td>
+          <td class="highlight-col"><strong>Uvijek u traci izbornika vašeg Maca</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<section class="card" id="privacy">
   <h2>Privatnost u jednom odlomku</h2>
   <p>Prompette nema račun ni praćenje i nikad nikamo ne šalje tvoje skripte ni tvoj glas. Mikrofon se koristi samo na Macu, u glasovnom načinu i načinu praćenja koje odabereš, a govor se prepoznaje na tvom Macu. Daljinski na telefonu ili tabletu s tvojim Macom razgovara isključivo preko tvoje vlastite lokalne mreže. Potpuna <a href="privacy.html">pravila privatnosti</a> kažu isto, samo opširnije.</p>
 </section>

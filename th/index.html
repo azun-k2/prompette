@@ -8,7 +8,6 @@
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="../icon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="../icon-180.png">
-<link rel="stylesheet" href="../style.css">
 <!-- family:head --><link rel="stylesheet" href="../family/family.css">
 <link rel="stylesheet" href="../family/modern.css">
 <link rel="alternate" hreflang="en" href="https://prompette.khangazun.com/">
@@ -48,12 +47,14 @@
 <link rel="alternate" hreflang="x-default" href="https://prompette.khangazun.com/">
 <script src="../family/family.js" defer data-lang="th" data-page="index.html" data-langs="en,ar,ca,cs,da,de,el,es,fi,fr,he,hi,hr,hu,id,it,ja,ko,ms,nb,nl,pl,pt-br,pt-pt,ro,ru,sk,sv,th,tr,uk,vi,zh-hans,zh-hant"></script>
 <!-- /family:head -->
+<link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <main>
 <div class="hero">
+  <div class="hero-pill">⚡ ไม่ต้องใช้อุปกรณ์เสริม · ล่องหน 100% ขณะแชร์หน้าจอ</div>
   <img class="icon" src="../icon-512.png" alt="" width="112" height="112">
-  <h1>Prompette</h1>
+  <h1>มองตรงไปยังเลนส์กล้อง<br><span class="gradient-text">อ่านบทพูดได้ใต้กล้องพอดี</span></h1>
   <p class="tagline">อ่านบทพูดได้ตรงใต้กล้อง</p>
   <!-- family:stores -->
   <div class="family-stores">
@@ -62,6 +63,7 @@
     <a class="family-store" href="https://play.google.com/store/apps/details?id=azun.prompette.app"><img src="../family/badges/play-th.png" alt="ดาวน์โหลดได้ที่ Google Play" height="46"></a>
   </div>
   <!-- /family:stores -->
+  <p class="platform-banner">ใช้งานได้บน Mac, iPhone, iPad และ Android</p>
 <nav class="links">
     <a href="./">หน้าแรก</a>
     <a href="support.html">การสนับสนุน</a>
@@ -109,9 +111,78 @@
   </nav>
 </div>
 
+
+<div class="demo-wrapper">
+  <div class="demo-controls">
+    <button type="button" class="demo-toggle-btn active" id="btn-owner-view" onclick="setDemoView('owner')">
+      👀 หน้าจอของคุณ (แสดงบทพูด)
+    </button>
+    <button type="button" class="demo-toggle-btn" id="btn-audience-view" onclick="setDemoView('audience')">
+      🎥 มุมมองผู้ชมบน Zoom / Meet (ซ่อนมิดชิด 100%!)
+    </button>
+  </div>
+
+  <div class="macbook-frame">
+    <div class="macbook-screen">
+      <div class="notch">
+        <div class="lens"><div class="lens-green"></div></div>
+      </div>
+
+      <div class="prompter-strip" id="prompter-strip">
+        <div class="script-scroller">
+          <p>สวัสดีทุกท่าน ขอขอบคุณที่มาร่วมการนำเสนอในวันนี้</p>
+          <p><span class="cue-chip cue-smile">ยิ้ม 😊</span> เรามีข่าวสำคัญและน่ายินดีมาแบ่งปันกับทุกคน</p>
+          <p><span class="cue-chip cue-pause">หยุด 2 วิ</span> ดังที่เห็นจากรายงานความคืบหน้า...</p>
+          <p><span class="cue-chip cue-slide">สไลด์ 3</span> ประสิทธิภาพการทำงานเพิ่มขึ้นกว่า 45% ในทุกแผนก</p>
+          <p>ขอขอบคุณทุกท่านจากใจจริงสำหรับความทุ่มเทอย่างยอดเยี่ยม</p>
+        </div>
+      </div>
+
+      <div class="screen-app-window">
+        <div class="window-dots">
+          <div class="dot dot-red"></div>
+          <div class="dot dot-yellow"></div>
+          <div class="dot dot-green"></div>
+        </div>
+        <div style="font-size:13px; color:var(--muted); text-align:left;">
+          <p style="margin:0 0 6px; font-weight:700; color:var(--ink);">หน้าต่าง Keynote / การโทร Zoom / งานนำเสนอ</p>
+          <p style="margin:0;">สไลด์หรือหน้าต่างที่แชร์จะแสดงที่นี่ Prompette อยู่ตรงใต้เว็บแคมโดยไม่เกะกะสายตา</p>
+        </div>
+      </div>
+
+      <div class="screen-share-tag" id="share-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#28ca41" stroke-width="2.5"><circle cx="12" cy="10" r="8"/><path d="m9 11 2 2 4-4"/></svg>
+        <span id="share-status-text">แสดงบทพูดให้สายตาคุณเห็นเพียงคนเดียว</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function setDemoView(mode) {
+  var strip = document.getElementById('prompter-strip');
+  var btnOwner = document.getElementById('btn-owner-view');
+  var btnAudience = document.getElementById('btn-audience-view');
+  var statusText = document.getElementById('share-status-text');
+
+  if (mode === 'audience') {
+    strip.classList.add('hidden-by-share');
+    btnAudience.classList.add('active');
+    btnOwner.classList.remove('active');
+    statusText.textContent = "ผู้ฟังเห็นหน้าจอสะอาดตา — ข้อความไม่รั่วไหล 0%";
+  } else {
+    strip.classList.remove('hidden-by-share');
+    btnOwner.classList.add('active');
+    btnAudience.classList.remove('active');
+    statusText.textContent = "แสดงบทพูดให้สายตาคุณเห็นเพียงคนเดียว";
+  }
+}
+</script>
+
 <!-- family:shot --><figure class="shot"><img src="../img/hero.jpg" alt="" width="1600" height="833"></figure><!-- /family:shot -->
-<section class="card">
-  <h2>ทำอะไรได้บ้าง</h2>
+<section class="card" id="modes">
+  <h2>3 รูปแบบการเลื่อนข้อความอัจฉริยะ</h2>
+  <p class="section-lead">ไม่ว่าจะต้องคุมเวลาอย่างแม่นยำหรือพูดอย่างเป็นธรรมชาติ Prompette ก็ปรับตามคุณได้อย่างลงตัว</p>
   <p>Prompette แสดงบทพูดของคุณในแถบบางๆ ที่ห้อยลงมาจากรอยบากของ MacBook ตรงใต้กล้องพอดี สายตาของคุณจึงอยู่ใกล้เลนส์ระหว่างการโทร การบันทึก และการบรรยาย และแถบนี้จะไม่ปรากฏในการแชร์หน้าจอหรือการบันทึกหน้าจอเลย</p>
   <ul>
     <li><strong>เลื่อนได้สามแบบ</strong> ตามความเร็วที่คุณตั้ง เลื่อนเฉพาะตอนที่คุณพูดตามระดับเสียงของคุณ หรือเลื่อนทีละคำตามสิ่งที่คุณพูด ด้วยการรู้จำเสียงพูดที่ทำงานบน Mac ทั้งหมด</li>
@@ -122,7 +193,50 @@
   <p class="note">ต้องใช้ macOS 14 Sonoma ขึ้นไป แอปสำหรับ iPhone และ iPad ต้องใช้ iOS 17 ขึ้นไป และแอป Android ต้องใช้ Android 8.0 ขึ้นไป ซื้อครั้งเดียวใช้ได้ทั้ง Mac, iPhone และ iPad ส่วนแอป Android ต้องซื้อแยกบน Google Play</p>
 </section>
 
-<section class="card">
+<div class="comparison-card" id="comparison">
+  <div class="comp-title">เทเลพรอมพ์เตอร์แบบดั้งเดิม เทียบกับ Prompette</div>
+  <p class="section-lead">สบตาผู้ฟังอย่างเป็นมืออาชีพโดยไม่ต้องแบกอุปกรณ์สตูดิโอเทอะทะ</p>
+  <div class="table-scroll">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>เปรียบเทียบ</th>
+          <th>เครื่องเทเลพรอมพ์เตอร์กระจกทั่วไป</th>
+          <th class="highlight-col">Prompette</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>ค่าอุปกรณ์</strong></td>
+          <td>ประมาณ 5,000 – 18,000 บาทสำหรับกระจกและโครง</td>
+          <td class="highlight-col"><strong>ไม่ต้องซื้ออุปกรณ์เพิ่ม (0 บาท)</strong></td>
+        </tr>
+        <tr>
+          <td><strong>เวลาติดตั้ง</strong></td>
+          <td>15–30 นาทีในการตั้งขาตั้งกล้องและปรับมุม</td>
+          <td class="highlight-col"><strong>คลิกเดียวพร้อมใช้ (เกาะอยู่ใต้รอยบากพอดี)</strong></td>
+        </tr>
+        <tr>
+          <td><strong>ความปลอดภัยในการแชร์จอ</strong></td>
+          <td>ต้องใช้ 2 จอและเสี่ยงต่อการหลุดของหน้าต่าง</td>
+          <td class="highlight-col"><strong>ล่องหน 100% บน Zoom, Teams และ OBS</strong></td>
+        </tr>
+        <tr>
+          <td><strong>การควบคุมความเร็ว</strong></td>
+          <td>แป้นเหยียบหรือรีโมทมือถือที่เทอะทะ</td>
+          <td class="highlight-col"><strong>ตามเสียงพูด, AI รู้จำเสียงพูด และรีโมท iPhone</strong></td>
+        </tr>
+        <tr>
+          <td><strong>ความสะดวกในการพกพา</strong></td>
+          <td>กระเป๋าหนักและกระจกแตกหักง่าย</td>
+          <td class="highlight-col"><strong>พร้อมใช้งานบนแถบเมนู Mac ทุกที่ทุกเวลา</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<section class="card" id="privacy">
   <h2>ความเป็นส่วนตัวในย่อหน้าเดียว</h2>
   <p>Prompette ไม่มีบัญชีและไม่มีการติดตามผู้ใช้ และไม่เคยส่งบทพูดหรือเสียงของคุณไปที่ใด ไมโครโฟนจะใช้เฉพาะบน Mac ในโหมดเสียงและโหมดติดตามเมื่อคุณเลือกใช้ และการรู้จำเสียงพูดเกิดขึ้นบน Mac ของคุณ รีโมทบนโทรศัพท์หรือแท็บเล็ตสื่อสารกับ Mac ผ่านเครือข่ายท้องถิ่นของคุณเท่านั้น <a href="privacy.html">นโยบายความเป็นส่วนตัว</a>ฉบับเต็มอธิบายเรื่องเดียวกันนี้อย่างละเอียดกว่า</p>
 </section>

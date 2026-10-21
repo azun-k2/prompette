@@ -8,7 +8,6 @@
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="../icon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="../icon-180.png">
-<link rel="stylesheet" href="../style.css">
 <!-- family:head --><link rel="stylesheet" href="../family/family.css">
 <link rel="stylesheet" href="../family/modern.css">
 <link rel="alternate" hreflang="en" href="https://prompette.khangazun.com/">
@@ -48,12 +47,14 @@
 <link rel="alternate" hreflang="x-default" href="https://prompette.khangazun.com/">
 <script src="../family/family.js" defer data-lang="fi" data-page="index.html" data-langs="en,ar,ca,cs,da,de,el,es,fi,fr,he,hi,hr,hu,id,it,ja,ko,ms,nb,nl,pl,pt-br,pt-pt,ro,ru,sk,sv,th,tr,uk,vi,zh-hans,zh-hant"></script>
 <!-- /family:head -->
+<link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <main>
 <div class="hero">
+  <div class="hero-pill">⚡ Ei ylimääräistä laitteistoa · 100 % näkymätön näytön jaossa</div>
   <img class="icon" src="../icon-512.png" alt="" width="112" height="112">
-  <h1>Prompette</h1>
+  <h1>Katso suoraan linssiin.<br><span class="gradient-text">Lue tekstisi suoraan kameran alapuolelta.</span></h1>
   <p class="tagline">Lue käsikirjoituksesi aivan kameran alta.</p>
   <!-- family:stores -->
   <div class="family-stores">
@@ -62,6 +63,7 @@
     <a class="family-store" href="https://play.google.com/store/apps/details?id=azun.prompette.app"><img src="../family/badges/play-fi.png" alt="Saatavana Google Playssa" height="46"></a>
   </div>
   <!-- /family:stores -->
+  <p class="platform-banner">Saatavilla Macille, iPhonelle, iPadille ja Androidille</p>
 <nav class="links">
     <a href="./">Etusivu</a>
     <a href="support.html">Tuki</a>
@@ -109,9 +111,78 @@
   </nav>
 </div>
 
+
+<div class="demo-wrapper">
+  <div class="demo-controls">
+    <button type="button" class="demo-toggle-btn active" id="btn-owner-view" onclick="setDemoView('owner')">
+      👀 Oma näyttösi (prompteri näkyvissä)
+    </button>
+    <button type="button" class="demo-toggle-btn" id="btn-audience-view" onclick="setDemoView('audience')">
+      🎥 Zoom- / Meet-yleisön näkymä (100 % näkymätön!)
+    </button>
+  </div>
+
+  <div class="macbook-frame">
+    <div class="macbook-screen">
+      <div class="notch">
+        <div class="lens"><div class="lens-green"></div></div>
+      </div>
+
+      <div class="prompter-strip" id="prompter-strip">
+        <div class="script-scroller">
+          <p>Tervetuloa kaikille, kiitos osallistumisestanne tämänpäiväiseen esitykseen.</p>
+          <p><span class="cue-chip cue-smile">Hymyile 😊</span> Meillä on mahtavia uutisia jaettavaksi koko tiimille.</p>
+          <p><span class="cue-chip cue-pause">Tauko 2s</span> Kuten edistymisraportistamme näkyy...</p>
+          <p><span class="cue-chip cue-slide">Dia 3</span> Tuottavuus on kasvanut yli 45 % kaikilla osastoilla.</p>
+          <p>Haluan kiittää henkilökohtaisesti jokaista teistä upeasta panoksestanne.</p>
+        </div>
+      </div>
+
+      <div class="screen-app-window">
+        <div class="window-dots">
+          <div class="dot dot-red"></div>
+          <div class="dot dot-yellow"></div>
+          <div class="dot dot-green"></div>
+        </div>
+        <div style="font-size:13px; color:var(--muted); text-align:left;">
+          <p style="margin:0 0 6px; font-weight:700; color:var(--ink);">Keynote- / Zoom- / esitysikkuna</p>
+          <p style="margin:0;">Jaetut diat tai ikkunat näkyvät tässä. Prompette pysyy siististi suoraan web-kameran alapuolella.</p>
+        </div>
+      </div>
+
+      <div class="screen-share-tag" id="share-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#28ca41" stroke-width="2.5"><circle cx="12" cy="10" r="8"/><path d="m9 11 2 2 4-4"/></svg>
+        <span id="share-status-text">Prompteri näkyy vain sinun silmillesi</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function setDemoView(mode) {
+  var strip = document.getElementById('prompter-strip');
+  var btnOwner = document.getElementById('btn-owner-view');
+  var btnAudience = document.getElementById('btn-audience-view');
+  var statusText = document.getElementById('share-status-text');
+
+  if (mode === 'audience') {
+    strip.classList.add('hidden-by-share');
+    btnAudience.classList.add('active');
+    btnOwner.classList.remove('active');
+    statusText.textContent = "Yleisö näkee puhtaan näytön — 0 % tekstivuotoa";
+  } else {
+    strip.classList.remove('hidden-by-share');
+    btnOwner.classList.add('active');
+    btnAudience.classList.remove('active');
+    statusText.textContent = "Prompteri näkyy vain sinun silmillesi";
+  }
+}
+</script>
+
 <!-- family:shot --><figure class="shot"><img src="../img/hero.jpg" alt="" width="1600" height="833"></figure><!-- /family:shot -->
-<section class="card">
-  <h2>Mitä se tekee</h2>
+<section class="card" id="modes">
+  <h2>Kolme älykästä vieritystapaa</h2>
+  <p class="section-lead">Puhutpa tarkan aikataulun mukaan tai rennosti soveltaen, Prompette mukautuu tahtiisi.</p>
   <p>Prompette näyttää käsikirjoituksesi kapeassa nauhassa, joka riippuu MacBookisi lovesta aivan kameran alla, joten katseesi pysyy lähellä linssiä puheluissa, tallennuksissa ja esityksissä. Se ei koskaan näy näytön jakamisessa eikä näyttötallenteissa.</p>
   <ul>
     <li><strong>Kolme tapaa vierittää.</strong> Valitsemallasi nopeudella; vain puhuessasi, äänesi voimakkuuden mukaan; tai sana sanalta, jolloin se seuraa puhettasi puheentunnistuksella, joka tapahtuu kokonaan Macillasi.</li>
@@ -122,7 +193,50 @@
   <p class="note">Vaatii macOS 14 Sonoman tai uudemman; iPhonen ja iPadin appi vaatii iOS 17:n tai uudemman ja Android-appi Android 8.0:n tai uudemman. Yksi osto kattaa Macin, iPhonen ja iPadin; Android-appi ostetaan erikseen Google Playsta.</p>
 </section>
 
-<section class="card">
+<div class="comparison-card" id="comparison">
+  <div class="comp-title">Perinteiset teleprompterit vastaan Prompette</div>
+  <p class="section-lead">Ammattimainen katsekontakti ilman kookkaita studiolaitteita.</p>
+  <div class="table-scroll">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Ominaisuus</th>
+          <th>Perinteinen lasiteleprompteri</th>
+          <th class="highlight-col">Prompette</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Laitteistokustannus</strong></td>
+          <td>150–500 € peililasista ja telineestä</td>
+          <td class="highlight-col"><strong>0 € lisälaitteistosta</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Asennusaika</strong></td>
+          <td>15–30 minuuttia jalustan ja peilin kohdistukseen</td>
+          <td class="highlight-col"><strong>1 napsautus (roikkuu heti loven alapuolella)</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Yksityisyys näytön jaossa</strong></td>
+          <td>Vaatii kaksi näyttöä tai vaarana ikkunavuoto</td>
+          <td class="highlight-col"><strong>100 % näkymätön Zoomissa, Teamsissa ja OBS:ssä</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Vierityksen ohjaus</strong></td>
+          <td>Jalkapoljin tai hankala kädessä pidettävä säädin</td>
+          <td class="highlight-col"><strong>Ääniohjattu, laitteessa toimiva puheentunnistus & iPhone</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Kannettavuus</strong></td>
+          <td>Painava laukku herkästi särkyvällä lasilla</td>
+          <td class="highlight-col"><strong>Aina valmiina Macisi valikkorivillä</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<section class="card" id="privacy">
   <h2>Tietosuoja yhdessä kappaleessa</h2>
   <p>Prompettessa ei ole tiliä eikä seurantaa, eikä se koskaan lähetä käsikirjoituksiasi tai ääntäsi minnekään. Mikrofonia käytetään vain Macilla, valitsemissasi ääni- ja seurantatiloissa, ja puhe tunnistetaan Macillasi. Puhelimesi tai tablettisi kaukosäädin keskustelee Macisi kanssa vain oman lähiverkkosi kautta. Koko <a href="privacy.html">tietosuojakäytäntö</a> kertoo saman laajemmin.</p>
 </section>

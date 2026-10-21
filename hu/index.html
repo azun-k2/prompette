@@ -8,7 +8,6 @@
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="../icon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="../icon-180.png">
-<link rel="stylesheet" href="../style.css">
 <!-- family:head --><link rel="stylesheet" href="../family/family.css">
 <link rel="stylesheet" href="../family/modern.css">
 <link rel="alternate" hreflang="en" href="https://prompette.khangazun.com/">
@@ -48,12 +47,14 @@
 <link rel="alternate" hreflang="x-default" href="https://prompette.khangazun.com/">
 <script src="../family/family.js" defer data-lang="hu" data-page="index.html" data-langs="en,ar,ca,cs,da,de,el,es,fi,fr,he,hi,hr,hu,id,it,ja,ko,ms,nb,nl,pl,pt-br,pt-pt,ro,ru,sk,sv,th,tr,uk,vi,zh-hans,zh-hant"></script>
 <!-- /family:head -->
+<link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <main>
 <div class="hero">
+  <div class="hero-pill">⚡ Nincs szükség plusz hardverre · 100%-ban láthatatlan képernyőmegosztáskor</div>
   <img class="icon" src="../icon-512.png" alt="" width="112" height="112">
-  <h1>Prompette</h1>
+  <h1>Nézz egyenesen az objektívbe.<br><span class="gradient-text">Olvasd a szöveget közvetlenül a kamera alatt.</span></h1>
   <p class="tagline">Olvasd a szövegedet közvetlenül a kamera alatt.</p>
   <!-- family:stores -->
   <div class="family-stores">
@@ -62,6 +63,7 @@
     <a class="family-store" href="https://play.google.com/store/apps/details?id=azun.prompette.app"><img src="../family/badges/play-hu.png" alt="Szerezd meg a Google Playen" height="46"></a>
   </div>
   <!-- /family:stores -->
+  <p class="platform-banner">Elérhető Mac, iPhone, iPad és Android eszközökre</p>
 <nav class="links">
     <a href="./">Kezdőlap</a>
     <a href="support.html">Támogatás</a>
@@ -109,9 +111,78 @@
   </nav>
 </div>
 
+
+<div class="demo-wrapper">
+  <div class="demo-controls">
+    <button type="button" class="demo-toggle-btn active" id="btn-owner-view" onclick="setDemoView('owner')">
+      👀 Saját képernyő (súgógéppel)
+    </button>
+    <button type="button" class="demo-toggle-btn" id="btn-audience-view" onclick="setDemoView('audience')">
+      🎥 Zoom / Meet közönség nézete (100%-ban láthatatlan!)
+    </button>
+  </div>
+
+  <div class="macbook-frame">
+    <div class="macbook-screen">
+      <div class="notch">
+        <div class="lens"><div class="lens-green"></div></div>
+      </div>
+
+      <div class="prompter-strip" id="prompter-strip">
+        <div class="script-scroller">
+          <p>Üdvözlök mindenkit, köszönöm a részvételt a mai előadáson.</p>
+          <p><span class="cue-chip cue-smile">Mosoly 😊</span> Nagyszerű híreket oszthatunk meg az egész csapattal.</p>
+          <p><span class="cue-chip cue-pause">Szünet 2mp</span> Ahogy a negyedéves jelentésből is kiderül...</p>
+          <p><span class="cue-chip cue-slide">3. dia</span> A hatékonyság több mint 45%-kal javult minden területen.</p>
+          <p>Szeretném mindenkinek személyesen megköszönni a kitartó munkát.</p>
+        </div>
+      </div>
+
+      <div class="screen-app-window">
+        <div class="window-dots">
+          <div class="dot dot-red"></div>
+          <div class="dot dot-yellow"></div>
+          <div class="dot dot-green"></div>
+        </div>
+        <div style="font-size:13px; color:var(--muted); text-align:left;">
+          <p style="margin:0 0 6px; font-weight:700; color:var(--ink);">Keynote / Zoom hívás / Bemutató ablaka</p>
+          <p style="margin:0;">A megosztott diák itt jelennek meg. A Prompette diszkréten a webkamera alatt marad.</p>
+        </div>
+      </div>
+
+      <div class="screen-share-tag" id="share-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#28ca41" stroke-width="2.5"><circle cx="12" cy="10" r="8"/><path d="m9 11 2 2 4-4"/></svg>
+        <span id="share-status-text">A súgógép csak az Ön szeme számára látható</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function setDemoView(mode) {
+  var strip = document.getElementById('prompter-strip');
+  var btnOwner = document.getElementById('btn-owner-view');
+  var btnAudience = document.getElementById('btn-audience-view');
+  var statusText = document.getElementById('share-status-text');
+
+  if (mode === 'audience') {
+    strip.classList.add('hidden-by-share');
+    btnAudience.classList.add('active');
+    btnOwner.classList.remove('active');
+    statusText.textContent = "A közönség tiszta képernyőt lát — 0% szövegkiszivárgás";
+  } else {
+    strip.classList.remove('hidden-by-share');
+    btnOwner.classList.add('active');
+    btnAudience.classList.remove('active');
+    statusText.textContent = "A súgógép csak az Ön szeme számára látható";
+  }
+}
+</script>
+
 <!-- family:shot --><figure class="shot"><img src="../img/hero.jpg" alt="" width="1600" height="833"></figure><!-- /family:shot -->
-<section class="card">
-  <h2>Mit csinál</h2>
+<section class="card" id="modes">
+  <h2>Három intelligens görgetési mód</h2>
+  <p class="section-lead">Akár szigorú időbeosztást követ, akár természetesen beszél: a Prompette igazodik Önhöz.</p>
   <p>A Prompette egy keskeny sávban mutatja a szövegedet, amely a MacBook bemetszéséről lóg le, közvetlenül a kamera alatt, így a tekinteted az objektív közelében marad hívások, felvételek és előadások közben. Soha nem jelenik meg a képernyőmegosztásban vagy a képernyőfelvételeken.</p>
   <ul>
     <li><strong>Háromféle görgetés.</strong> A beállított sebességgel; csak amíg beszélsz, a hangod erőssége alapján; vagy szóról szóra, követve, amit mondasz, teljes egészében a Maceden futó beszédfelismeréssel.</li>
@@ -122,7 +193,50 @@
   <p class="note">macOS 14 Sonoma vagy újabb szükséges; az iPhone- és iPad-apphoz iOS 17 vagy újabb, az androidos apphoz Android 8.0 vagy újabb kell. Egy vásárlás a Macre, az iPhone-ra és az iPadre is érvényes; az androidos appot külön kell megvenni a Google Playen.</p>
 </section>
 
-<section class="card">
+<div class="comparison-card" id="comparison">
+  <div class="comp-title">Hagyományos súgógépek a Prompette-tel szemben</div>
+  <p class="section-lead">Professzionális szemkontaktus nehéz stúdiófelszerelés nélkül.</p>
+  <div class="table-scroll">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Szempont</th>
+          <th>Klasszikus üveges súgógép</th>
+          <th class="highlight-col">Prompette</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Eszközköltség</strong></td>
+          <td>60 000 – 200 000 Ft az osztótükörért és állványért</td>
+          <td class="highlight-col"><strong>0 Ft extra hardverköltség</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Összeállítási idő</strong></td>
+          <td>15–30 perc állványállítás és finomhangolás</td>
+          <td class="highlight-col"><strong>1 kattintás (közvetlenül a notch alatt lóg)</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Adatvédelem megosztáskor</strong></td>
+          <td>Két kijelzőt igényel vagy látható ablakok kockázata</td>
+          <td class="highlight-col"><strong>100%-ban láthatatlan Zoom, Teams és OBS alatt</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Sebességvezérlés</strong></td>
+          <td>Lábpedál vagy ormótlan kézi távirányító</td>
+          <td class="highlight-col"><strong>Hangvezérelt, gépi AI és iPhone-os távirányító</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Hordozhatóság</strong></td>
+          <td>Nehéz táska törékeny üveggel</td>
+          <td class="highlight-col"><strong>Mindig ott van a Mac menüsávjában</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<section class="card" id="privacy">
   <h2>Adatvédelem egy bekezdésben</h2>
   <p>A Prompette-nek nincs fiókja, nem követ nyomon, és soha sehová nem küldi el a szövegeidet vagy a hangodat. A mikrofont csak a Macen használja, az általad választott hang és követő módban, a beszédfelismerés pedig a Maceden történik. A telefonodon vagy táblagépeden futó távirányító kizárólag a saját helyi hálózatodon kommunikál a Maceddel. A teljes <a href="privacy.html">adatvédelmi irányelvek</a> ugyanezt mondják el bővebben.</p>
 </section>

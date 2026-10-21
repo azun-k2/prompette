@@ -8,7 +8,6 @@
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="../icon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="../icon-180.png">
-<link rel="stylesheet" href="../style.css">
 <!-- family:head --><link rel="stylesheet" href="../family/family.css">
 <link rel="stylesheet" href="../family/modern.css">
 <link rel="alternate" hreflang="en" href="https://prompette.khangazun.com/">
@@ -48,12 +47,14 @@
 <link rel="alternate" hreflang="x-default" href="https://prompette.khangazun.com/">
 <script src="../family/family.js" defer data-lang="he" data-page="index.html" data-langs="en,ar,ca,cs,da,de,el,es,fi,fr,he,hi,hr,hu,id,it,ja,ko,ms,nb,nl,pl,pt-br,pt-pt,ro,ru,sk,sv,th,tr,uk,vi,zh-hans,zh-hant"></script>
 <!-- /family:head -->
+<link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <main>
 <div class="hero">
+  <div class="hero-pill">⚡ ללא צורך בחומרה נוספת · 100% בלתי נראה בשיתוף מסך</div>
   <img class="icon" src="../icon-512.png" alt="" width="112" height="112">
-  <h1>Prompette</h1>
+  <h1>הביטו ישירות אל העדשה.<br><span class="gradient-text">קראו את התסריט ישירות מתחת למצלמה.</span></h1>
   <p class="tagline">קרא את התסריט שלך ממש מתחת למצלמה.</p>
   <!-- family:stores -->
   <div class="family-stores">
@@ -62,6 +63,7 @@
     <a class="family-store" href="https://play.google.com/store/apps/details?id=azun.prompette.app"><img src="../family/badges/play-he.png" alt="זמין ב־Google Play" height="46"></a>
   </div>
   <!-- /family:stores -->
+  <p class="platform-banner">זמין עבור Mac, iPhone, iPad ו-Android</p>
 <nav class="links">
     <a href="./">בית</a>
     <a href="support.html">תמיכה</a>
@@ -109,9 +111,78 @@
   </nav>
 </div>
 
+
+<div class="demo-wrapper">
+  <div class="demo-controls">
+    <button type="button" class="demo-toggle-btn active" id="btn-owner-view" onclick="setDemoView('owner')">
+      👀 המסך שלך (עם הפרומפטר)
+    </button>
+    <button type="button" class="demo-toggle-btn" id="btn-audience-view" onclick="setDemoView('audience')">
+      🎥 תצוגת המשתתפים ב-Zoom / Meet (בלתי נראה ב-100%!)
+    </button>
+  </div>
+
+  <div class="macbook-frame">
+    <div class="macbook-screen">
+      <div class="notch">
+        <div class="lens"><div class="lens-green"></div></div>
+      </div>
+
+      <div class="prompter-strip" id="prompter-strip">
+        <div class="script-scroller">
+          <p>שלום לכולם, תודה שהצטרפתם למצגת היום.</p>
+          <p><span class="cue-chip cue-smile">חיוך 😊</span> יש לנו בשורות מרגשות לשתף עם כל הצוות.</p>
+          <p><span class="cue-chip cue-pause">השהיה 2 שנ'</span> כפי שניתן לראות בדוח ההתקדמות...</p>
+          <p><span class="cue-chip cue-slide">שקופית 3</span> הפריון עלה ביותר מ-45% בכל המחלקות.</p>
+          <p>אני מבקש להודות באופן אישי לכל אחד ואחת על ההשקעה.</p>
+        </div>
+      </div>
+
+      <div class="screen-app-window">
+        <div class="window-dots">
+          <div class="dot dot-red"></div>
+          <div class="dot dot-yellow"></div>
+          <div class="dot dot-green"></div>
+        </div>
+        <div style="font-size:13px; color:var(--muted); text-align:left;">
+          <p style="margin:0 0 6px; font-weight:700; color:var(--ink);">חלון מצגת Keynote / שיחת Zoom</p>
+          <p style="margin:0;">המצגת או החלונות המשותפים מופיעים כאן. Prompette נשאר מוצנע ישירות מתחת למצלמת הרשת.</p>
+        </div>
+      </div>
+
+      <div class="screen-share-tag" id="share-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#28ca41" stroke-width="2.5"><circle cx="12" cy="10" r="8"/><path d="m9 11 2 2 4-4"/></svg>
+        <span id="share-status-text">הפרומפטר נראה לעיניך בלבד</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function setDemoView(mode) {
+  var strip = document.getElementById('prompter-strip');
+  var btnOwner = document.getElementById('btn-owner-view');
+  var btnAudience = document.getElementById('btn-audience-view');
+  var statusText = document.getElementById('share-status-text');
+
+  if (mode === 'audience') {
+    strip.classList.add('hidden-by-share');
+    btnAudience.classList.add('active');
+    btnOwner.classList.remove('active');
+    statusText.textContent = "המשתתפים רואים מסך נקי לחלוטין — 0% חשיפה של הטקסט";
+  } else {
+    strip.classList.remove('hidden-by-share');
+    btnOwner.classList.add('active');
+    btnAudience.classList.remove('active');
+    statusText.textContent = "הפרומפטר נראה לעיניך בלבד";
+  }
+}
+</script>
+
 <!-- family:shot --><figure class="shot"><img src="../img/hero.jpg" alt="" width="1600" height="833"></figure><!-- /family:shot -->
-<section class="card">
-  <h2>מה הוא עושה</h2>
+<section class="card" id="modes">
+  <h2>שלוש דרכים חכמות לגלילת הטקסט</h2>
+  <p class="section-lead">בין אם אתם מקפידים על זמנים מדויקים ובין אם מדברים בחופשיות — Prompette מתאים את עצמו אליכם.</p>
   <p>Prompette מציג את התסריט שלך ברצועה דקה שתלויה מהמגרעת של ה-MacBook, ממש מתחת למצלמה, כך שהעיניים שלך נשארות קרובות לעדשה בשיחות, בהקלטות ובהרצאות. היא אף פעם לא מופיעה בשיתוף מסך או בהקלטות מסך.</p>
   <ul>
     <li><strong>שלוש דרכים לגלול.</strong> במהירות שאתה קובע; רק בזמן שאתה מדבר, לפי עוצמת הקול שלך; או מילה אחר מילה, בעקבות מה שאתה אומר, בעזרת זיהוי דיבור שמתבצע כולו ב-Mac שלך.</li>
@@ -122,7 +193,50 @@
   <p class="note">דורש macOS 14 Sonoma ואילך; היישום ל-iPhone ול-iPad דורש iOS 17 ואילך, והיישום ל-Android דורש Android 8.0 ואילך. רכישה אחת מכסה את ה-Mac, ה-iPhone וה-iPad; היישום ל-Android נרכש בנפרד ב-Google Play.</p>
 </section>
 
-<section class="card">
+<div class="comparison-card" id="comparison">
+  <div class="comp-title">טלפרומפטר מסורתי מול Prompette</div>
+  <p class="section-lead">קשר עין מקצועי ללא סרבול של ציוד אולפן כבד.</p>
+  <div class="table-scroll">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>מאפיין</th>
+          <th>טלפרומפטר זכוכית קלאסי</th>
+          <th class="highlight-col">Prompette</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>עלות חומרה</strong></td>
+          <td>בין 150 ל-500 דולר עבור זכוכית מיוחדת וזרועות</td>
+          <td class="highlight-col"><strong>0 דולר הוצאות חומרה נוספות</strong></td>
+        </tr>
+        <tr>
+          <td><strong>זמן הרכבה</strong></td>
+          <td>15–30 דקות כיוונון חצובה ומסך</td>
+          <td class="highlight-col"><strong>לחיצה אחת (תלוי ישירות מתחת למגרעת)</strong></td>
+        </tr>
+        <tr>
+          <td><strong>פרטיות שיתוף מסך</strong></td>
+          <td>דורש שני מסכים או חושף חלונות בטעות</td>
+          <td class="highlight-col"><strong>בלתי נראה ב-100% ב-Zoom, Teams ו-OBS</strong></td>
+        </tr>
+        <tr>
+          <td><strong>שליטה בקצב</strong></td>
+          <td>דוושת רגל או שלט ידני מסורבל</td>
+          <td class="highlight-col"><strong>לפי קולך, בינה מלאכותית ושלט ב-iPhone</strong></td>
+        </tr>
+        <tr>
+          <td><strong>ניידות</strong></td>
+          <td>מארז כבד עם זכוכית שבירה במיוחד</td>
+          <td class="highlight-col"><strong>זמין תמיד בשורת התפריטים ב-Mac</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<section class="card" id="privacy">
   <h2>פרטיות בפסקה אחת</h2>
   <p>ל-Prompette אין חשבון ואין מעקב אחריך, והוא לעולם לא שולח את התסריטים או את הקול שלך לשום מקום. המיקרופון משמש רק ב-Mac, במצב קול ובמצב מעקב כשאתה בוחר בהם, והדיבור מזוהה ב-Mac שלך. השלט בטלפון או בטאבלט מתקשר עם ה-Mac רק דרך הרשת המקומית שלך. <a href="privacy.html">מדיניות הפרטיות</a> המלאה אומרת אותו דבר בהרחבה.</p>
 </section>

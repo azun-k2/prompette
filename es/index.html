@@ -8,7 +8,6 @@
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="../icon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="../icon-180.png">
-<link rel="stylesheet" href="../style.css">
 <!-- family:head --><link rel="stylesheet" href="../family/family.css">
 <link rel="stylesheet" href="../family/modern.css">
 <link rel="alternate" hreflang="en" href="https://prompette.khangazun.com/">
@@ -48,12 +47,14 @@
 <link rel="alternate" hreflang="x-default" href="https://prompette.khangazun.com/">
 <script src="../family/family.js" defer data-lang="es" data-page="index.html" data-langs="en,ar,ca,cs,da,de,el,es,fi,fr,he,hi,hr,hu,id,it,ja,ko,ms,nb,nl,pl,pt-br,pt-pt,ro,ru,sk,sv,th,tr,uk,vi,zh-hans,zh-hant"></script>
 <!-- /family:head -->
+<link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <main>
 <div class="hero">
+  <div class="hero-pill">⚡ Sin hardware adicional · 100 % invisible al compartir pantalla</div>
   <img class="icon" src="../icon-512.png" alt="" width="112" height="112">
-  <h1>Prompette</h1>
+  <h1>Mira directamente a la lente.<br><span class="gradient-text">Lee tu guion justo bajo la cámara.</span></h1>
   <p class="tagline">Lee tu guion justo debajo de la cámara.</p>
   <!-- family:stores -->
   <div class="family-stores">
@@ -62,6 +63,7 @@
     <a class="family-store" href="https://play.google.com/store/apps/details?id=azun.prompette.app"><img src="../family/badges/play-es.png" alt="Disponible en Google Play" height="46"></a>
   </div>
   <!-- /family:stores -->
+  <p class="platform-banner">Disponible para Mac, iPhone, iPad y Android</p>
 <nav class="links">
     <a href="./">Inicio</a>
     <a href="support.html">Soporte</a>
@@ -109,9 +111,78 @@
   </nav>
 </div>
 
+
+<div class="demo-wrapper">
+  <div class="demo-controls">
+    <button type="button" class="demo-toggle-btn active" id="btn-owner-view" onclick="setDemoView('owner')">
+      👀 Tu pantalla (con teleprónter)
+    </button>
+    <button type="button" class="demo-toggle-btn" id="btn-audience-view" onclick="setDemoView('audience')">
+      🎥 Vista de la audiencia en Zoom o Meet (¡100 % invisible!)
+    </button>
+  </div>
+
+  <div class="macbook-frame">
+    <div class="macbook-screen">
+      <div class="notch">
+        <div class="lens"><div class="lens-green"></div></div>
+      </div>
+
+      <div class="prompter-strip" id="prompter-strip">
+        <div class="script-scroller">
+          <p>Hola a todos, gracias por acompañarnos en la presentación de hoy.</p>
+          <p><span class="cue-chip cue-smile">Sonreír 😊</span> Tenemos excelentes noticias para compartir con todo el equipo.</p>
+          <p><span class="cue-chip cue-pause">Pausa 2s</span> Como pueden ver en nuestro informe de progreso trimestral...</p>
+          <p><span class="cue-chip cue-slide">Diapositiva 3</span> La productividad ha crecido más del 45 % en todos los departamentos.</p>
+          <p>Quiero agradecer personalmente a cada uno por su gran dedicación.</p>
+        </div>
+      </div>
+
+      <div class="screen-app-window">
+        <div class="window-dots">
+          <div class="dot dot-red"></div>
+          <div class="dot dot-yellow"></div>
+          <div class="dot dot-green"></div>
+        </div>
+        <div style="font-size:13px; color:var(--muted); text-align:left;">
+          <p style="margin:0 0 6px; font-weight:700; color:var(--ink);">Ventana de Keynote, llamada de Zoom o presentación</p>
+          <p style="margin:0;">Tus diapositivas o ventanas compartidas se muestran aquí. Prompette se mantiene justo bajo tu cámara web.</p>
+        </div>
+      </div>
+
+      <div class="screen-share-tag" id="share-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#28ca41" stroke-width="2.5"><circle cx="12" cy="10" r="8"/><path d="m9 11 2 2 4-4"/></svg>
+        <span id="share-status-text">Teleprónter visible solo para tus ojos</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function setDemoView(mode) {
+  var strip = document.getElementById('prompter-strip');
+  var btnOwner = document.getElementById('btn-owner-view');
+  var btnAudience = document.getElementById('btn-audience-view');
+  var statusText = document.getElementById('share-status-text');
+
+  if (mode === 'audience') {
+    strip.classList.add('hidden-by-share');
+    btnAudience.classList.add('active');
+    btnOwner.classList.remove('active');
+    statusText.textContent = "La audiencia ve una pantalla limpia: 0 % de texto filtrado";
+  } else {
+    strip.classList.remove('hidden-by-share');
+    btnOwner.classList.add('active');
+    btnAudience.classList.remove('active');
+    statusText.textContent = "Teleprónter visible solo para tus ojos";
+  }
+}
+</script>
+
 <!-- family:shot --><figure class="shot"><img src="../img/hero.jpg" alt="" width="1600" height="833"></figure><!-- /family:shot -->
-<section class="card">
-  <h2>Qué hace</h2>
+<section class="card" id="modes">
+  <h2>Tres formas inteligentes de desplazamiento</h2>
+  <p class="section-lead">Tanto si sigues un minutaje estricto como si hablas con naturalidad, Prompette se adapta a ti.</p>
   <p>Prompette muestra tu guion en una franja estrecha que cuelga de la muesca de tu MacBook, justo debajo de la cámara, para que tus ojos se queden cerca del objetivo en llamadas, grabaciones y charlas. Nunca aparece al compartir pantalla ni en las grabaciones de pantalla.</p>
   <ul>
     <li><strong>Tres formas de desplazarse.</strong> A la velocidad que elijas; solo mientras hablas, según el volumen de tu voz; o palabra por palabra, siguiendo lo que dices con un reconocimiento de voz que funciona por completo en tu Mac.</li>
@@ -122,7 +193,50 @@
   <p class="note">Requiere macOS 14 Sonoma o posterior; la app para iPhone y iPad requiere iOS 17 o posterior, y la app para Android, Android 8.0 o posterior. Una sola compra sirve para Mac, iPhone y iPad; la app para Android se compra aparte en Google Play.</p>
 </section>
 
-<section class="card">
+<div class="comparison-card" id="comparison">
+  <div class="comp-title">Teleprónteres tradicionales frente a Prompette</div>
+  <p class="section-lead">Contacto visual profesional sin equipo voluminoso de estudio.</p>
+  <div class="table-scroll">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Aspecto</th>
+          <th>Teleprónter clásico con cristal</th>
+          <th class="highlight-col">Prompette</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Coste de hardware</strong></td>
+          <td>150 € a 500 € por cristal divisor y estructura</td>
+          <td class="highlight-col"><strong>0 € en hardware adicional</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Tiempo de montaje</strong></td>
+          <td>15–30 minutos con trípode y alineación</td>
+          <td class="highlight-col"><strong>1 clic (cuelga justo bajo la muesca)</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Privacidad en pantalla</strong></td>
+          <td>Requiere doble monitor o riesgo de mostrar ventanas</td>
+          <td class="highlight-col"><strong>100 % invisible en Zoom, Teams y OBS</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Control del ritmo</strong></td>
+          <td>Pedal o mando manual aparatoso</td>
+          <td class="highlight-col"><strong>Por voz, IA de reconocimiento y mando en iPhone</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Portabilidad</strong></td>
+          <td>Bolsa pesada con cristal muy frágil</td>
+          <td class="highlight-col"><strong>Siempre a mano en la barra de menús del Mac</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<section class="card" id="privacy">
   <h2>La privacidad en un párrafo</h2>
   <p>Prompette no tiene cuenta ni rastreo, y nunca envía tus guiones ni tu voz a ningún sitio. El micrófono solo se usa en el Mac, en los modos voz y seguir, cuando tú los eliges, y el habla se reconoce en tu Mac. El mando en tu teléfono o tableta se comunica con tu Mac solo a través de tu propia red local. La <a href="privacy.html">política de privacidad</a> completa dice lo mismo con más detalle.</p>
 </section>

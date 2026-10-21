@@ -8,7 +8,6 @@
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="../icon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="../icon-180.png">
-<link rel="stylesheet" href="../style.css">
 <!-- family:head --><link rel="stylesheet" href="../family/family.css">
 <link rel="stylesheet" href="../family/modern.css">
 <link rel="alternate" hreflang="en" href="https://prompette.khangazun.com/">
@@ -48,12 +47,14 @@
 <link rel="alternate" hreflang="x-default" href="https://prompette.khangazun.com/">
 <script src="../family/family.js" defer data-lang="ar" data-page="index.html" data-langs="en,ar,ca,cs,da,de,el,es,fi,fr,he,hi,hr,hu,id,it,ja,ko,ms,nb,nl,pl,pt-br,pt-pt,ro,ru,sk,sv,th,tr,uk,vi,zh-hans,zh-hant"></script>
 <!-- /family:head -->
+<link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <main>
 <div class="hero">
+  <div class="hero-pill">⚡ دون حاجة لأي أجهزة إضافية · غير مرئي بنسبة 100% أثناء مشاركة الشاشة</div>
   <img class="icon" src="../icon-512.png" alt="" width="112" height="112">
-  <h1>Prompette</h1>
+  <h1>انظر مباشرة إلى العدسة.<br><span class="gradient-text">اقرأ نصك تحت الكاميرا مباشرة.</span></h1>
   <p class="tagline">اقرأ نصك أسفل الكاميرا مباشرةً.</p>
   <!-- family:stores -->
   <div class="family-stores">
@@ -62,6 +63,7 @@
     <a class="family-store" href="https://play.google.com/store/apps/details?id=azun.prompette.app"><img src="../family/badges/play-ar.png" alt="احصل عليه من Google Play" height="46"></a>
   </div>
   <!-- /family:stores -->
+  <p class="platform-banner">متوفر لأجهزة Mac وiPhone وiPad وAndroid</p>
 <nav class="links">
     <a href="./">الرئيسية</a>
     <a href="support.html">الدعم</a>
@@ -109,9 +111,78 @@
   </nav>
 </div>
 
+
+<div class="demo-wrapper">
+  <div class="demo-controls">
+    <button type="button" class="demo-toggle-btn active" id="btn-owner-view" onclick="setDemoView('owner')">
+      👀 شاشتك (مع الملقن)
+    </button>
+    <button type="button" class="demo-toggle-btn" id="btn-audience-view" onclick="setDemoView('audience')">
+      🎥 ما يراه الحضور في Zoom أو Meet (مخفي تماماً بنسبة 100%!)
+    </button>
+  </div>
+
+  <div class="macbook-frame">
+    <div class="macbook-screen">
+      <div class="notch">
+        <div class="lens"><div class="lens-green"></div></div>
+      </div>
+
+      <div class="prompter-strip" id="prompter-strip">
+        <div class="script-scroller">
+          <p>مرحباً بالجميع، شكراً لانضمامكم إلى العرض التقديمي اليوم.</p>
+          <p><span class="cue-chip cue-smile">ابتسم 😊</span> لدينا أخبار رائعة يسعدنا مشاركتها مع الفريق بأكمله.</p>
+          <p><span class="cue-chip cue-pause">توقف 2ث</span> كما يظهر في تقرير التقدم الفصلي...</p>
+          <p><span class="cue-chip cue-slide">شريحة 3</span> ارتفعت الإنتاجية بنسبة تجاوزت 45% في كافة الأقسام.</p>
+          <p>أود شكر كل عضو منكم شخصياً على هذا التفاني الكبير.</p>
+        </div>
+      </div>
+
+      <div class="screen-app-window">
+        <div class="window-dots">
+          <div class="dot dot-red"></div>
+          <div class="dot dot-yellow"></div>
+          <div class="dot dot-green"></div>
+        </div>
+        <div style="font-size:13px; color:var(--muted); text-align:left;">
+          <p style="margin:0 0 6px; font-weight:700; color:var(--ink);">نافذة Keynote أو مكالمة Zoom أو العرض التقديمي</p>
+          <p style="margin:0;">تظهر هنا شرائح العرض المشتركة. يبقى Prompette مستقراً مباشرة أسفل كاميرا الويب دون حجب الشاشة.</p>
+        </div>
+      </div>
+
+      <div class="screen-share-tag" id="share-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#28ca41" stroke-width="2.5"><circle cx="12" cy="10" r="8"/><path d="m9 11 2 2 4-4"/></svg>
+        <span id="share-status-text">الملقن مرئي لعينيك فقط</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function setDemoView(mode) {
+  var strip = document.getElementById('prompter-strip');
+  var btnOwner = document.getElementById('btn-owner-view');
+  var btnAudience = document.getElementById('btn-audience-view');
+  var statusText = document.getElementById('share-status-text');
+
+  if (mode === 'audience') {
+    strip.classList.add('hidden-by-share');
+    btnAudience.classList.add('active');
+    btnOwner.classList.remove('active');
+    statusText.textContent = "يرى الحضور شاشة نظيفة تماماً — نسبة تسريب النص 0%";
+  } else {
+    strip.classList.remove('hidden-by-share');
+    btnOwner.classList.add('active');
+    btnAudience.classList.remove('active');
+    statusText.textContent = "الملقن مرئي لعينيك فقط";
+  }
+}
+</script>
+
 <!-- family:shot --><figure class="shot"><img src="../img/hero.jpg" alt="" width="1600" height="833"></figure><!-- /family:shot -->
-<section class="card">
-  <h2>ما الذي يفعله</h2>
+<section class="card" id="modes">
+  <h2>ثلاث طرق ذكية لتمرير النص</h2>
+  <p class="section-lead">سواء كنت تلتزم بجدول زمني محدد أو تتحدث بأسلوب عفوي، يتكيف Prompette معك بسلاسة.</p>
   <p>يعرض Prompette نصك في شريط نحيل يتدلّى من نتوء MacBook، أسفل الكاميرا مباشرةً، فتبقى عيناك قريبتين من العدسة في المكالمات والتسجيلات والعروض. ولا يظهر أبدًا في مشاركة الشاشة أو تسجيلات الشاشة.</p>
   <ul>
     <li><strong>ثلاث طرق للتمرير.</strong> بسرعة تحددها أنت؛ أو أثناء كلامك فقط، اعتمادًا على علوّ صوتك؛ أو كلمة بكلمة، متتبّعًا ما تقوله بتعرّف على الكلام يجري بالكامل على جهاز Mac.</li>
@@ -122,7 +193,50 @@
   <p class="note">يتطلب macOS 14 Sonoma أو أحدث؛ ويتطلب تطبيق iPhone وiPad نظام iOS 17 أو أحدث، وتطبيق Android نظام Android 8.0 أو أحدث. شراء واحد يشمل Mac وiPhone وiPad؛ أما تطبيق Android فيُشترى على حدة من Google Play.</p>
 </section>
 
-<section class="card">
+<div class="comparison-card" id="comparison">
+  <div class="comp-title">ملقنات النصوص التقليدية مقابل Prompette</div>
+  <p class="section-lead">تواصل بصري احترافي دون عناء معدات الاستوديو الضخمة.</p>
+  <div class="table-scroll">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>المعيار</th>
+          <th>الملقن الزجاجي التقليدي</th>
+          <th class="highlight-col">Prompette</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>تكلفة الأجهزة</strong></td>
+          <td>من 150 إلى 500 دولار للزجاج العاكس والحامل</td>
+          <td class="highlight-col"><strong>0 دولار لأي معدات إضافية</strong></td>
+        </tr>
+        <tr>
+          <td><strong>وقت الإعداد</strong></td>
+          <td>15 إلى 30 دقيقة لضبط الحامل والمرايا</td>
+          <td class="highlight-col"><strong>نقرة واحدة (يستقر أسفل النوتش فوراً)</strong></td>
+        </tr>
+        <tr>
+          <td><strong>خصوصية العرض</strong></td>
+          <td>يتطلب شاشتين أو يهدد بظهور النوافذ</td>
+          <td class="highlight-col"><strong>مخفي بنسبة 100% في Zoom وTeams وOBS</strong></td>
+        </tr>
+        <tr>
+          <td><strong>التحكم في السرعة</strong></td>
+          <td>دواسة قدم أو جهاز تحكم يدوي ثقيل</td>
+          <td class="highlight-col"><strong>بصوتك، والذكاء الاصطناعي وريموت iPhone</strong></td>
+        </tr>
+        <tr>
+          <td><strong>سهولة الحمل</strong></td>
+          <td>حقيبة ثقيلة بزجاج معرض للكسر بسهولة</td>
+          <td class="highlight-col"><strong>متاح دائماً في شريط قوائم Mac</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<section class="card" id="privacy">
   <h2>الخصوصية في فقرة واحدة</h2>
   <p>لا حساب في Prompette ولا تتبّع، ولا يرسل نصوصك أو صوتك إلى أي مكان أبدًا. لا يُستخدم الميكروفون إلا على جهاز Mac، في وضعَي الصوت والتتبّع حين تختارهما، ويجري التعرّف على الكلام على جهاز Mac. ويتصل جهاز التحكم على هاتفك أو جهازك اللوحي بجهاز Mac عبر شبكتك المحلية فقط. و<a href="privacy.html">سياسة الخصوصية</a> الكاملة تقول الشيء نفسه بتفصيل أكبر.</p>
 </section>

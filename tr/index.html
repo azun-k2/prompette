@@ -8,7 +8,6 @@
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="../icon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="../icon-180.png">
-<link rel="stylesheet" href="../style.css">
 <!-- family:head --><link rel="stylesheet" href="../family/family.css">
 <link rel="stylesheet" href="../family/modern.css">
 <link rel="alternate" hreflang="en" href="https://prompette.khangazun.com/">
@@ -48,12 +47,14 @@
 <link rel="alternate" hreflang="x-default" href="https://prompette.khangazun.com/">
 <script src="../family/family.js" defer data-lang="tr" data-page="index.html" data-langs="en,ar,ca,cs,da,de,el,es,fi,fr,he,hi,hr,hu,id,it,ja,ko,ms,nb,nl,pl,pt-br,pt-pt,ro,ru,sk,sv,th,tr,uk,vi,zh-hans,zh-hant"></script>
 <!-- /family:head -->
+<link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <main>
 <div class="hero">
+  <div class="hero-pill">⚡ Ek donanım gerektirmez · Ekran paylaşımında %100 görünmez</div>
   <img class="icon" src="../icon-512.png" alt="" width="112" height="112">
-  <h1>Prompette</h1>
+  <h1>Doğrudan lense bakın.<br><span class="gradient-text">Metninizi kameranın hemen altından okuyun.</span></h1>
   <p class="tagline">Metnini kameranın hemen altında oku.</p>
   <!-- family:stores -->
   <div class="family-stores">
@@ -62,6 +63,7 @@
     <a class="family-store" href="https://play.google.com/store/apps/details?id=azun.prompette.app"><img src="../family/badges/play-tr.png" alt="Google Play’den Alın" height="46"></a>
   </div>
   <!-- /family:stores -->
+  <p class="platform-banner">Mac, iPhone, iPad ve Android için kullanılabilir</p>
 <nav class="links">
     <a href="./">Ana Sayfa</a>
     <a href="support.html">Destek</a>
@@ -109,9 +111,78 @@
   </nav>
 </div>
 
+
+<div class="demo-wrapper">
+  <div class="demo-controls">
+    <button type="button" class="demo-toggle-btn active" id="btn-owner-view" onclick="setDemoView('owner')">
+      👀 Ekranınız (Suflör Açık)
+    </button>
+    <button type="button" class="demo-toggle-btn" id="btn-audience-view" onclick="setDemoView('audience')">
+      🎥 Zoom / Meet İzleyici Görünümü (%100 Görünmez!)
+    </button>
+  </div>
+
+  <div class="macbook-frame">
+    <div class="macbook-screen">
+      <div class="notch">
+        <div class="lens"><div class="lens-green"></div></div>
+      </div>
+
+      <div class="prompter-strip" id="prompter-strip">
+        <div class="script-scroller">
+          <p>Herkese merhaba, bugünkü sunuma katıldığınız için teşekkürler.</p>
+          <p><span class="cue-chip cue-smile">Tebessüm 😊</span> Tüm ekiple paylaşacağımız heyecan verici haberlerimiz var.</p>
+          <p><span class="cue-chip cue-pause">2sn Durakla</span> Dönem ilerleme raporumuzda da görebileceğiniz gibi...</p>
+          <p><span class="cue-chip cue-slide">Slayt 3</span> Tüm birimlerde verimlilik %45'in üzerinde arttı.</p>
+          <p>Özverili katkılarından dolayı her birinize teşekkür ediyorum.</p>
+        </div>
+      </div>
+
+      <div class="screen-app-window">
+        <div class="window-dots">
+          <div class="dot dot-red"></div>
+          <div class="dot dot-yellow"></div>
+          <div class="dot dot-green"></div>
+        </div>
+        <div style="font-size:13px; color:var(--muted); text-align:left;">
+          <p style="margin:0 0 6px; font-weight:700; color:var(--ink);">Keynote / Zoom Araması / Sunum Penceresi</p>
+          <p style="margin:0;">Paylaşılan slaytlarınız burada görünür. Prompette web kamerasının hemen altında düzenli biçimde durur.</p>
+        </div>
+      </div>
+
+      <div class="screen-share-tag" id="share-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#28ca41" stroke-width="2.5"><circle cx="12" cy="10" r="8"/><path d="m9 11 2 2 4-4"/></svg>
+        <span id="share-status-text">Suflör yalnızca sizin tarafınızdan görülebilir</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function setDemoView(mode) {
+  var strip = document.getElementById('prompter-strip');
+  var btnOwner = document.getElementById('btn-owner-view');
+  var btnAudience = document.getElementById('btn-audience-view');
+  var statusText = document.getElementById('share-status-text');
+
+  if (mode === 'audience') {
+    strip.classList.add('hidden-by-share');
+    btnAudience.classList.add('active');
+    btnOwner.classList.remove('active');
+    statusText.textContent = "İzleyiciler temiz ekranı görür — %0 metin sızıntısı";
+  } else {
+    strip.classList.remove('hidden-by-share');
+    btnOwner.classList.add('active');
+    btnAudience.classList.remove('active');
+    statusText.textContent = "Suflör yalnızca sizin tarafınızdan görülebilir";
+  }
+}
+</script>
+
 <!-- family:shot --><figure class="shot"><img src="../img/hero.jpg" alt="" width="1600" height="833"></figure><!-- /family:shot -->
-<section class="card">
-  <h2>Ne yapar</h2>
+<section class="card" id="modes">
+  <h2>Üç Akıllı Kaydırma Yöntemi</h2>
+  <p class="section-lead">İster belirli bir süreye uyun, ister doğal akışında konuşun: Prompette size ayak uydurur.</p>
   <p>Prompette, metnini MacBook'unun çentiğinden sarkan ince bir şeritte, kameranın hemen altında gösterir; böylece görüşmelerde, kayıtlarda ve konuşmalarda gözlerin objektife yakın kalır. Ekran paylaşımında ya da ekran kayıtlarında asla görünmez.</p>
   <ul>
     <li><strong>Üç kaydırma yolu.</strong> Belirlediğin hızda; yalnızca konuşurken, sesinin yüksekliğine göre; ya da kelime kelime, söylediklerini tamamen Mac'inde çalışan konuşma tanımayla izleyerek.</li>
@@ -122,7 +193,50 @@
   <p class="note">macOS 14 Sonoma veya üstü gerekir; iPhone ve iPad uygulaması iOS 17 veya üstünü, Android uygulaması Android 8.0 veya üstünü gerektirir. Tek satın alma Mac, iPhone ve iPad'i kapsar; Android uygulaması Google Play'de ayrıca satın alınır.</p>
 </section>
 
-<section class="card">
+<div class="comparison-card" id="comparison">
+  <div class="comp-title">Geleneksel Suflörler ve Prompette Karşılaştırması</div>
+  <p class="section-lead">Hantal stüdyo ekipmanlarına gerek kalmadan profesyonel göz teması.</p>
+  <div class="table-scroll">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Özellik</th>
+          <th>Geleneksel Cam Suflör Cihazı</th>
+          <th class="highlight-col">Prompette</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Donanım Maliyeti</strong></td>
+          <td>Işın ayırıcı cam ve aparatlar için 5.000–18.000 TL</td>
+          <td class="highlight-col"><strong>0 TL ek donanım masrafı</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Kurulum Süresi</strong></td>
+          <td>Tripod ve ayna hizalaması için 15–30 dakika</td>
+          <td class="highlight-col"><strong>1 tık (çentiğin hemen altına asılır)</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Ekran Paylaşımı</strong></td>
+          <td>İki monitör veya pencere ifşa riski gerektirir</td>
+          <td class="highlight-col"><strong>Zoom, Teams ve OBS'te %100 görünmez</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Hız Kontrolü</strong></td>
+          <td>Ayak pedalı veya hantal el kumandası</td>
+          <td class="highlight-col"><strong>Ses hızı, cihaz içi yapay zeka ve iPhone kumandası</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Taşınabilirlik</strong></td>
+          <td>Kolay kırılan camlı ağır taşıma çantası</td>
+          <td class="highlight-col"><strong>Mac menü çubuğunuzda her an hazır</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<section class="card" id="privacy">
   <h2>Tek paragrafta gizlilik</h2>
   <p>Prompette'te hesap ve izleme yoktur; metinlerini ya da sesini hiçbir yere göndermez. Mikrofon yalnızca Mac'te, seçtiğinde ses ve takip modlarında kullanılır ve konuşma Mac'inde tanınır. Telefonundaki ya da tabletindeki kumanda Mac'inle yalnızca kendi yerel ağın üzerinden konuşur. Tam <a href="privacy.html">gizlilik politikası</a> aynı şeyi daha ayrıntılı anlatır.</p>
 </section>

@@ -8,7 +8,6 @@
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="../icon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="../icon-180.png">
-<link rel="stylesheet" href="../style.css">
 <!-- family:head --><link rel="stylesheet" href="../family/family.css">
 <link rel="stylesheet" href="../family/modern.css">
 <link rel="alternate" hreflang="en" href="https://prompette.khangazun.com/">
@@ -48,12 +47,14 @@
 <link rel="alternate" hreflang="x-default" href="https://prompette.khangazun.com/">
 <script src="../family/family.js" defer data-lang="ms" data-page="index.html" data-langs="en,ar,ca,cs,da,de,el,es,fi,fr,he,hi,hr,hu,id,it,ja,ko,ms,nb,nl,pl,pt-br,pt-pt,ro,ru,sk,sv,th,tr,uk,vi,zh-hans,zh-hant"></script>
 <!-- /family:head -->
+<link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <main>
 <div class="hero">
+  <div class="hero-pill">⚡ Tanpa perkakasan tambahan · 100% tidak kelihatan semasa perkongsian skrin</div>
   <img class="icon" src="../icon-512.png" alt="" width="112" height="112">
-  <h1>Prompette</h1>
+  <h1>Pandang terus ke lensa.<br><span class="gradient-text">Baca skrip tepat di bawah kamera.</span></h1>
   <p class="tagline">Baca skrip anda betul-betul di bawah kamera.</p>
   <!-- family:stores -->
   <div class="family-stores">
@@ -62,6 +63,7 @@
     <a class="family-store" href="https://play.google.com/store/apps/details?id=azun.prompette.app"><img src="../family/badges/play-ms.png" alt="Dapatkannya di Google Play" height="46"></a>
   </div>
   <!-- /family:stores -->
+  <p class="platform-banner">Tersedia untuk Mac, iPhone, iPad dan Android</p>
 <nav class="links">
     <a href="./">Laman utama</a>
     <a href="support.html">Sokongan</a>
@@ -109,9 +111,78 @@
   </nav>
 </div>
 
+
+<div class="demo-wrapper">
+  <div class="demo-controls">
+    <button type="button" class="demo-toggle-btn active" id="btn-owner-view" onclick="setDemoView('owner')">
+      👀 Skrin anda (dengan prompter)
+    </button>
+    <button type="button" class="demo-toggle-btn" id="btn-audience-view" onclick="setDemoView('audience')">
+      🎥 Pandangan Penonton Zoom / Meet (100% Tidak Kelihatan!)
+    </button>
+  </div>
+
+  <div class="macbook-frame">
+    <div class="macbook-screen">
+      <div class="notch">
+        <div class="lens"><div class="lens-green"></div></div>
+      </div>
+
+      <div class="prompter-strip" id="prompter-strip">
+        <div class="script-scroller">
+          <p>Selamat sejahtera semua, terima kasih kerana menyertai pembentangan hari ini.</p>
+          <p><span class="cue-chip cue-smile">Senyum 😊</span> Kami mempunyai berita hebat untuk dikongsi bersama pasukan.</p>
+          <p><span class="cue-chip cue-pause">Jeda 2s</span> Seperti yang dipaparkan dalam laporan suku tahunan...</p>
+          <p><span class="cue-chip cue-slide">Slaid 3</span> Produktiviti meningkat melebihi 45% di seluruh bahagian.</p>
+          <p>Saya merakamkan penghargaan tulus kepada semua atas dedikasi ini.</p>
+        </div>
+      </div>
+
+      <div class="screen-app-window">
+        <div class="window-dots">
+          <div class="dot dot-red"></div>
+          <div class="dot dot-yellow"></div>
+          <div class="dot dot-green"></div>
+        </div>
+        <div style="font-size:13px; color:var(--muted); text-align:left;">
+          <p style="margin:0 0 6px; font-weight:700; color:var(--ink);">Tetingkap Keynote / Panggilan Zoom / Persembahan</p>
+          <p style="margin:0;">Slaid atau tetingkap yang dikongsi ada di sini. Prompette kekal kemas tepat di bawah kamera web anda.</p>
+        </div>
+      </div>
+
+      <div class="screen-share-tag" id="share-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#28ca41" stroke-width="2.5"><circle cx="12" cy="10" r="8"/><path d="m9 11 2 2 4-4"/></svg>
+        <span id="share-status-text">Prompter hanya kelihatan pada mata anda</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function setDemoView(mode) {
+  var strip = document.getElementById('prompter-strip');
+  var btnOwner = document.getElementById('btn-owner-view');
+  var btnAudience = document.getElementById('btn-audience-view');
+  var statusText = document.getElementById('share-status-text');
+
+  if (mode === 'audience') {
+    strip.classList.add('hidden-by-share');
+    btnAudience.classList.add('active');
+    btnOwner.classList.remove('active');
+    statusText.textContent = "Penonton melihat skrin bersih — 0% skrip bocor";
+  } else {
+    strip.classList.remove('hidden-by-share');
+    btnOwner.classList.add('active');
+    btnAudience.classList.remove('active');
+    statusText.textContent = "Prompter hanya kelihatan pada mata anda";
+  }
+}
+</script>
+
 <!-- family:shot --><figure class="shot"><img src="../img/hero.jpg" alt="" width="1600" height="833"></figure><!-- /family:shot -->
-<section class="card">
-  <h2>Apa yang dilakukannya</h2>
+<section class="card" id="modes">
+  <h2>Tiga Kaedah Pintar Menggerakkan Skrip</h2>
+  <p class="section-lead">Sama ada mengikut masa yang terhad atau berbicara santai, Prompette mengikut tempo anda.</p>
   <p>Prompette menunjukkan skrip anda dalam jalur nipis yang tergantung dari takuk MacBook anda, betul-betul di bawah kamera, supaya mata anda kekal dekat dengan lensa semasa panggilan, rakaman dan ceramah. Ia tidak sekali-kali muncul dalam perkongsian skrin atau rakaman skrin.</p>
   <ul>
     <li><strong>Tiga cara menatal.</strong> Pada kelajuan yang anda tetapkan; hanya semasa anda bercakap, berdasarkan kekuatan suara anda; atau perkataan demi perkataan, mengikut apa yang anda tuturkan dengan pengecaman pertuturan yang berlaku sepenuhnya pada Mac anda.</li>
@@ -122,7 +193,50 @@
   <p class="note">Memerlukan macOS 14 Sonoma atau lebih baharu; app iPhone dan iPad memerlukan iOS 17 atau lebih baharu, dan app Android memerlukan Android 8.0 atau lebih baharu. Satu pembelian meliputi Mac, iPhone dan iPad; app Android dibeli secara berasingan di Google Play.</p>
 </section>
 
-<section class="card">
+<div class="comparison-card" id="comparison">
+  <div class="comp-title">Teleprompter Tradisional berbanding Prompette</div>
+  <p class="section-lead">Sentuhan mata profesional tanpa bebanan peralatan studio yang rumit.</p>
+  <div class="table-scroll">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Aspek</th>
+          <th>Teleprompter Kaca Tradisional</th>
+          <th class="highlight-col">Prompette</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Kos Perkakasan</strong></td>
+          <td>RM 700 hingga RM 2,500 untuk cermin dan pendakap</td>
+          <td class="highlight-col"><strong>RM 0 perkakasan tambahan diperlukan</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Masa Pemasangan</strong></td>
+          <td>15–30 minit menyelaraskan tripod dan paparan</td>
+          <td class="highlight-col"><strong>1 klik (tergantung di bawah takuk serta-merta)</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Privasi Perkongsian</strong></td>
+          <td>Memerlukan dua skrin atau risiko tetingkap bocor</td>
+          <td class="highlight-col"><strong>100% tidak kelihatan dalam Zoom, Teams & OBS</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Kawalan Kelajuan</strong></td>
+          <td>Pedal kaki atau alat kawalan tangan yang rumit</td>
+          <td class="highlight-col"><strong>Ikut suara, AI peranti & kawalan jauh iPhone</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Kebolehalihan</strong></td>
+          <td>Beg berat dengan kaca yang mudah retak</td>
+          <td class="highlight-col"><strong>Sentiasa sedia pada bar menu Mac anda</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<section class="card" id="privacy">
   <h2>Privasi dalam satu perenggan</h2>
   <p>Prompette tiada akaun dan tiada penjejakan, dan tidak sekali-kali menghantar skrip atau suara anda ke mana-mana. Mikrofon hanya digunakan pada Mac, dalam mod suara dan mod ikut yang anda pilih, dan pertuturan dicam pada Mac anda. Alat kawalan pada telefon atau tablet anda berhubung dengan Mac anda hanya melalui rangkaian setempat anda sendiri. <a href="privacy.html">Dasar privasi</a> penuh menyatakan perkara yang sama dengan lebih panjang.</p>
 </section>

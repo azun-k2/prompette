@@ -8,7 +8,6 @@
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="../icon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="../icon-180.png">
-<link rel="stylesheet" href="../style.css">
 <!-- family:head --><link rel="stylesheet" href="../family/family.css">
 <link rel="stylesheet" href="../family/modern.css">
 <link rel="alternate" hreflang="en" href="https://prompette.khangazun.com/">
@@ -48,12 +47,14 @@
 <link rel="alternate" hreflang="x-default" href="https://prompette.khangazun.com/">
 <script src="../family/family.js" defer data-lang="ja" data-page="index.html" data-langs="en,ar,ca,cs,da,de,el,es,fi,fr,he,hi,hr,hu,id,it,ja,ko,ms,nb,nl,pl,pt-br,pt-pt,ro,ru,sk,sv,th,tr,uk,vi,zh-hans,zh-hant"></script>
 <!-- /family:head -->
+<link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <main>
 <div class="hero">
+  <div class="hero-pill">⚡ 専用機材は不要 · 画面共有には100%映りません</div>
   <img class="icon" src="../icon-512.png" alt="" width="112" height="112">
-  <h1>Prompette</h1>
+  <h1>視線はまっすぐカメラへ。<br><span class="gradient-text">レンズの真下で原稿を読む。</span></h1>
   <p class="tagline">カメラのすぐ下で原稿を読む。</p>
   <!-- family:stores -->
   <div class="family-stores">
@@ -62,6 +63,7 @@
     <a class="family-store" href="https://play.google.com/store/apps/details?id=azun.prompette.app"><img src="../family/badges/play-ja.png" alt="Google Play で手に入れよう" height="46"></a>
   </div>
   <!-- /family:stores -->
+  <p class="platform-banner">Mac、iPhone、iPad、Androidに対応</p>
 <nav class="links">
     <a href="./">ホーム</a>
     <a href="support.html">サポート</a>
@@ -109,9 +111,78 @@
   </nav>
 </div>
 
+
+<div class="demo-wrapper">
+  <div class="demo-controls">
+    <button type="button" class="demo-toggle-btn active" id="btn-owner-view" onclick="setDemoView('owner')">
+      👀 あなたの画面（プロンプター表示中）
+    </button>
+    <button type="button" class="demo-toggle-btn" id="btn-audience-view" onclick="setDemoView('audience')">
+      🎥 相手（Zoom / Meet）から見える画面（100%非表示！）
+    </button>
+  </div>
+
+  <div class="macbook-frame">
+    <div class="macbook-screen">
+      <div class="notch">
+        <div class="lens"><div class="lens-green"></div></div>
+      </div>
+
+      <div class="prompter-strip" id="prompter-strip">
+        <div class="script-scroller">
+          <p>皆様こんにちは。本日のプレゼンテーションにご参加いただきありがとうございます。</p>
+          <p><span class="cue-chip cue-smile">笑顔 😊</span> チームの皆様に素晴らしい成果をご報告いたします。</p>
+          <p><span class="cue-chip cue-pause">2秒間</span> 第3四半期の進捗レポートにもあります通り...</p>
+          <p><span class="cue-chip cue-slide">スライド3</span> 全部門において生産性が45%以上向上いたしました。</p>
+          <p>尽力いただいたすべてのメンバーに心より感謝申し上げます。</p>
+        </div>
+      </div>
+
+      <div class="screen-app-window">
+        <div class="window-dots">
+          <div class="dot dot-red"></div>
+          <div class="dot dot-yellow"></div>
+          <div class="dot dot-green"></div>
+        </div>
+        <div style="font-size:13px; color:var(--muted); text-align:left;">
+          <p style="margin:0 0 6px; font-weight:700; color:var(--ink);">Keynote / Zoom通話 / プレゼン画面</p>
+          <p style="margin:0;">共有中のスライドや資料はここに表示されます。Prompetteはカメラの真下に収まり、邪魔になりません。</p>
+        </div>
+      </div>
+
+      <div class="screen-share-tag" id="share-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#28ca41" stroke-width="2.5"><circle cx="12" cy="10" r="8"/><path d="m9 11 2 2 4-4"/></svg>
+        <span id="share-status-text">プロンプターはあなただけに表示されています</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function setDemoView(mode) {
+  var strip = document.getElementById('prompter-strip');
+  var btnOwner = document.getElementById('btn-owner-view');
+  var btnAudience = document.getElementById('btn-audience-view');
+  var statusText = document.getElementById('share-status-text');
+
+  if (mode === 'audience') {
+    strip.classList.add('hidden-by-share');
+    btnAudience.classList.add('active');
+    btnOwner.classList.remove('active');
+    statusText.textContent = "相手には資料だけが見え、原稿は100%映りません";
+  } else {
+    strip.classList.remove('hidden-by-share');
+    btnOwner.classList.add('active');
+    btnAudience.classList.remove('active');
+    statusText.textContent = "プロンプターはあなただけに表示されています";
+  }
+}
+</script>
+
 <!-- family:shot --><figure class="shot"><img src="../img/hero.jpg" alt="" width="1600" height="833"></figure><!-- /family:shot -->
-<section class="card">
-  <h2>できること</h2>
+<section class="card" id="modes">
+  <h2>選べる3つのスクロール方式</h2>
+  <p class="section-lead">分刻みのスピーチでも、自然なアドリブでも、Prompetteが柔軟に合わせます。</p>
   <p>Prompette は、MacBook のノッチから下がる細い帯に原稿を表示します。カメラのすぐ下なので、通話や録画、講演のあいだも視線がレンズの近くにとどまります。画面共有や画面収録に映ることはありません。</p>
   <ul>
     <li><strong>3つのスクロール方法。</strong>設定した速さで流す。声の大きさを手がかりに、話しているあいだだけ進める。あるいは、すべて Mac 上で行う音声認識で話した言葉を追い、1語ずつ進める。</li>
@@ -122,7 +193,50 @@
   <p class="note">macOS 14 Sonoma 以降が必要です。iPhone・iPad 版には iOS 17 以降、Android 版には Android 8.0 以降が必要です。1回の購入で Mac、iPhone、iPad のすべてで使えます。Android 版は Google Play で別途購入となります。</p>
 </section>
 
-<section class="card">
+<div class="comparison-card" id="comparison">
+  <div class="comp-title">従来のプロンプター機材 vs Prompette</div>
+  <p class="section-lead">スタジオ機材を持ち運ぶことなく、プロのアイコンタクトを実現。</p>
+  <div class="table-scroll">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>項目</th>
+          <th>ガラス式プロンプター機材</th>
+          <th class="highlight-col">Prompette</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>機材コスト</strong></td>
+          <td>ハーフミラーと専用リグで2万円〜8万円</td>
+          <td class="highlight-col"><strong>追加ハードウェア費用 0円</strong></td>
+        </tr>
+        <tr>
+          <td><strong>準備時間</strong></td>
+          <td>三脚とモニターの位置合わせに15〜30分</td>
+          <td class="highlight-col"><strong>1クリックですぐ起動（ノッチ下に常駐）</strong></td>
+        </tr>
+        <tr>
+          <td><strong>画面共有の安全性</strong></td>
+          <td>デュアルモニター必須、誤表示のリスクあり</td>
+          <td class="highlight-col"><strong>Zoom、Teams、OBSに100%映らない安全設計</strong></td>
+        </tr>
+        <tr>
+          <td><strong>スクロール制御</strong></td>
+          <td>ペダルや手元の操作リモコンが必要</td>
+          <td class="highlight-col"><strong>音声連動、オンデバイス音声認識、iPhone連携</strong></td>
+        </tr>
+        <tr>
+          <td><strong>持ち運び</strong></td>
+          <td>ガラスが割れやすく重い専用バッグが必要</td>
+          <td class="highlight-col"><strong>Macのメニューバーからいつでも使えます</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<section class="card" id="privacy">
   <h2>プライバシーをひとことで</h2>
   <p>Prompette にはアカウントもトラッキングもなく、原稿や声をどこかへ送ることもありません。マイクは Mac でのみ、選んだ音声モードと追従モードで使われ、音声の認識は Mac 上で行われます。スマートフォンやタブレットのリモコンは、手元のローカルネットワークだけを通じて Mac と通信します。詳しくは<a href="privacy.html">プライバシーポリシー</a>をご覧ください。</p>
 </section>

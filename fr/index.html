@@ -8,7 +8,6 @@
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="../icon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="../icon-180.png">
-<link rel="stylesheet" href="../style.css">
 <!-- family:head --><link rel="stylesheet" href="../family/family.css">
 <link rel="stylesheet" href="../family/modern.css">
 <link rel="alternate" hreflang="en" href="https://prompette.khangazun.com/">
@@ -48,12 +47,14 @@
 <link rel="alternate" hreflang="x-default" href="https://prompette.khangazun.com/">
 <script src="../family/family.js" defer data-lang="fr" data-page="index.html" data-langs="en,ar,ca,cs,da,de,el,es,fi,fr,he,hi,hr,hu,id,it,ja,ko,ms,nb,nl,pl,pt-br,pt-pt,ro,ru,sk,sv,th,tr,uk,vi,zh-hans,zh-hant"></script>
 <!-- /family:head -->
+<link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <main>
 <div class="hero">
+  <div class="hero-pill">⚡ Zéro matériel supplémentaire · 100 % invisible dans le partage d’écran</div>
   <img class="icon" src="../icon-512.png" alt="" width="112" height="112">
-  <h1>Prompette</h1>
+  <h1>Regardez droit dans l’objectif.<br><span class="gradient-text">Lisez votre script juste sous la caméra.</span></h1>
   <p class="tagline">Lisez votre script juste sous la caméra.</p>
   <!-- family:stores -->
   <div class="family-stores">
@@ -62,6 +63,7 @@
     <a class="family-store" href="https://play.google.com/store/apps/details?id=azun.prompette.app"><img src="../family/badges/play-fr.png" alt="Disponible sur Google Play" height="46"></a>
   </div>
   <!-- /family:stores -->
+  <p class="platform-banner">Disponible sur Mac, iPhone, iPad et Android</p>
 <nav class="links">
     <a href="./">Accueil</a>
     <a href="support.html">Assistance</a>
@@ -109,9 +111,78 @@
   </nav>
 </div>
 
+
+<div class="demo-wrapper">
+  <div class="demo-controls">
+    <button type="button" class="demo-toggle-btn active" id="btn-owner-view" onclick="setDemoView('owner')">
+      👀 Votre écran (avec le prompteur)
+    </button>
+    <button type="button" class="demo-toggle-btn" id="btn-audience-view" onclick="setDemoView('audience')">
+      🎥 Vue des participants Zoom / Meet (100 % invisible !)
+    </button>
+  </div>
+
+  <div class="macbook-frame">
+    <div class="macbook-screen">
+      <div class="notch">
+        <div class="lens"><div class="lens-green"></div></div>
+      </div>
+
+      <div class="prompter-strip" id="prompter-strip">
+        <div class="script-scroller">
+          <p>Bonjour à tous, merci de vous joindre à cette présentation aujourd'hui.</p>
+          <p><span class="cue-chip cue-smile">Sourire 😊</span> Nous avons d'excellentes nouvelles à partager avec toute l'équipe.</p>
+          <p><span class="cue-chip cue-pause">Pause 2s</span> Comme vous pouvez le constater dans notre rapport d'étape...</p>
+          <p><span class="cue-chip cue-slide">Slide 3</span> La productivité a progressé de plus de 45 % dans tous les pôles.</p>
+          <p>Je tiens à remercier personnellement chaque contributeur pour son engagement.</p>
+        </div>
+      </div>
+
+      <div class="screen-app-window">
+        <div class="window-dots">
+          <div class="dot dot-red"></div>
+          <div class="dot dot-yellow"></div>
+          <div class="dot dot-green"></div>
+        </div>
+        <div style="font-size:13px; color:var(--muted); text-align:left;">
+          <p style="margin:0 0 6px; font-weight:700; color:var(--ink);">Fenêtre Keynote / Appel Zoom / Présentation</p>
+          <p style="margin:0;">Vos diapositives ou fenêtres partagées s’affichent ici. Prompette reste discrètement logé sous votre webcam.</p>
+        </div>
+      </div>
+
+      <div class="screen-share-tag" id="share-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#28ca41" stroke-width="2.5"><circle cx="12" cy="10" r="8"/><path d="m9 11 2 2 4-4"/></svg>
+        <span id="share-status-text">Téléprompteur visible uniquement par vous</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function setDemoView(mode) {
+  var strip = document.getElementById('prompter-strip');
+  var btnOwner = document.getElementById('btn-owner-view');
+  var btnAudience = document.getElementById('btn-audience-view');
+  var statusText = document.getElementById('share-status-text');
+
+  if (mode === 'audience') {
+    strip.classList.add('hidden-by-share');
+    btnAudience.classList.add('active');
+    btnOwner.classList.remove('active');
+    statusText.textContent = "L’audience voit un écran parfait — 0 % de fuite de texte";
+  } else {
+    strip.classList.remove('hidden-by-share');
+    btnOwner.classList.add('active');
+    btnAudience.classList.remove('active');
+    statusText.textContent = "Téléprompteur visible uniquement par vous";
+  }
+}
+</script>
+
 <!-- family:shot --><figure class="shot"><img src="../img/hero.jpg" alt="" width="1600" height="833"></figure><!-- /family:shot -->
-<section class="card">
-  <h2>Ce que fait l’app</h2>
+<section class="card" id="modes">
+  <h2>Trois façons intelligentes de faire défiler</h2>
+  <p class="section-lead">Que vous suiviez un timing strict ou que vous parliez spontanément, Prompette s’adapte à vous.</p>
   <p>Prompette affiche votre script dans un bandeau fin qui pend de l’encoche de votre MacBook, juste sous la caméra, pour que vos yeux restent près de l’objectif pendant vos appels, enregistrements et conférences. Il n’apparaît jamais dans le partage d’écran ni dans les enregistrements d’écran.</p>
   <ul>
     <li><strong>Trois façons de défiler.</strong> À la vitesse que vous choisissez ; seulement pendant que vous parlez, d’après le volume de votre voix ; ou mot à mot, en suivant ce que vous dites grâce à une reconnaissance vocale effectuée entièrement sur votre Mac.</li>
@@ -122,7 +193,50 @@
   <p class="note">Nécessite macOS 14 Sonoma ou ultérieur ; l’app pour iPhone et iPad nécessite iOS 17 ou ultérieur, et l’app Android, Android 8.0 ou ultérieur. Un seul achat couvre le Mac, l’iPhone et l’iPad ; l’app Android s’achète séparément sur Google Play.</p>
 </section>
 
-<section class="card">
+<div class="comparison-card" id="comparison">
+  <div class="comp-title">Téléprompteurs traditionnels vs Prompette</div>
+  <p class="section-lead">Un contact visuel professionnel sans l’encombrement du studio.</p>
+  <div class="table-scroll">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Aspect</th>
+          <th>Téléprompteur à miroir classique</th>
+          <th class="highlight-col">Prompette</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Coût matériel</strong></td>
+          <td>150 € à 500 € pour vitre sans tain et structure</td>
+          <td class="highlight-col"><strong>0 € de matériel supplémentaire</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Temps d'installation</strong></td>
+          <td>15 à 30 minutes de trépied et réglages</td>
+          <td class="highlight-col"><strong>1 clic (s'accroche sous l'encoche)</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Confidentialité en partage d'écran</strong></td>
+          <td>Nécessite deux écrans ou risque de fuite de fenêtre</td>
+          <td class="highlight-col"><strong>100 % invisible dans Zoom, Teams et OBS</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Contrôle du défilement</strong></td>
+          <td>Pédale ou télécommande manuelle encombrante</td>
+          <td class="highlight-col"><strong>Au son de la voix, suivi mot à mot et télécommande iPhone</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Mobilité</strong></td>
+          <td>Sacoche lourde et vitre très fragile</td>
+          <td class="highlight-col"><strong>Toujours dans la barre des menus de votre Mac</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<section class="card" id="privacy">
   <h2>La confidentialité en un paragraphe</h2>
   <p>Prompette n’a ni compte ni pistage, et n’envoie jamais vos scripts ni votre voix où que ce soit. Le micro n’est utilisé que sur le Mac, dans les modes voix et suivi, quand vous les choisissez, et la parole est reconnue sur votre Mac. La télécommande sur votre téléphone ou votre tablette ne communique avec votre Mac que par votre propre réseau local. La <a href="privacy.html">politique de confidentialité</a> complète dit la même chose plus en détail.</p>
 </section>

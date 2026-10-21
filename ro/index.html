@@ -8,7 +8,6 @@
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="../icon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="../icon-180.png">
-<link rel="stylesheet" href="../style.css">
 <!-- family:head --><link rel="stylesheet" href="../family/family.css">
 <link rel="stylesheet" href="../family/modern.css">
 <link rel="alternate" hreflang="en" href="https://prompette.khangazun.com/">
@@ -48,12 +47,14 @@
 <link rel="alternate" hreflang="x-default" href="https://prompette.khangazun.com/">
 <script src="../family/family.js" defer data-lang="ro" data-page="index.html" data-langs="en,ar,ca,cs,da,de,el,es,fi,fr,he,hi,hr,hu,id,it,ja,ko,ms,nb,nl,pl,pt-br,pt-pt,ro,ru,sk,sv,th,tr,uk,vi,zh-hans,zh-hant"></script>
 <!-- /family:head -->
+<link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <main>
 <div class="hero">
+  <div class="hero-pill">⚡ Fără hardware suplimentar · 100% invizibil în partajarea ecranului</div>
   <img class="icon" src="../icon-512.png" alt="" width="112" height="112">
-  <h1>Prompette</h1>
+  <h1>Privește direct în obiectiv.<br><span class="gradient-text">Citește scriptul chiar sub cameră.</span></h1>
   <p class="tagline">Citește-ți scriptul chiar sub cameră.</p>
   <!-- family:stores -->
   <div class="family-stores">
@@ -62,6 +63,7 @@
     <a class="family-store" href="https://play.google.com/store/apps/details?id=azun.prompette.app"><img src="../family/badges/play-ro.png" alt="Descarcă de pe Google Play" height="46"></a>
   </div>
   <!-- /family:stores -->
+  <p class="platform-banner">Disponibil pentru Mac, iPhone, iPad și Android</p>
 <nav class="links">
     <a href="./">Acasă</a>
     <a href="support.html">Asistență</a>
@@ -109,9 +111,78 @@
   </nav>
 </div>
 
+
+<div class="demo-wrapper">
+  <div class="demo-controls">
+    <button type="button" class="demo-toggle-btn active" id="btn-owner-view" onclick="setDemoView('owner')">
+      👀 Ecranul tău (cu prompter)
+    </button>
+    <button type="button" class="demo-toggle-btn" id="btn-audience-view" onclick="setDemoView('audience')">
+      🎥 Ce văd participanții pe Zoom / Meet (100% invizibil!)
+    </button>
+  </div>
+
+  <div class="macbook-frame">
+    <div class="macbook-screen">
+      <div class="notch">
+        <div class="lens"><div class="lens-green"></div></div>
+      </div>
+
+      <div class="prompter-strip" id="prompter-strip">
+        <div class="script-scroller">
+          <p>Bun venit tuturor, vă mulțumesc pentru prezența la prezentarea de azi.</p>
+          <p><span class="cue-chip cue-smile">Zâmbet 😊</span> Avem vești excelente de împărtășit cu întreaga echipă.</p>
+          <p><span class="cue-chip cue-pause">Pauză 2s</span> Așa cum puteți observa în raportul trimestrial...</p>
+          <p><span class="cue-chip cue-slide">Diapozitiv 3</span> Productivitatea a crescut cu peste 45% în toate departamentele.</p>
+          <p>Vreau să mulțumesc personal fiecăruia pentru dedicare.</p>
+        </div>
+      </div>
+
+      <div class="screen-app-window">
+        <div class="window-dots">
+          <div class="dot dot-red"></div>
+          <div class="dot dot-yellow"></div>
+          <div class="dot dot-green"></div>
+        </div>
+        <div style="font-size:13px; color:var(--muted); text-align:left;">
+          <p style="margin:0 0 6px; font-weight:700; color:var(--ink);">Fereastra Keynote / Apel Zoom / Prezentare</p>
+          <p style="margin:0;">Diapozitivele sau ferestrele partajate apar aici. Prompette stă discret chiar sub camera web.</p>
+        </div>
+      </div>
+
+      <div class="screen-share-tag" id="share-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#28ca41" stroke-width="2.5"><circle cx="12" cy="10" r="8"/><path d="m9 11 2 2 4-4"/></svg>
+        <span id="share-status-text">Prompterul este vizibil doar pentru ochii tăi</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function setDemoView(mode) {
+  var strip = document.getElementById('prompter-strip');
+  var btnOwner = document.getElementById('btn-owner-view');
+  var btnAudience = document.getElementById('btn-audience-view');
+  var statusText = document.getElementById('share-status-text');
+
+  if (mode === 'audience') {
+    strip.classList.add('hidden-by-share');
+    btnAudience.classList.add('active');
+    btnOwner.classList.remove('active');
+    statusText.textContent = "Publicul vede un ecran curat — 0% text scurs";
+  } else {
+    strip.classList.remove('hidden-by-share');
+    btnOwner.classList.add('active');
+    btnAudience.classList.remove('active');
+    statusText.textContent = "Prompterul este vizibil doar pentru ochii tăi";
+  }
+}
+</script>
+
 <!-- family:shot --><figure class="shot"><img src="../img/hero.jpg" alt="" width="1600" height="833"></figure><!-- /family:shot -->
-<section class="card">
-  <h2>Ce face</h2>
+<section class="card" id="modes">
+  <h2>Trei moduri inteligente de derulare</h2>
+  <p class="section-lead">Fie că respecți un timp strict, fie că vorbești liber, Prompette se adaptează ritmului tău.</p>
   <p>Prompette îți arată scriptul într-o bandă subțire care atârnă de decupajul MacBookului tău, chiar sub cameră, ca privirea să-ți rămână aproape de obiectiv în apeluri, înregistrări și prezentări. Nu apare niciodată la partajarea ecranului sau în înregistrările de ecran.</p>
   <ul>
     <li><strong>Trei moduri de derulare.</strong> Cu o viteză pe care o setezi; doar cât vorbești, după cât de tare îți sună vocea; sau cuvânt cu cuvânt, urmărind ce spui cu recunoaștere vocală făcută în întregime pe Mac-ul tău.</li>
@@ -122,7 +193,50 @@
   <p class="note">Necesită macOS 14 Sonoma sau o versiune ulterioară; aplicația pentru iPhone și iPad necesită iOS 17 sau o versiune ulterioară, iar aplicația pentru Android, Android 8.0 sau o versiune ulterioară. O singură achiziție acoperă Mac, iPhone și iPad; aplicația pentru Android se cumpără separat din Google Play.</p>
 </section>
 
-<section class="card">
+<div class="comparison-card" id="comparison">
+  <div class="comp-title">Promptere tradiționale versus Prompette</div>
+  <p class="section-lead">Contact vizual profesional fără echipamente voluminoase de studio.</p>
+  <div class="table-scroll">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Aspect</th>
+          <th>Teleprompter clasic cu sticlă</th>
+          <th class="highlight-col">Prompette</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Costul echipamentului</strong></td>
+          <td>Între 700 și 2.500 lei pentru sticlă și stativ</td>
+          <td class="highlight-col"><strong>0 lei echipament suplimentar necesar</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Timp de configurare</strong></td>
+          <td>15–30 de minute pentru trepied și aliniere</td>
+          <td class="highlight-col"><strong>1 clic (se așază imediat sub breton)</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Confidențialitate la partajare</strong></td>
+          <td>Necesită două ecrane sau risc de expunere</td>
+          <td class="highlight-col"><strong>100% invizibil în Zoom, Teams și OBS</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Controlul ritmului</strong></td>
+          <td>Pedală de picior sau telecomandă greoaie</td>
+          <td class="highlight-col"><strong>După voce, AI de recunoaștere și telecomandă iPhone</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Portabilitate</strong></td>
+          <td>Geantă grea cu sticlă fragilă</td>
+          <td class="highlight-col"><strong>Mereu gata în bara de meniuri a Mac-ului</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<section class="card" id="privacy">
   <h2>Confidențialitatea într-un paragraf</h2>
   <p>Prompette nu are cont și nu te urmărește și nu îți trimite niciodată nicăieri scripturile sau vocea. Microfonul este folosit doar pe Mac, în modurile Voce și Urmărire, când le alegi, iar vorbirea este recunoscută pe Mac-ul tău. Telecomanda de pe telefon sau tabletă comunică cu Mac-ul tău doar prin propria ta rețea locală. <a href="privacy.html">Politica de confidențialitate</a> completă spune același lucru, mai pe larg.</p>
 </section>

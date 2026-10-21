@@ -8,7 +8,6 @@
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="../icon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="../icon-180.png">
-<link rel="stylesheet" href="../style.css">
 <!-- family:head --><link rel="stylesheet" href="../family/family.css">
 <link rel="stylesheet" href="../family/modern.css">
 <link rel="alternate" hreflang="en" href="https://prompette.khangazun.com/">
@@ -48,12 +47,14 @@
 <link rel="alternate" hreflang="x-default" href="https://prompette.khangazun.com/">
 <script src="../family/family.js" defer data-lang="sk" data-page="index.html" data-langs="en,ar,ca,cs,da,de,el,es,fi,fr,he,hi,hr,hu,id,it,ja,ko,ms,nb,nl,pl,pt-br,pt-pt,ro,ru,sk,sv,th,tr,uk,vi,zh-hans,zh-hant"></script>
 <!-- /family:head -->
+<link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <main>
 <div class="hero">
+  <div class="hero-pill">⚡ Žiadny ďalší hardvér nie je potrebný · 100% neviditeľný pri zdieľaní obrazovky</div>
   <img class="icon" src="../icon-512.png" alt="" width="112" height="112">
-  <h1>Prompette</h1>
+  <h1>Pozerajte sa priamo do objektívu.<br><span class="gradient-text">Čítajte scenár priamo pod kamerou.</span></h1>
   <p class="tagline">Čítaj svoj scenár priamo pod kamerou.</p>
   <!-- family:stores -->
   <div class="family-stores">
@@ -62,6 +63,7 @@
     <a class="family-store" href="https://play.google.com/store/apps/details?id=azun.prompette.app"><img src="../family/badges/play-sk.png" alt="Teraz na Google Play" height="46"></a>
   </div>
   <!-- /family:stores -->
+  <p class="platform-banner">Dostupné pre Mac, iPhone, iPad a Android</p>
 <nav class="links">
     <a href="./">Domov</a>
     <a href="support.html">Podpora</a>
@@ -109,9 +111,78 @@
   </nav>
 </div>
 
+
+<div class="demo-wrapper">
+  <div class="demo-controls">
+    <button type="button" class="demo-toggle-btn active" id="btn-owner-view" onclick="setDemoView('owner')">
+      👀 Vaša obrazovka (so suflérom)
+    </button>
+    <button type="button" class="demo-toggle-btn" id="btn-audience-view" onclick="setDemoView('audience')">
+      🎥 Pohľad účastníkov Zoom / Meet (100% neviditeľný!)
+    </button>
+  </div>
+
+  <div class="macbook-frame">
+    <div class="macbook-screen">
+      <div class="notch">
+        <div class="lens"><div class="lens-green"></div></div>
+      </div>
+
+      <div class="prompter-strip" id="prompter-strip">
+        <div class="script-scroller">
+          <p>Vitajte všetci, ďakujeme za účasť na dnešnej prezentácii.</p>
+          <p><span class="cue-chip cue-smile">Úsmev 😊</span> Máme skvelé správy, o ktoré sa chceme podeliť s celým tímom.</p>
+          <p><span class="cue-chip cue-pause">Pauza 2s</span> Ako môžete vidieť v našej štvrťročnej správe...</p>
+          <p><span class="cue-chip cue-slide">Snímka 3</span> Produktivita vzrástla o viac ako 45 % vo všetkých oddeleniach.</p>
+          <p>Chcem sa osobne poďakovať každému z vás za vaše nasadenie.</p>
+        </div>
+      </div>
+
+      <div class="screen-app-window">
+        <div class="window-dots">
+          <div class="dot dot-red"></div>
+          <div class="dot dot-yellow"></div>
+          <div class="dot dot-green"></div>
+        </div>
+        <div style="font-size:13px; color:var(--muted); text-align:left;">
+          <p style="margin:0 0 6px; font-weight:700; color:var(--ink);">Okno Keynote / hovoru v Zoom / prezentácie</p>
+          <p style="margin:0;">Vaše zdieľané snímky sa zobrazujú tu. Prompette zostáva diskrétne umiestnený priamo pod webkamerou.</p>
+        </div>
+      </div>
+
+      <div class="screen-share-tag" id="share-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#28ca41" stroke-width="2.5"><circle cx="12" cy="10" r="8"/><path d="m9 11 2 2 4-4"/></svg>
+        <span id="share-status-text">Suflér je viditeľný iba pre vaše oči</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function setDemoView(mode) {
+  var strip = document.getElementById('prompter-strip');
+  var btnOwner = document.getElementById('btn-owner-view');
+  var btnAudience = document.getElementById('btn-audience-view');
+  var statusText = document.getElementById('share-status-text');
+
+  if (mode === 'audience') {
+    strip.classList.add('hidden-by-share');
+    btnAudience.classList.add('active');
+    btnOwner.classList.remove('active');
+    statusText.textContent = "Účastníci vidia čistú obrazovku — 0% únik textu";
+  } else {
+    strip.classList.remove('hidden-by-share');
+    btnOwner.classList.add('active');
+    btnAudience.classList.remove('active');
+    statusText.textContent = "Suflér je viditeľný iba pre vaše oči";
+  }
+}
+</script>
+
 <!-- family:shot --><figure class="shot"><img src="../img/hero.jpg" alt="" width="1600" height="833"></figure><!-- /family:shot -->
-<section class="card">
-  <h2>Čo robí</h2>
+<section class="card" id="modes">
+  <h2>Tri inteligentné spôsoby posúvania</h2>
+  <p class="section-lead">Či už dodržiavate presný časový harmonogram, alebo hovoríte voľne, Prompette sa vám prispôsobí.</p>
   <p>Prompette zobrazuje tvoj scenár v úzkom páse, ktorý visí z výrezu tvojho MacBooku priamo pod kamerou, takže pri hovoroch, nahrávaní aj prednáškach ostávajú tvoje oči blízko objektívu. Pri zdieľaní obrazovky ani v záznamoch obrazovky sa nikdy neobjaví.</p>
   <ul>
     <li><strong>Tri spôsoby posúvania.</strong> Rýchlosťou, ktorú nastavíš; len keď hovoríš, podľa hlasitosti tvojho hlasu; alebo slovo po slove podľa toho, čo hovoríš, s rozpoznávaním reči, ktoré beží celé v tvojom Macu.</li>
@@ -122,7 +193,50 @@
   <p class="note">Vyžaduje macOS 14 Sonoma alebo novší; aplikácia pre iPhone a iPad vyžaduje iOS 17 alebo novší a aplikácia pre Android Android 8.0 alebo novší. Jeden nákup pokrýva Mac, iPhone aj iPad; aplikácia pre Android sa kupuje osobitne v Google Play.</p>
 </section>
 
-<section class="card">
+<div class="comparison-card" id="comparison">
+  <div class="comp-title">Tradičné sufléry v porovnaní s Prompette</div>
+  <p class="section-lead">Profesionálny očný kontakt bez neskladného štúdiového vybavenia.</p>
+  <div class="table-scroll">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Aspekt</th>
+          <th>Klasický polopriepustný suflér</th>
+          <th class="highlight-col">Prompette</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Cena hardvéru</strong></td>
+          <td>150 € až 500 € za sklo a konštrukciu</td>
+          <td class="highlight-col"><strong>0 € za dodatočný hardvér</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Doba nastavenia</strong></td>
+          <td>15–30 minút na vyrovnanie statívu a monitora</td>
+          <td class="highlight-col"><strong>1 kliknutie (visí priamo pod výrezom)</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Súkromie pri zdieľaní</strong></td>
+          <td>Vyžaduje dva monitory alebo hrozí prezradenie okna</td>
+          <td class="highlight-col"><strong>100% neviditeľný v Zoome, Teams a OBS</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Riadenie tempa</strong></td>
+          <td>Nožný pedál alebo neforemný ručný ovládač</td>
+          <td class="highlight-col"><strong>Hlasom, AI rozpoznávaním a ovládačom v iPhone</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Prenosnosť</strong></td>
+          <td>Ťažká taška s krehkým sklom</td>
+          <td class="highlight-col"><strong>Vždy pripravený v riadku ponúk Macu</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<section class="card" id="privacy">
   <h2>Súkromie v jednom odseku</h2>
   <p>Prompette nemá účet ani sledovanie a tvoje scenáre ani tvoj hlas nikdy nikam neposiela. Mikrofón sa používa len na Macu, v režime hlasu a režime sledovania, ktoré si vyberieš, a reč sa rozpoznáva v tvojom Macu. Ovládač v telefóne alebo tablete komunikuje s tvojím Macom výhradne cez tvoju vlastnú lokálnu sieť. Úplné <a href="privacy.html">zásady ochrany súkromia</a> hovoria to isté podrobnejšie.</p>
 </section>

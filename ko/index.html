@@ -8,7 +8,6 @@
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="../icon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="../icon-180.png">
-<link rel="stylesheet" href="../style.css">
 <!-- family:head --><link rel="stylesheet" href="../family/family.css">
 <link rel="stylesheet" href="../family/modern.css">
 <link rel="alternate" hreflang="en" href="https://prompette.khangazun.com/">
@@ -48,12 +47,14 @@
 <link rel="alternate" hreflang="x-default" href="https://prompette.khangazun.com/">
 <script src="../family/family.js" defer data-lang="ko" data-page="index.html" data-langs="en,ar,ca,cs,da,de,el,es,fi,fr,he,hi,hr,hu,id,it,ja,ko,ms,nb,nl,pl,pt-br,pt-pt,ro,ru,sk,sv,th,tr,uk,vi,zh-hans,zh-hant"></script>
 <!-- /family:head -->
+<link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <main>
 <div class="hero">
+  <div class="hero-pill">⚡ 추가 장비 불필요 · 화면 공유 시 100% 완벽 숨김</div>
   <img class="icon" src="../icon-512.png" alt="" width="112" height="112">
-  <h1>Prompette</h1>
+  <h1>렌즈를 똑바로 응시하세요.<br><span class="gradient-text">카메라 바로 아래에서 대본을 읽으세요.</span></h1>
   <p class="tagline">카메라 바로 아래에서 원고를 읽으세요.</p>
   <!-- family:stores -->
   <div class="family-stores">
@@ -62,6 +63,7 @@
     <a class="family-store" href="https://play.google.com/store/apps/details?id=azun.prompette.app"><img src="../family/badges/play-ko.png" alt="Google Play에서 다운로드" height="46"></a>
   </div>
   <!-- /family:stores -->
+  <p class="platform-banner">Mac, iPhone, iPad 및 Android 지원</p>
 <nav class="links">
     <a href="./">홈</a>
     <a href="support.html">지원</a>
@@ -109,9 +111,78 @@
   </nav>
 </div>
 
+
+<div class="demo-wrapper">
+  <div class="demo-controls">
+    <button type="button" class="demo-toggle-btn active" id="btn-owner-view" onclick="setDemoView('owner')">
+      👀 내 화면 (프롬프터 표시 중)
+    </button>
+    <button type="button" class="demo-toggle-btn" id="btn-audience-view" onclick="setDemoView('audience')">
+      🎥 Zoom / Meet 참가자 화면 (100% 완벽 숨김!)
+    </button>
+  </div>
+
+  <div class="macbook-frame">
+    <div class="macbook-screen">
+      <div class="notch">
+        <div class="lens"><div class="lens-green"></div></div>
+      </div>
+
+      <div class="prompter-strip" id="prompter-strip">
+        <div class="script-scroller">
+          <p>여러분 안녕하십니까, 오늘 발표에 참석해 주셔서 감사합니다.</p>
+          <p><span class="cue-chip cue-smile">미소 😊</span> 팀 전체와 함께 나눌 뜻깊은 소식이 있습니다.</p>
+          <p><span class="cue-chip cue-pause">2초 쉼</span> 이번 분기 진행 보고서에서 보시다시피...</p>
+          <p><span class="cue-chip cue-slide">슬라이드 3</span> 전 부서에 걸쳐 생산성이 45% 이상 증가했습니다.</p>
+          <p>헌신해 주신 모든 팀원분들께 진심으로 감사드립니다.</p>
+        </div>
+      </div>
+
+      <div class="screen-app-window">
+        <div class="window-dots">
+          <div class="dot dot-red"></div>
+          <div class="dot dot-yellow"></div>
+          <div class="dot dot-green"></div>
+        </div>
+        <div style="font-size:13px; color:var(--muted); text-align:left;">
+          <p style="margin:0 0 6px; font-weight:700; color:var(--ink);">Keynote / Zoom 회의 / 발표 화면</p>
+          <p style="margin:0;">공유 중인 슬라이드나 발표 자료가 여기에 표시됩니다. Prompette는 웹캠 바로 아래에 깔끔하게 자리 잡습니다.</p>
+        </div>
+      </div>
+
+      <div class="screen-share-tag" id="share-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#28ca41" stroke-width="2.5"><circle cx="12" cy="10" r="8"/><path d="m9 11 2 2 4-4"/></svg>
+        <span id="share-status-text">프롬프터는 발표자 본인에게만 보입니다</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function setDemoView(mode) {
+  var strip = document.getElementById('prompter-strip');
+  var btnOwner = document.getElementById('btn-owner-view');
+  var btnAudience = document.getElementById('btn-audience-view');
+  var statusText = document.getElementById('share-status-text');
+
+  if (mode === 'audience') {
+    strip.classList.add('hidden-by-share');
+    btnAudience.classList.add('active');
+    btnOwner.classList.remove('active');
+    statusText.textContent = "참가자에게는 깨끗한 화면만 보이며 대본 유출 0%";
+  } else {
+    strip.classList.remove('hidden-by-share');
+    btnOwner.classList.add('active');
+    btnAudience.classList.remove('active');
+    statusText.textContent = "프롬프터는 발표자 본인에게만 보입니다";
+  }
+}
+</script>
+
 <!-- family:shot --><figure class="shot"><img src="../img/hero.jpg" alt="" width="1600" height="833"></figure><!-- /family:shot -->
-<section class="card">
-  <h2>하는 일</h2>
+<section class="card" id="modes">
+  <h2>세 가지 스마트 스크롤 모드</h2>
+  <p class="section-lead">엄격한 발표 시간을 맞추거나 자연스럽게 말할 때도, Prompette가 호흡에 맞춥니다.</p>
   <p>Prompette는 MacBook 노치에 매달린 가느다란 띠에 원고를 보여 줍니다. 카메라 바로 아래라서 통화, 녹화, 발표 중에도 시선이 렌즈 가까이에 머뭅니다. 화면 공유나 화면 녹화에는 절대 나타나지 않습니다.</p>
   <ul>
     <li><strong>세 가지 스크롤 방식.</strong> 직접 정한 속도로, 목소리 크기를 감지해 말하는 동안에만, 또는 전부 Mac에서 처리되는 음성 인식으로 말하는 내용을 따라 단어 단위로.</li>
@@ -122,7 +193,50 @@
   <p class="note">macOS 14 Sonoma 이상이 필요하며, iPhone 및 iPad 앱은 iOS 17 이상, Android 앱은 Android 8.0 이상이 필요합니다. 한 번 구입하면 Mac, iPhone, iPad에서 모두 쓸 수 있으며, Android 앱은 Google Play에서 따로 구입합니다.</p>
 </section>
 
-<section class="card">
+<div class="comparison-card" id="comparison">
+  <div class="comp-title">기존 텔레프롬프터 vs Prompette</div>
+  <p class="section-lead">거추장스러운 스튜디오 장비 없이 자연스러운 시선 처리 완성.</p>
+  <div class="table-scroll">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>비교 항목</th>
+          <th>기존 유리 반사식 프롬프터</th>
+          <th class="highlight-col">Prompette</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>하드웨어 비용</strong></td>
+          <td>하프미러 글라스 및 리그 구비에 20~70만 원</td>
+          <td class="highlight-col"><strong>추가 하드웨어 구매 비용 0원</strong></td>
+        </tr>
+        <tr>
+          <td><strong>설치 시간</strong></td>
+          <td>삼각대 및 모니터 정렬에 15~30분 소요</td>
+          <td class="highlight-col"><strong>1클릭 실행 (노치 바로 아래에 위치)</strong></td>
+        </tr>
+        <tr>
+          <td><strong>화면 공유 보안</strong></td>
+          <td>보조 모니터 필수 또는 창 노출 위험</td>
+          <td class="highlight-col"><strong>Zoom, Teams, OBS 공유 시 100% 완벽 숨김</strong></td>
+        </tr>
+        <tr>
+          <td><strong>스크롤 제어</strong></td>
+          <td>발 페달 또는 번거로운 수동 리모컨</td>
+          <td class="highlight-col"><strong>목소리 크기 반응, 기기 내 음성 인식, iPhone 리모컨</strong></td>
+        </tr>
+        <tr>
+          <td><strong>휴대성</strong></td>
+          <td>유리가 깨지기 쉬워 무거운 전용 가방 필요</td>
+          <td class="highlight-col"><strong>Mac 메뉴 막대에 가볍게 상주</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<section class="card" id="privacy">
   <h2>한 문단으로 보는 개인정보 보호</h2>
   <p>Prompette에는 계정도 추적도 없으며, 원고나 목소리를 어디에도 보내지 않습니다. 마이크는 Mac에서만, 사용자가 고른 음성 모드와 따라가기 모드에서 쓰이고, 음성은 Mac에서 인식됩니다. 휴대폰이나 태블릿의 리모컨은 내 로컬 네트워크로만 Mac과 통신합니다. 자세한 내용은 <a href="privacy.html">개인정보 처리방침</a>에 있습니다.</p>
 </section>

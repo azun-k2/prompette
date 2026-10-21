@@ -8,7 +8,6 @@
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="../icon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="../icon-180.png">
-<link rel="stylesheet" href="../style.css">
 <!-- family:head --><link rel="stylesheet" href="../family/family.css">
 <link rel="stylesheet" href="../family/modern.css">
 <link rel="alternate" hreflang="en" href="https://prompette.khangazun.com/">
@@ -48,12 +47,14 @@
 <link rel="alternate" hreflang="x-default" href="https://prompette.khangazun.com/">
 <script src="../family/family.js" defer data-lang="el" data-page="index.html" data-langs="en,ar,ca,cs,da,de,el,es,fi,fr,he,hi,hr,hu,id,it,ja,ko,ms,nb,nl,pl,pt-br,pt-pt,ro,ru,sk,sv,th,tr,uk,vi,zh-hans,zh-hant"></script>
 <!-- /family:head -->
+<link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <main>
 <div class="hero">
+  <div class="hero-pill">⚡ Χωρίς πρόσθετο εξοπλισμό · 100% αόρατο στην κοινή χρήση οθόνης</div>
   <img class="icon" src="../icon-512.png" alt="" width="112" height="112">
-  <h1>Prompette</h1>
+  <h1>Κοιτάξτε κατευθείαν στον φακό.<br><span class="gradient-text">Διαβάστε το κείμενο ακριβώς κάτω από την κάμερα.</span></h1>
   <p class="tagline">Διάβασε το κείμενό σου ακριβώς κάτω από την κάμερα.</p>
   <!-- family:stores -->
   <div class="family-stores">
@@ -62,6 +63,7 @@
     <a class="family-store" href="https://play.google.com/store/apps/details?id=azun.prompette.app"><img src="../family/badges/play-el.png" alt="Διαθέσιμο στο Google Play" height="46"></a>
   </div>
   <!-- /family:stores -->
+  <p class="platform-banner">Διαθέσιμο για Mac, iPhone, iPad και Android</p>
 <nav class="links">
     <a href="./">Αρχική</a>
     <a href="support.html">Υποστήριξη</a>
@@ -109,9 +111,78 @@
   </nav>
 </div>
 
+
+<div class="demo-wrapper">
+  <div class="demo-controls">
+    <button type="button" class="demo-toggle-btn active" id="btn-owner-view" onclick="setDemoView('owner')">
+      👀 Η οθόνη σας (με τον υποβολέα)
+    </button>
+    <button type="button" class="demo-toggle-btn" id="btn-audience-view" onclick="setDemoView('audience')">
+      🎥 Προβολή κοινού Zoom / Meet (100% αόρατο!)
+    </button>
+  </div>
+
+  <div class="macbook-frame">
+    <div class="macbook-screen">
+      <div class="notch">
+        <div class="lens"><div class="lens-green"></div></div>
+      </div>
+
+      <div class="prompter-strip" id="prompter-strip">
+        <div class="script-scroller">
+          <p>Καλώς ήρθατε όλοι, σας ευχαριστούμε για τη συμμετοχή στη σημερινή παρουσίαση.</p>
+          <p><span class="cue-chip cue-smile">Χαμόγελο 😊</span> Έχουμε εξαιρετικά νέα να μοιραστούμε με όλη την ομάδα.</p>
+          <p><span class="cue-chip cue-pause">Παύση 2δ</span> Όπως φαίνεται και στην έκθεση προόδου...</p>
+          <p><span class="cue-chip cue-slide">Διαφάνεια 3</span> Η παραγωγικότητα αυξήθηκε κατά 45% σε όλους τους τομείς.</p>
+          <p>Θα ήθελα να ευχαριστήσω προσωπικά τον καθένα σας για την προσπάθεια.</p>
+        </div>
+      </div>
+
+      <div class="screen-app-window">
+        <div class="window-dots">
+          <div class="dot dot-red"></div>
+          <div class="dot dot-yellow"></div>
+          <div class="dot dot-green"></div>
+        </div>
+        <div style="font-size:13px; color:var(--muted); text-align:left;">
+          <p style="margin:0 0 6px; font-weight:700; color:var(--ink);">Παράθυρο Keynote / Κλήσης Zoom / Παρουσίασης</p>
+          <p style="margin:0;">Οι διαφάνειες ή τα παράθυρά σας εμφανίζονται εδώ. Το Prompette παραμένει διακριτικά κάτω από την κάμερα.</p>
+        </div>
+      </div>
+
+      <div class="screen-share-tag" id="share-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#28ca41" stroke-width="2.5"><circle cx="12" cy="10" r="8"/><path d="m9 11 2 2 4-4"/></svg>
+        <span id="share-status-text">Ο υποβολέας είναι ορατός μόνο στα δικά σας μάτια</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function setDemoView(mode) {
+  var strip = document.getElementById('prompter-strip');
+  var btnOwner = document.getElementById('btn-owner-view');
+  var btnAudience = document.getElementById('btn-audience-view');
+  var statusText = document.getElementById('share-status-text');
+
+  if (mode === 'audience') {
+    strip.classList.add('hidden-by-share');
+    btnAudience.classList.add('active');
+    btnOwner.classList.remove('active');
+    statusText.textContent = "Το κοινό βλέπει μια καθαρή οθόνη — 0% διαρροή κειμένου";
+  } else {
+    strip.classList.remove('hidden-by-share');
+    btnOwner.classList.add('active');
+    btnAudience.classList.remove('active');
+    statusText.textContent = "Ο υποβολέας είναι ορατός μόνο στα δικά σας μάτια";
+  }
+}
+</script>
+
 <!-- family:shot --><figure class="shot"><img src="../img/hero.jpg" alt="" width="1600" height="833"></figure><!-- /family:shot -->
-<section class="card">
-  <h2>Τι κάνει</h2>
+<section class="card" id="modes">
+  <h2>Τρεις έξυπνοι τρόποι κύλισης</h2>
+  <p class="section-lead">Είτε ακολουθείτε αυστηρό χρονοδιάγραμμα είτε μιλάτε αυθόρμητα, το Prompette προσαρμόζεται σε εσάς.</p>
   <p>Το Prompette δείχνει το κείμενό σου σε μια λεπτή λωρίδα που κρέμεται από την εγκοπή του MacBook σου, ακριβώς κάτω από την κάμερα, ώστε τα μάτια σου να μένουν κοντά στον φακό σε κλήσεις, εγγραφές και ομιλίες. Δεν εμφανίζεται ποτέ στην κοινή χρήση οθόνης ούτε στις εγγραφές οθόνης.</p>
   <ul>
     <li><strong>Τρεις τρόποι κύλισης.</strong> Με ταχύτητα που ορίζεις· μόνο όσο μιλάς, από την ένταση της φωνής σου· ή λέξη προς λέξη, ακολουθώντας όσα λες με αναγνώριση ομιλίας που γίνεται εξ ολοκλήρου στο Mac σου.</li>
@@ -122,7 +193,50 @@
   <p class="note">Απαιτεί macOS 14 Sonoma ή νεότερο· η εφαρμογή για iPhone και iPad απαιτεί iOS 17 ή νεότερο, και η εφαρμογή για Android απαιτεί Android 8.0 ή νεότερο. Μία αγορά καλύπτει Mac, iPhone και iPad· η εφαρμογή για Android αγοράζεται χωριστά στο Google Play.</p>
 </section>
 
-<section class="card">
+<div class="comparison-card" id="comparison">
+  <div class="comp-title">Παραδοσιακοί υποβολείς έναντι του Prompette</div>
+  <p class="section-lead">Επαγγελματική οπτική επαφή χωρίς ογκώδη εξοπλισμό στούντιο.</p>
+  <div class="table-scroll">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Χαρακτηριστικό</th>
+          <th>Κλασικός γυάλινος υποβολέας</th>
+          <th class="highlight-col">Prompette</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Κόστος εξοπλισμού</strong></td>
+          <td>150 € έως 500 € για ειδικό κάτοπτρο και βάση</td>
+          <td class="highlight-col"><strong>0 € σε πρόσθετο εξοπλισμό</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Χρόνος εγκατάστασης</strong></td>
+          <td>15–30 λεπτά ευθυγράμμισης τρίποδου και οθόνης</td>
+          <td class="highlight-col"><strong>1 κλικ (αναρτάται ακριβώς κάτω από την εγκοπή)</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Ιδιωτικότητα κοινής χρήσης</strong></td>
+          <td>Απαιτεί δύο οθόνες ή κίνδυνο αποκάλυψης</td>
+          <td class="highlight-col"><strong>100% αόρατο σε Zoom, Teams & OBS</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Έλεγχος ταχύτητας</strong></td>
+          <td>Πεντάλ ποδιού ή δύσχρηστο τηλεχειριστήριο</td>
+          <td class="highlight-col"><strong>Με τη φωνή, AI αναγνώριση & τηλεχειριστήριο iPhone</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Φορητότητα</strong></td>
+          <td>Βαριά τσάντα με εύθραυστο γυαλί</td>
+          <td class="highlight-col"><strong>Πάντα έτοιμο στη γραμμή μενού του Mac</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<section class="card" id="privacy">
   <h2>Το απόρρητο σε μία παράγραφο</h2>
   <p>Το Prompette δεν έχει λογαριασμό ούτε παρακολούθηση και δεν στέλνει ποτέ πουθενά τα κείμενά σου ή τη φωνή σου. Το μικρόφωνο χρησιμοποιείται μόνο στο Mac, στις λειτουργίες φωνής και ακολούθησης που επιλέγεις, και η ομιλία αναγνωρίζεται στο Mac σου. Το τηλεχειριστήριο στο τηλέφωνο ή στο tablet σου επικοινωνεί με το Mac σου μόνο μέσω του δικού σου τοπικού δικτύου. Η πλήρης <a href="privacy.html">πολιτική απορρήτου</a> λέει το ίδιο πιο αναλυτικά.</p>
 </section>

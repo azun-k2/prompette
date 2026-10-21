@@ -8,7 +8,6 @@
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="../icon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="../icon-180.png">
-<link rel="stylesheet" href="../style.css">
 <!-- family:head --><link rel="stylesheet" href="../family/family.css">
 <link rel="stylesheet" href="../family/modern.css">
 <link rel="alternate" hreflang="en" href="https://prompette.khangazun.com/">
@@ -48,12 +47,14 @@
 <link rel="alternate" hreflang="x-default" href="https://prompette.khangazun.com/">
 <script src="../family/family.js" defer data-lang="uk" data-page="index.html" data-langs="en,ar,ca,cs,da,de,el,es,fi,fr,he,hi,hr,hu,id,it,ja,ko,ms,nb,nl,pl,pt-br,pt-pt,ro,ru,sk,sv,th,tr,uk,vi,zh-hans,zh-hant"></script>
 <!-- /family:head -->
+<link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <main>
 <div class="hero">
+  <div class="hero-pill">⚡ Жодного додаткового обладнання · 100% невидимо під час показу екрана</div>
   <img class="icon" src="../icon-512.png" alt="" width="112" height="112">
-  <h1>Prompette</h1>
+  <h1>Дивіться прямо в об’єктив.<br><span class="gradient-text">Читайте сценарій просто під камерою.</span></h1>
   <p class="tagline">Читайте сценарій просто під камерою.</p>
   <!-- family:stores -->
   <div class="family-stores">
@@ -62,6 +63,7 @@
     <a class="family-store" href="https://play.google.com/store/apps/details?id=azun.prompette.app"><img src="../family/badges/google-play-badge.png" alt="Доступно в Google Play" height="46"></a>
   </div>
   <!-- /family:stores -->
+  <p class="platform-banner">Доступно для Mac, iPhone, iPad та Android</p>
 <nav class="links">
     <a href="./">Головна</a>
     <a href="support.html">Підтримка</a>
@@ -109,9 +111,78 @@
   </nav>
 </div>
 
+
+<div class="demo-wrapper">
+  <div class="demo-controls">
+    <button type="button" class="demo-toggle-btn active" id="btn-owner-view" onclick="setDemoView('owner')">
+      👀 Ваш екран (із суфлером)
+    </button>
+    <button type="button" class="demo-toggle-btn" id="btn-audience-view" onclick="setDemoView('audience')">
+      🎥 Що бачать глядачі в Zoom / Meet (100% невидимо!)
+    </button>
+  </div>
+
+  <div class="macbook-frame">
+    <div class="macbook-screen">
+      <div class="notch">
+        <div class="lens"><div class="lens-green"></div></div>
+      </div>
+
+      <div class="prompter-strip" id="prompter-strip">
+        <div class="script-scroller">
+          <p>Вітаю всіх! Дякую, що приєдналися до сьогоднішньої презентації.</p>
+          <p><span class="cue-chip cue-smile">Посмішка 😊</span> У нас чудові новини для всієї команди.</p>
+          <p><span class="cue-chip cue-pause">Пауза 2с</span> Як свідчить наш звіт за квартал...</p>
+          <p><span class="cue-chip cue-slide">Слайд 3</span> Продуктивність зросла на понад 45% в усіх відділах.</p>
+          <p>Хочу особисто подякувати кожному за віддану працю.</p>
+        </div>
+      </div>
+
+      <div class="screen-app-window">
+        <div class="window-dots">
+          <div class="dot dot-red"></div>
+          <div class="dot dot-yellow"></div>
+          <div class="dot dot-green"></div>
+        </div>
+        <div style="font-size:13px; color:var(--muted); text-align:left;">
+          <p style="margin:0 0 6px; font-weight:700; color:var(--ink);">Вікно Keynote / виклику в Zoom / презентації</p>
+          <p style="margin:0;">Ваші слайди або спільні вікна відображаються тут. Prompette непомітно розміщується просто під вебкамерою.</p>
+        </div>
+      </div>
+
+      <div class="screen-share-tag" id="share-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#28ca41" stroke-width="2.5"><circle cx="12" cy="10" r="8"/><path d="m9 11 2 2 4-4"/></svg>
+        <span id="share-status-text">Суфлер видно тільки вашим очам</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function setDemoView(mode) {
+  var strip = document.getElementById('prompter-strip');
+  var btnOwner = document.getElementById('btn-owner-view');
+  var btnAudience = document.getElementById('btn-audience-view');
+  var statusText = document.getElementById('share-status-text');
+
+  if (mode === 'audience') {
+    strip.classList.add('hidden-by-share');
+    btnAudience.classList.add('active');
+    btnOwner.classList.remove('active');
+    statusText.textContent = "Глядачі бачать чистий екран — 0% витоку тексту";
+  } else {
+    strip.classList.remove('hidden-by-share');
+    btnOwner.classList.add('active');
+    btnAudience.classList.remove('active');
+    statusText.textContent = "Суфлер видно тільки вашим очам";
+  }
+}
+</script>
+
 <!-- family:shot --><figure class="shot"><img src="../img/hero.jpg" alt="" width="1600" height="833"></figure><!-- /family:shot -->
-<section class="card">
-  <h2>Що він робить</h2>
+<section class="card" id="modes">
+  <h2>Три розумні способи прокручування</h2>
+  <p class="section-lead">Чи виступаєте ви за суворим регламентом, чи говорите вільно — Prompette адаптується до вас.</p>
   <p>Prompette показує ваш сценарій у вузькій смузі, що звисає з вирізу вашого MacBook просто під камерою, тож під час дзвінків, записів і виступів ваш погляд лишається біля об'єктива. Смуга ніколи не з'являється під час показу екрана чи в записах екрана.</p>
   <ul>
     <li><strong>Три способи прокручування.</strong> Із заданою вами швидкістю; лише поки ви говорите, за гучністю голосу; або слово за словом, стежачи за вашим мовленням за допомогою розпізнавання, що повністю виконується на вашому Mac.</li>
@@ -122,7 +193,50 @@
   <p class="note">Потрібна macOS 14 Sonoma або новіша; програмі для iPhone та iPad потрібна iOS 17 або новіша, а програмі для Android — Android 8.0 або новіший. Одна покупка охоплює Mac, iPhone та iPad; програма для Android купується окремо в Google Play.</p>
 </section>
 
-<section class="card">
+<div class="comparison-card" id="comparison">
+  <div class="comp-title">Традиційні телесуфлери та Prompette</div>
+  <p class="section-lead">Професійний зоровий контакт без громіздкого студійного обладнання.</p>
+  <div class="table-scroll">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Параметр</th>
+          <th>Звичайний суфлер із дзеркалом</th>
+          <th class="highlight-col">Prompette</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Вартість обладнання</strong></td>
+          <td>Від 6 000 до 20 000 ₴ за скло та штатив</td>
+          <td class="highlight-col"><strong>0 ₴ витрат на додаткове обладнання</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Час налаштування</strong></td>
+          <td>15–30 хвилин вирівнювання на штативі</td>
+          <td class="highlight-col"><strong>1 клік (закріплюється просто під вирізом)</strong></td>
+        </tr>
+        <tr>
+          <td><strong>При показі екрана</strong></td>
+          <td>Потрібен другий дисплей або ризик витоку вікна</td>
+          <td class="highlight-col"><strong>100% невидимо в Zoom, Teams та OBS</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Керування темпом</strong></td>
+          <td>Педаль або незручний пульт у руці</td>
+          <td class="highlight-col"><strong>За голосом, розпізнавання мовлення та пульт на iPhone</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Мобільність</strong></td>
+          <td>Важка сумка з крихким склом</td>
+          <td class="highlight-col"><strong>Завжди під рукою в меню Mac</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<section class="card" id="privacy">
   <h2>Конфіденційність в одному абзаці</h2>
   <p>Prompette не має облікового запису й відстеження та ніколи нікуди не надсилає ваші сценарії чи ваш голос. Мікрофон використовується лише на Mac, у вибраних вами голосовому режимі та режимі стеження, а мовлення розпізнається на вашому Mac. Пульт на телефоні чи планшеті зв'язується з вашим Mac лише через вашу власну локальну мережу. Повна <a href="privacy.html">політика конфіденційності</a> каже те саме, тільки докладніше.</p>
 </section>
