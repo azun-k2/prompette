@@ -109,6 +109,73 @@
   </nav>
 </div>
 
+<div class="demo-wrapper">
+  <div class="demo-controls">
+    <button type="button" class="demo-toggle-btn active" id="btn-owner-view" onclick="setDemoView('owner')">
+      👀 Your Screen (With Prompter)
+    </button>
+    <button type="button" class="demo-toggle-btn" id="btn-audience-view" onclick="setDemoView('audience')">
+      🎥 Zoom / Meet Audience View (100% Invisible!)
+    </button>
+  </div>
+
+  <div class="macbook-frame">
+    <div class="macbook-screen">
+      <div class="notch">
+        <div class="lens"><div class="lens-green"></div></div>
+      </div>
+
+      <div class="prompter-strip" id="prompter-strip">
+        <div class="script-scroller">
+          <p>Welcome everyone, thank you for joining today's keynote presentation.</p>
+          <p><span class="cue-chip cue-smile">Smile 😊</span> We have some groundbreaking news to share with the entire team.</p>
+          <p><span class="cue-chip cue-pause">Pause 2s</span> As you can see from our Q3 progress report...</p>
+          <p><span class="cue-chip cue-slide">Slide 3</span> Productivity increased by over 45% across all departments.</p>
+          <p>I would like to personally thank each and every contributor for your dedication.</p>
+        </div>
+      </div>
+
+      <div class="screen-app-window">
+        <div class="window-dots">
+          <div class="dot dot-red"></div>
+          <div class="dot dot-yellow"></div>
+          <div class="dot dot-green"></div>
+        </div>
+        <div style="font-size:13px; color:var(--muted); text-align:left;">
+          <p style="margin:0 0 6px; font-weight:700; color:var(--ink);">Keynote / Zoom Call / Presentation Window</p>
+          <p style="margin:0;">Your normal presentation or shared slides live here. Notice how Prompette stays tucked away directly below your webcam.</p>
+        </div>
+      </div>
+
+      <div class="screen-share-tag" id="share-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#28ca41" stroke-width="2.5"><circle cx="12" cy="10" r="8"/><path d="m9 11 2 2 4-4"/></svg>
+        <span id="share-status-text">Prompter visible to your eyes only</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function setDemoView(mode) {
+  var strip = document.getElementById('prompter-strip');
+  var btnOwner = document.getElementById('btn-owner-view');
+  var btnAudience = document.getElementById('btn-audience-view');
+  var statusText = document.getElementById('share-status-text');
+
+  if (mode === 'audience') {
+    strip.classList.add('hidden-by-share');
+    btnAudience.classList.add('active');
+    btnOwner.classList.remove('active');
+    statusText.textContent = "Audience sees your clean screen — 0% prompter leakage";
+  } else {
+    strip.classList.remove('hidden-by-share');
+    btnOwner.classList.add('active');
+    btnAudience.classList.remove('active');
+    statusText.textContent = "Prompter visible to your eyes only";
+  }
+}
+</script>
+
 <!-- family:shot --><figure class="shot"><img src="img/hero.jpg" alt="" width="1600" height="833"></figure><!-- /family:shot -->
 <section class="card">
   <h2>What it does</h2>

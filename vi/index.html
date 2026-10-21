@@ -109,6 +109,73 @@
   </nav>
 </div>
 
+<div class="demo-wrapper">
+  <div class="demo-controls">
+    <button type="button" class="demo-toggle-btn active" id="btn-owner-view" onclick="setDemoView('owner')">
+      👀 Màn hình của bạn (Có máy nhắc chữ)
+    </button>
+    <button type="button" class="demo-toggle-btn" id="btn-audience-view" onclick="setDemoView('audience')">
+      🎥 Khán giả Zoom / Meet nhìn thấy (Tàng hình 100%!)
+    </button>
+  </div>
+
+  <div class="macbook-frame">
+    <div class="macbook-screen">
+      <div class="notch">
+        <div class="lens"><div class="lens-green"></div></div>
+      </div>
+
+      <div class="prompter-strip" id="prompter-strip">
+        <div class="script-scroller">
+          <p>Xin chào tất cả các bạn, cảm ơn mọi người đã tham gia buổi thuyết trình hôm nay.</p>
+          <p><span class="cue-chip cue-smile">Cười 😊</span> Chúng tôi có một tin rất hào hứng muốn chia sẻ cùng toàn đội ngũ.</p>
+          <p><span class="cue-chip cue-pause">Nghỉ 2s</span> Như các bạn thấy trên báo cáo tiến độ quý 3...</p>
+          <p><span class="cue-chip cue-slide">Slide 3</span> Hiệu suất đã tăng trưởng vượt bậc hơn 45% ở mọi phòng ban.</p>
+          <p>Tôi xin gửi lời cảm ơn chân thành nhất đến từng thành viên vì sự cống hiến tuyệt vời này.</p>
+        </div>
+      </div>
+
+      <div class="screen-app-window">
+        <div class="window-dots">
+          <div class="dot dot-red"></div>
+          <div class="dot dot-yellow"></div>
+          <div class="dot dot-green"></div>
+        </div>
+        <div style="font-size:13px; color:var(--muted); text-align:left;">
+          <p style="margin:0 0 6px; font-weight:700; color:var(--ink);">Cửa sổ Keynote / Zoom Call / Trình chiếu</p>
+          <p style="margin:0;">Nội dung trình chiếu của bạn ở đây. Prompette nằm gọn gàng ngay dưới webcam mà không che khuất màn hình.</p>
+        </div>
+      </div>
+
+      <div class="screen-share-tag" id="share-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#28ca41" stroke-width="2.5"><circle cx="12" cy="10" r="8"/><path d="m9 11 2 2 4-4"/></svg>
+        <span id="share-status-text">Chỉ mắt bạn nhìn thấy máy nhắc chữ</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function setDemoView(mode) {
+  var strip = document.getElementById('prompter-strip');
+  var btnOwner = document.getElementById('btn-owner-view');
+  var btnAudience = document.getElementById('btn-audience-view');
+  var statusText = document.getElementById('share-status-text');
+
+  if (mode === 'audience') {
+    strip.classList.add('hidden-by-share');
+    btnAudience.classList.add('active');
+    btnOwner.classList.remove('active');
+    statusText.textContent = "Khán giả chỉ thấy màn hình sạch — 0% lộ kịch bản";
+  } else {
+    strip.classList.remove('hidden-by-share');
+    btnOwner.classList.add('active');
+    btnAudience.classList.remove('active');
+    statusText.textContent = "Chỉ mắt bạn nhìn thấy máy nhắc chữ";
+  }
+}
+</script>
+
 <!-- family:shot --><figure class="shot"><img src="../img/hero.jpg" alt="" width="1600" height="833"></figure><!-- /family:shot -->
 <section class="card">
   <h2>Ứng dụng làm gì</h2>
