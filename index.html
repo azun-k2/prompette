@@ -8,7 +8,6 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="icon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="icon-180.png">
-<link rel="stylesheet" href="style.css">
 <!-- family:head --><link rel="stylesheet" href="family/family.css">
 <link rel="stylesheet" href="family/modern.css">
 <link rel="alternate" hreflang="en" href="https://prompette.khangazun.com/">
@@ -48,13 +47,15 @@
 <link rel="alternate" hreflang="x-default" href="https://prompette.khangazun.com/">
 <script src="family/family.js" defer data-lang="en" data-page="index.html" data-langs="en,ar,ca,cs,da,de,el,es,fi,fr,he,hi,hr,hu,id,it,ja,ko,ms,nb,nl,pl,pt-br,pt-pt,ro,ru,sk,sv,th,tr,uk,vi,zh-hans,zh-hant"></script>
 <!-- /family:head -->
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <main>
 <div class="hero">
-  <img class="icon" src="icon-512.png" alt="" width="112" height="112">
-  <h1>Prompette</h1>
-  <p class="tagline">Read your script right under the camera.</p>
+  <div class="hero-pill">⚡ Zero Hardware Needed · 100% Invisible to Screen Sharing</div>
+  <img class="icon" src="icon-512.png" alt="" width="96" height="96">
+  <h1>Look straight into the lens.<br><span class="gradient-text">Read right under the camera.</span></h1>
+  <p class="tagline">Prompette displays your script in a slim prompter strip hanging right from your MacBook's notch. Your audience sees you looking right into their eyes.</p>
   <!-- family:stores -->
   <div class="family-stores">
     <a class="family-store" href="https://apps.apple.com/app/id6816685873?platform=mac"><img src="family/badges/download-on-the-mac-app-store.svg" alt="Download on the Mac App Store" height="46"></a>
@@ -62,6 +63,7 @@
     <a class="family-store" href="https://play.google.com/store/apps/details?id=azun.prompette.app"><img src="family/badges/google-play-badge.png" alt="Get it on Google Play" height="46"></a>
   </div>
   <!-- /family:stores -->
+  <p class="platform-banner">Available on Mac, iPhone, iPad and Android</p>
 <nav class="links">
     <a href="./">Home</a>
     <a href="support.html">Support</a>
@@ -177,19 +179,62 @@ function setDemoView(mode) {
 </script>
 
 <!-- family:shot --><figure class="shot"><img src="img/hero.jpg" alt="" width="1600" height="833"></figure><!-- /family:shot -->
-<section class="card">
-  <h2>What it does</h2>
-  <p>Prompette shows your script in a slim strip that hangs from your MacBook's notch, right under the camera, so your eyes stay near the lens on calls, recordings and talks. It never shows up in screen sharing or screen recordings.</p>
+<section class="card" id="modes">
+  <h2>Three intelligent ways to scroll</h2>
+  <p class="section-lead">Whether you follow a strict timing or speak naturally, Prompette adapts to you.</p>
   <ul>
-    <li><strong>Three ways to scroll.</strong> At a speed you set; only while you speak, from your voice's loudness; or word by word, following what you say with speech recognition done entirely on your Mac.</li>
-    <li><strong>A library of scripts</strong> with cue markers such as [PAUSE] and [SLIDE 3], import from text, Markdown, RTF and Word files, and a rehearsal timer that shows where you ran long.</li>
-    <li><strong>A remote on your phone or tablet.</strong> Start, pause, change speed and jump to the next cue from an iPhone, iPad or Android device over your own network, or use it as a small teleprompter on its own.</li>
-    <li><strong>Works on any Mac.</strong> Without a notch, the strip sits at the top centre of the screen.</li>
+    <li><strong>1. Constant Speed.</strong> Set your target words-per-minute (WPM). Smooth start, gentle deceleration, with full keyboard &amp; scroll-wheel control whenever you need to adjust.</li>
+    <li><strong>2. Voice-Paced.</strong> The prompter rolls only while you speak and halts automatically when you take a breath. It adapts to your natural speaking rhythm.</li>
+    <li><strong>3. Word-by-Word Follow.</strong> On-device AI speech recognition tracks what you say word by word. Ad-lib freely — Prompette keeps your exact place without missing a beat.</li>
+    <li><strong>Companion Remote.</strong> Start, pause, change speed and jump to the next cue marker from an iPhone, iPad or Android device over your own local network, or use it as a pocket prompter.</li>
   </ul>
   <p class="note">Requires macOS 14 Sonoma or later; the iPhone and iPad app requires iOS 17 or later, and the Android app Android 8.0 or later. One purchase covers the Mac, iPhone and iPad; the Android app is a separate purchase on Google Play.</p>
 </section>
 
-<section class="card">
+<div class="comparison-card" id="comparison">
+  <div class="comp-title">Traditional Teleprompters vs Prompette</div>
+  <p class="section-lead">Professional eye contact without the studio gear bulk.</p>
+  <div class="table-scroll">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Aspect</th>
+          <th>Traditional Glass Prompter</th>
+          <th class="highlight-col">Prompette</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Hardware Cost</strong></td>
+          <td>$150 – $500 for beamsplitter glass &amp; rig</td>
+          <td class="highlight-col"><strong>$0 extra hardware required</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Setup Time</strong></td>
+          <td>15–30 minutes tripod &amp; monitor alignment</td>
+          <td class="highlight-col"><strong>1 click (hangs under the notch)</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Screen Sharing Privacy</strong></td>
+          <td>Requires dual displays or risky window setup</td>
+          <td class="highlight-col"><strong>100% Invisible to Zoom, Teams &amp; OBS</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Pacing Control</strong></td>
+          <td>Pedal or awkward manual remote</td>
+          <td class="highlight-col"><strong>Voice-paced, Speech AI &amp; iPhone remote</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Portability</strong></td>
+          <td>Heavy bag with glass that easily shatters</td>
+          <td class="highlight-col"><strong>Lives in your Mac menu bar anywhere</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<section class="card" id="privacy">
   <h2>Privacy in one paragraph</h2>
   <p>Prompette has no account and no tracking, and never sends your scripts or your voice anywhere. The microphone is used only on the Mac, in the voice and follow modes you choose, and speech is recognised on your Mac. The remote on your phone or tablet talks to your Mac over your own local network only. The full <a href="privacy.html">privacy policy</a> says the same at more length.</p>
 </section>
@@ -203,9 +248,9 @@ function setDemoView(mode) {
     <li><a class="family-app" href="https://tockette.khangazun.com/" style="--app: #d9504a"><img src="family/icons/tockette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Tockette</span><span class="family-tag">A timer, one drag from the menu bar.</span><span class="family-platforms"><span>Mac</span></span></span></a></li>
     <li><a class="family-app" href="https://zonette.khangazun.com/" style="--app: #2f6fd6"><img src="family/icons/zonette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Zonette</span><span class="family-tag">Every time zone you care about, one click away.</span><span class="family-platforms"><span>Mac</span><span>iPhone &amp; iPad</span><span>Android</span></span></span></a></li>
     <li><a class="family-app" href="https://lunette.khangazun.com/" style="--app: #5146d6"><img src="family/icons/lunette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Lunette</span><span class="family-tag">The Moon and the Sun, at a glance.</span><span class="family-platforms"><span>Mac</span><span>iPhone &amp; iPad</span><span>Android</span></span></span></a></li>
-    <li><a class="family-app" href="https://lunarette.khangazun.com/" style="--app: #c8322f"><img src="family/icons/lunarette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Lunarette</span><span class="family-tag">The lunar calendar, in four traditions.</span><span class="family-platforms"><span>Mac</span><span>iPhone &amp; iPad</span><span>Android</span></span></span></a></li>
-    <li><a class="family-app" href="https://pausette.khangazun.com/" style="--app: #1f8f84"><img src="family/icons/pausette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Pausette</span><span class="family-tag">Gentle breaks for your eyes and your back.</span><span class="family-platforms"><span>Mac</span></span></span></a></li>
-    <li><a class="family-app" href="https://poisette.khangazun.com/" style="--app: #2f8a7e"><img src="family/icons/poisette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Poisette</span><span class="family-tag">Sit tall, reminded by the AirPods you wear.</span><span class="family-platforms"><span>Mac</span><span>iPhone &amp; iPad</span></span></span></a></li>
+    <li><a class="family-app" href="https://lunarette.khangazun.com/" style="--app: #3d348b"><img src="family/icons/lunarette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Lunarette</span><span class="family-tag">A quiet lunar calendar.</span><span class="family-platforms"><span>Mac</span><span>iPhone &amp; iPad</span><span>Android</span></span></span></a></li>
+    <li><a class="family-app" href="https://pausette.khangazun.com/" style="--app: #2a9d8f"><img src="family/icons/pausette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Pausette</span><span class="family-tag">Break reminders that wait until you pause.</span><span class="family-platforms"><span>Mac</span></span></span></a></li>
+    <li><a class="family-app" href="https://poisette.khangazun.com/" style="--app: #0d9488"><img src="family/icons/poisette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Poisette</span><span class="family-tag">AirPods posture coach in the menu bar.</span><span class="family-platforms"><span>Mac</span><span>iPhone &amp; iPad</span></span></span></a></li>
     <li><a class="family-app" href="https://hushette.khangazun.com/" style="--app: #5b54c9"><img src="family/icons/hushette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Hushette</span><span class="family-tag">Calm ambient sound that never loops.</span><span class="family-platforms"><span>Mac</span><span>iPhone &amp; iPad</span><span>Android</span></span></span></a></li>
     <li><a class="family-app" href="https://tapsody.khangazun.com/" style="--app: #5b4fe0"><img src="family/icons/tapsody.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Tapsody</span><span class="family-tag">Mechanical keyboard sounds as you type.</span><span class="family-platforms"><span>Mac</span></span></span></a></li>
     <li><a class="family-app" href="https://thrumline.khangazun.com/" style="--app: #c5215a"><img src="family/icons/thrumline.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Thrumline</span><span class="family-tag">Your heart rate, live in the menu bar.</span><span class="family-platforms"><span>Mac</span></span></span></a></li>

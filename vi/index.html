@@ -8,7 +8,6 @@
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="../icon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="../icon-180.png">
-<link rel="stylesheet" href="../style.css">
 <!-- family:head --><link rel="stylesheet" href="../family/family.css">
 <link rel="stylesheet" href="../family/modern.css">
 <link rel="alternate" hreflang="en" href="https://prompette.khangazun.com/">
@@ -48,13 +47,15 @@
 <link rel="alternate" hreflang="x-default" href="https://prompette.khangazun.com/">
 <script src="../family/family.js" defer data-lang="vi" data-page="index.html" data-langs="en,ar,ca,cs,da,de,el,es,fi,fr,he,hi,hr,hu,id,it,ja,ko,ms,nb,nl,pl,pt-br,pt-pt,ro,ru,sk,sv,th,tr,uk,vi,zh-hans,zh-hant"></script>
 <!-- /family:head -->
+<link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <main>
 <div class="hero">
-  <img class="icon" src="../icon-512.png" alt="" width="112" height="112">
-  <h1>Prompette</h1>
-  <p class="tagline">Đọc kịch bản ngay dưới camera.</p>
+  <div class="hero-pill">⚡ Không cần phần cứng cồng kềnh · Tàng hình 100% khi chia sẻ màn hình</div>
+  <img class="icon" src="../icon-512.png" alt="" width="96" height="96">
+  <h1>Nhìn thẳng vào ống kính.<br><span class="gradient-text">Đọc kịch bản ngay dưới camera.</span></h1>
+  <p class="tagline">Prompette hiển thị kịch bản trong một dải thanh mảnh treo từ tai thỏ MacBook. Khán giả thấy bạn luôn nhìn thẳng vào mắt họ.</p>
   <!-- family:stores -->
   <div class="family-stores">
     <a class="family-store" href="https://apps.apple.com/app/id6816685873?platform=mac"><img src="../family/badges/mac-vi.svg" alt="Tải về trên Mac App Store" height="46"></a>
@@ -62,6 +63,7 @@
     <a class="family-store" href="https://play.google.com/store/apps/details?id=azun.prompette.app"><img src="../family/badges/play-vi.png" alt="Tải nội dung trên Google Play" height="46"></a>
   </div>
   <!-- /family:stores -->
+  <p class="platform-banner">Có sẵn cho Mac, iPhone, iPad và Android</p>
 <nav class="links">
     <a href="./">Trang chủ</a>
     <a href="support.html">Hỗ trợ</a>
@@ -177,19 +179,62 @@ function setDemoView(mode) {
 </script>
 
 <!-- family:shot --><figure class="shot"><img src="../img/hero.jpg" alt="" width="1600" height="833"></figure><!-- /family:shot -->
-<section class="card">
-  <h2>Ứng dụng làm gì</h2>
-  <p>Prompette hiển thị kịch bản của bạn trong một dải mảnh treo từ tai thỏ của MacBook, ngay dưới camera, để mắt bạn luôn ở gần ống kính khi gọi video, ghi hình hay thuyết trình. Dải này không bao giờ hiện trong chia sẻ màn hình hay bản ghi màn hình.</p>
+<section class="card" id="modes">
+  <h2>Ba cách cuộn thông minh</h2>
+  <p class="section-lead">Dù bạn nói theo thời lượng nghiêm ngặt hay diễn đạt tự nhiên, Prompette đều thích ứng linh hoạt.</p>
   <ul>
-    <li><strong>Ba cách cuộn.</strong> Theo tốc độ bạn đặt; chỉ khi bạn nói, dựa vào độ lớn giọng nói; hoặc từng từ một, bám theo lời bạn nói bằng tính năng nhận dạng giọng nói chạy hoàn toàn trên máy Mac.</li>
-    <li><strong>Thư viện kịch bản</strong> với các dấu nhắc như [PAUSE] và [SLIDE 3], nhập từ tệp văn bản, Markdown, RTF và Word, cùng đồng hồ tập dượt cho thấy chỗ bạn nói quá giờ.</li>
-    <li><strong>Điều khiển từ điện thoại hoặc máy tính bảng.</strong> Bắt đầu, tạm dừng, đổi tốc độ và nhảy tới dấu nhắc tiếp theo từ iPhone, iPad hoặc thiết bị Android qua mạng của chính bạn, hoặc dùng riêng thiết bị đó như một máy nhắc chữ nhỏ.</li>
-    <li><strong>Chạy trên mọi máy Mac.</strong> Khi không có tai thỏ, dải nằm ở chính giữa phía trên màn hình.</li>
+    <li><strong>1. Tốc độ cố định.</strong> Cài đặt số từ mỗi phút (WPM) mong muốn. Cuộn mượt mà, dừng êm ái, hỗ trợ bàn phím và con lăn chuột để tùy chỉnh tức thì.</li>
+    <li><strong>2. Bám theo giọng nói.</strong> Chữ chỉ cuộn khi bạn cất lời và tự động tạm dừng khi bạn lấy hơi. Tự thích ứng với nhịp nói tự nhiên của bạn.</li>
+    <li><strong>3. Bám theo từng từ.</strong> Trí tuệ nhân tạo nhận dạng giọng nói ngay trên máy dõi theo từng từ bạn phát âm. Bạn có thể nói thêm câu chữ tùy thích — máy luôn bám sát vị trí.</li>
+    <li><strong>Điều khiển trên điện thoại.</strong> Khởi động, tạm dừng, đổi tốc độ và nhảy mốc kịch bản từ iPhone, iPad hoặc Android qua mạng nội bộ, hoặc dùng như máy nhắc chữ bỏ túi.</li>
   </ul>
   <p class="note">Cần macOS 14 Sonoma trở lên; ứng dụng cho iPhone và iPad cần iOS 17 trở lên, ứng dụng Android cần Android 8.0 trở lên. Một lần mua dùng được cho cả Mac, iPhone và iPad; ứng dụng Android được mua riêng trên Google Play.</p>
 </section>
 
-<section class="card">
+<div class="comparison-card" id="comparison">
+  <div class="comp-title">Máy nhắc chữ truyền thống vs Prompette</div>
+  <p class="section-lead">Giao tiếp bằng mắt chuyên nghiệp mà không cần thiết bị phòng thu cồng kềnh.</p>
+  <div class="table-scroll">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Khía cạnh</th>
+          <th>Máy nhắc chữ kính phản xạ</th>
+          <th class="highlight-col">Prompette</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Chi phí phần cứng</strong></td>
+          <td>3 – 12 triệu đồng cho kính phân chùm &amp; giá đỡ</td>
+          <td class="highlight-col"><strong>0đ phần cứng bổ sung</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Thời gian thiết lập</strong></td>
+          <td>15–30 phút căn chỉnh chân máy &amp; màn hình</td>
+          <td class="highlight-col"><strong>1 chạm (treo ngay dưới tai thỏ)</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Bảo mật chia sẻ màn hình</strong></td>
+          <td>Cần 2 màn hình hoặc rủi ro lộ cửa sổ</td>
+          <td class="highlight-col"><strong>Tàng hình 100% trên Zoom, Teams &amp; OBS</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Kiểm soát nhịp độ</strong></td>
+          <td>Bàn đạp hoặc remote cồng kềnh</td>
+          <td class="highlight-col"><strong>Theo giọng nói, AI nhận dạng &amp; remote điện thoại</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Tính linh hoạt</strong></td>
+          <td>Túi nặng kèm kính dễ vỡ</td>
+          <td class="highlight-col"><strong>Nằm gọn trên thanh menu Mac mọi lúc mọi nơi</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<section class="card" id="privacy">
   <h2>Quyền riêng tư trong một đoạn</h2>
   <p>Prompette không có tài khoản, không theo dõi và không bao giờ gửi kịch bản hay giọng nói của bạn đi đâu cả. Micrô chỉ được dùng trên máy Mac, trong chế độ giọng nói và chế độ bám theo mà bạn chọn, và giọng nói được nhận dạng trên máy Mac của bạn. Tính năng điều khiển trên điện thoại hoặc máy tính bảng chỉ trao đổi với máy Mac qua mạng cục bộ của chính bạn. <a href="privacy.html">Chính sách quyền riêng tư</a> đầy đủ nói điều tương tự một cách chi tiết hơn.</p>
 </section>
@@ -199,34 +244,34 @@ function setDemoView(mode) {
   <h2 id="more-apps-title">Các ứng dụng khác của cùng nhà phát triển</h2>
   <p class="family-sub">Những ứng dụng nhỏ, mỗi ứng dụng làm tốt một việc. Không tài khoản, không quảng cáo, và không ứng dụng nào theo dõi bạn.</p>
   <ul class="family-grid">
-    <li><a class="family-app" href="https://statuette.khangazun.com/vi/" style="--app: #3379f5"><img src="../family/icons/statuette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Statuette</span><span class="family-tag">CPU, bộ nhớ, ổ đĩa và mạng ngay trên thanh menu.</span><span class="family-platforms"><span>Mac</span></span></span></a></li>
-    <li><a class="family-app" href="https://tockette.khangazun.com/vi/" style="--app: #d9504a"><img src="../family/icons/tockette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Tockette</span><span class="family-tag">Hẹn giờ chỉ bằng một cú kéo từ thanh menu.</span><span class="family-platforms"><span>Mac</span></span></span></a></li>
-    <li><a class="family-app" href="https://zonette.khangazun.com/vi/" style="--app: #2f6fd6"><img src="../family/icons/zonette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Zonette</span><span class="family-tag">Mọi múi giờ bạn quan tâm, chỉ một cú nhấp.</span><span class="family-platforms"><span>Mac</span><span>iPhone &amp; iPad</span><span>Android</span></span></span></a></li>
-    <li><a class="family-app" href="https://lunette.khangazun.com/vi/" style="--app: #5146d6"><img src="../family/icons/lunette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Lunette</span><span class="family-tag">Mặt Trăng và Mặt Trời, chỉ trong một cái nhìn.</span><span class="family-platforms"><span>Mac</span><span>iPhone &amp; iPad</span><span>Android</span></span></span></a></li>
-    <li><a class="family-app" href="https://lunarette.khangazun.com/vi/" style="--app: #c8322f"><img src="../family/icons/lunarette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Lunarette</span><span class="family-tag">Âm lịch, theo bốn truyền thống.</span><span class="family-platforms"><span>Mac</span><span>iPhone &amp; iPad</span><span>Android</span></span></span></a></li>
-    <li><a class="family-app" href="https://pausette.khangazun.com/vi/" style="--app: #1f8f84"><img src="../family/icons/pausette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Pausette</span><span class="family-tag">Những quãng nghỉ nhẹ nhàng cho mắt và lưng.</span><span class="family-platforms"><span>Mac</span></span></span></a></li>
-    <li><a class="family-app" href="https://poisette.khangazun.com/vi/" style="--app: #2f8a7e"><img src="../family/icons/poisette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Poisette</span><span class="family-tag">Ngồi thẳng lưng, có AirPods bạn đang đeo nhắc nhở.</span><span class="family-platforms"><span>Mac</span><span>iPhone &amp; iPad</span></span></span></a></li>
-    <li><a class="family-app" href="https://hushette.khangazun.com/vi/" style="--app: #5b54c9"><img src="../family/icons/hushette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Hushette</span><span class="family-tag">Âm thanh nền êm dịu, không bao giờ lặp lại.</span><span class="family-platforms"><span>Mac</span><span>iPhone &amp; iPad</span><span>Android</span></span></span></a></li>
-    <li><a class="family-app" href="https://tapsody.khangazun.com/vi/" style="--app: #5b4fe0"><img src="../family/icons/tapsody.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Tapsody</span><span class="family-tag">Tiếng bàn phím cơ mỗi khi bạn gõ.</span><span class="family-platforms"><span>Mac</span></span></span></a></li>
+    <li><a class="family-app" href="https://statuette.khangazun.com/vi/" style="--app: #3379f5"><img src="../family/icons/statuette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Statuette</span><span class="family-tag">CPU, bộ nhớ, ổ đĩa và mạng trên thanh menu.</span><span class="family-platforms"><span>Mac</span></span></span></a></li>
+    <li><a class="family-app" href="https://tockette.khangazun.com/vi/" style="--app: #d9504a"><img src="../family/icons/tockette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Tockette</span><span class="family-tag">Đồng hồ đếm ngược, một thao tác kéo từ thanh menu.</span><span class="family-platforms"><span>Mac</span></span></span></a></li>
+    <li><a class="family-app" href="https://zonette.khangazun.com/vi/" style="--app: #2f6fd6"><img src="../family/icons/zonette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Zonette</span><span class="family-tag">Mọi múi giờ bạn quan tâm, một cú nhấp chuột.</span><span class="family-platforms"><span>Mac</span><span>iPhone &amp; iPad</span><span>Android</span></span></span></a></li>
+    <li><a class="family-app" href="https://lunette.khangazun.com/vi/" style="--app: #5146d6"><img src="../family/icons/lunette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Lunette</span><span class="family-tag">Mặt Trăng và Mặt Trời, trong một cái nhìn.</span><span class="family-platforms"><span>Mac</span><span>iPhone &amp; iPad</span><span>Android</span></span></span></a></li>
+    <li><a class="family-app" href="https://lunarette.khangazun.com/vi/" style="--app: #3d348b"><img src="../family/icons/lunarette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Lunarette</span><span class="family-tag">Âm lịch nhẹ nhàng.</span><span class="family-platforms"><span>Mac</span><span>iPhone &amp; iPad</span><span>Android</span></span></span></a></li>
+    <li><a class="family-app" href="https://pausette.khangazun.com/vi/" style="--app: #2a9d8f"><img src="../family/icons/pausette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Pausette</span><span class="family-tag">Nhắc nhở nghỉ giải lao khi bạn đã dừng tay.</span><span class="family-platforms"><span>Mac</span></span></span></a></li>
+    <li><a class="family-app" href="https://poisette.khangazun.com/vi/" style="--app: #0d9488"><img src="../family/icons/poisette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Poisette</span><span class="family-tag">Huấn luyện viên tư thế AirPods trên thanh menu.</span><span class="family-platforms"><span>Mac</span><span>iPhone &amp; iPad</span></span></span></a></li>
+    <li><a class="family-app" href="https://hushette.khangazun.com/vi/" style="--app: #5b54c9"><img src="../family/icons/hushette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Hushette</span><span class="family-tag">Âm thanh môi trường êm dịu, không lặp lại.</span><span class="family-platforms"><span>Mac</span><span>iPhone &amp; iPad</span><span>Android</span></span></span></a></li>
+    <li><a class="family-app" href="https://tapsody.khangazun.com/vi/" style="--app: #5b4fe0"><img src="../family/icons/tapsody.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Tapsody</span><span class="family-tag">Âm thanh bàn phím cơ theo từng phím gõ.</span><span class="family-platforms"><span>Mac</span></span></span></a></li>
     <li><a class="family-app" href="https://thrumline.khangazun.com/vi/" style="--app: #c5215a"><img src="../family/icons/thrumline.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Thrumline</span><span class="family-tag">Nhịp tim của bạn, trực tiếp trên thanh menu.</span><span class="family-platforms"><span>Mac</span></span></span></a></li>
-    <li><a class="family-app" href="https://nightjar.khangazun.com/vi/" style="--app: #2f4fe0"><img src="../family/icons/nightjar.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Nightjar</span><span class="family-tag">Giữ cho Mac luôn thức. Thật lòng.</span><span class="family-platforms"><span>Mac</span></span></span></a></li>
+    <li><a class="family-app" href="https://nightjar.khangazun.com/vi/" style="--app: #2f4fe0"><img src="../family/icons/nightjar.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Nightjar</span><span class="family-tag">Giữ máy Mac luôn thức. Một cách trung thực.</span><span class="family-platforms"><span>Mac</span></span></span></a></li>
     <li><a class="family-app" href="https://umbrette.khangazun.com/vi/" style="--app: #5b4bc4"><img src="../family/icons/umbrette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Umbrette</span><span class="family-tag">Làm tối mọi thứ trừ cửa sổ bạn đang làm việc.</span><span class="family-platforms"><span>Mac</span></span></span></a></li>
-    <li><a class="family-app" href="https://tallette.khangazun.com/vi/" style="--app: #148c73"><img src="../family/icons/tallette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Tallette</span><span class="family-tag">Một cuộn băng giấy cho các phép cộng của bạn.</span><span class="family-platforms"><span>Mac</span><span>iPhone &amp; iPad</span><span>Android</span></span></span></a></li>
-    <li><a class="family-app" href="https://probette.khangazun.com/vi/" style="--app: #b8306f"><img src="../family/icons/probette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Probette</span><span class="family-tag">Mọi thông tin kỹ thuật của tệp media, bằng lời dễ hiểu.</span><span class="family-platforms"><span>Mac</span><span>iPhone &amp; iPad</span><span>Android</span></span></span></a></li>
-    <li><a class="family-app" href="https://bindette.khangazun.com/vi/" style="--app: #2b7a53"><img src="../family/icons/bindette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Bindette</span><span class="family-tag">Biến các tệp âm thanh thành một cuốn sách nói hoàn chỉnh.</span><span class="family-platforms"><span>Mac</span><span>iPhone &amp; iPad</span><span>Android</span></span></span></a></li>
-    <li><a class="family-app" href="https://lettrette.khangazun.com/vi/" style="--app: #a85f34"><img src="../family/icons/lettrette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Lettrette</span><span class="family-tag">Mở tệp winmail.dat và .msg đúng như lúc được gửi.</span><span class="family-platforms"><span>Mac</span><span>iPhone &amp; iPad</span></span></span></a></li>
-    <li><a class="family-app" href="https://nhanhtay.khangazun.com/vi/" style="--app: #4b2ee6"><img src="../family/icons/nhanhtay.png" alt="" width="50" height="50" loading="lazy" class="round"><span class="family-text"><span class="family-name">Nhanh Tay</span><span class="family-tag">Xếp bốn đáp án theo thứ tự. Thật nhanh.</span><span class="family-platforms"><span>Mac</span><span>iPhone &amp; iPad</span><span>Android</span></span></span></a></li>
-    <li><a class="family-app" href="https://pinette.khangazun.com/vi/" style="--app: #e0703a"><img src="../family/icons/pinette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Pinette</span><span class="family-tag">Ghi chú luôn trong tầm mắt.</span><span class="family-platforms"><span>Mac</span><span>iPhone &amp; iPad</span><span>Android</span></span></span></a></li>
-    <li><a class="family-app" href="https://usagette.khangazun.com/vi/" style="--app: #f27833"><img src="../family/icons/usagette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Usagette</span><span class="family-tag">Giới hạn sử dụng Claude ngay trên thanh menu.</span><span class="family-platforms"><span>Mac</span></span></span></a></li>
-    <li><a class="family-app" href="https://squiggo.khangazun.com/vi/" style="--app: #EE5A2F"><img src="../family/icons/squiggo.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Squiggo</span><span class="family-tag">Vẽ cùng một người bạn thân thiện.</span><span class="family-platforms"><span>Mac</span><span>iPhone &amp; iPad</span><span>Android</span></span></span></a></li>
+    <li><a class="family-app" href="https://tallette.khangazun.com/vi/" style="--app: #148c73"><img src="../family/icons/tallette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Tallette</span><span class="family-tag">Băng giấy tính tiền cho các phép tính.</span><span class="family-platforms"><span>Mac</span><span>iPhone &amp; iPad</span><span>Android</span></span></span></a></li>
+    <li><a class="family-app" href="https://probette.khangazun.com/vi/" style="--app: #b8306f"><img src="../family/icons/probette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Probette</span><span class="family-tag">Mọi thông số kỹ thuật của tệp đa phương tiện.</span><span class="family-platforms"><span>Mac</span><span>iPhone &amp; iPad</span><span>Android</span></span></span></a></li>
+    <li><a class="family-app" href="https://bindette.khangazun.com/vi/" style="--app: #2b7a53"><img src="../family/icons/bindette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Bindette</span><span class="family-tag">Ghép các tệp âm thanh thành sách nói chuẩn mực.</span><span class="family-platforms"><span>Mac</span><span>iPhone &amp; iPad</span><span>Android</span></span></span></a></li>
+    <li><a class="family-app" href="https://lettrette.khangazun.com/vi/" style="--app: #a85f34"><img src="../family/icons/lettrette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Lettrette</span><span class="family-tag">Mở tệp winmail.dat và .msg đúng như lúc gửi.</span><span class="family-platforms"><span>Mac</span><span>iPhone &amp; iPad</span></span></span></a></li>
+    <li><a class="family-app" href="https://nhanhtay.khangazun.com/vi/" style="--app: #4b2ee6"><img src="../family/icons/nhanhtay.png" alt="" width="50" height="50" loading="lazy" class="round"><span class="family-text"><span class="family-name">Nhanh Tay</span><span class="family-tag">Xếp thứ tự bốn câu trả lời. Thật nhanh.</span><span class="family-platforms"><span>Mac</span><span>iPhone &amp; iPad</span><span>Android</span></span></span></a></li>
+    <li><a class="family-app" href="https://pinette.khangazun.com/vi/" style="--app: #e0703a"><img src="../family/icons/pinette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Pinette</span><span class="family-tag">Ghi chú luôn trong tầm mắt bạn.</span><span class="family-platforms"><span>Mac</span><span>iPhone &amp; iPad</span><span>Android</span></span></span></a></li>
+    <li><a class="family-app" href="https://usagette.khangazun.com/vi/" style="--app: #f27833"><img src="../family/icons/usagette.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Usagette</span><span class="family-tag">Hạn mức sử dụng Claude trên thanh menu.</span><span class="family-platforms"><span>Mac</span></span></span></a></li>
+    <li><a class="family-app" href="https://squiggo.khangazun.com/vi/" style="--app: #EE5A2F"><img src="../family/icons/squiggo.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Squiggo</span><span class="family-tag">Cùng vẽ với bạn đồng hành thân thiện.</span><span class="family-platforms"><span>Mac</span><span>iPhone &amp; iPad</span><span>Android</span></span></span></a></li>
     <li><a class="family-app" href="https://foreman.khangazun.com/vi/" style="--app: #b34700"><img src="../family/icons/foreman.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Foreman</span><span class="family-tag">Công việc, báo giá và hóa đơn cho thợ.</span><span class="family-platforms"><span>Mac</span><span>iPhone &amp; iPad</span><span>Android</span></span></span></a></li>
-    <li><a class="family-app" href="https://tilewake.khangazun.com/vi/" style="--app: #EE5B3B"><img src="../family/icons/tilewake.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Tilewake</span><span class="family-tag">Trò xếp hình trượt có bức tranh thức dậy.</span><span class="family-platforms"><span>Mac</span><span>iPhone &amp; iPad</span><span>Android</span></span></span></a></li>
-    <li><a class="family-app" href="https://chamluyen.khangazun.com/vi/" style="--app: #1a9f5a"><img src="../family/icons/chamluyen.png" alt="" width="50" height="50" loading="lazy" class="disc"><span class="family-text"><span class="family-name">Chăm luyện</span><span class="family-tag">Luyện bài tiểu học, có bạn nhỏ đọc đề.</span><span class="family-platforms"><span>Mac</span><span>iPhone &amp; iPad</span><span>Android</span></span></span></a></li>
+    <li><a class="family-app" href="https://tilewake.khangazun.com/vi/" style="--app: #EE5B3B"><img src="../family/icons/tilewake.png" alt="" width="50" height="50" loading="lazy"><span class="family-text"><span class="family-name">Tilewake</span><span class="family-tag">Trò chơi xếp hình trượt với những bức tranh chuyển động.</span><span class="family-platforms"><span>Mac</span><span>iPhone &amp; iPad</span><span>Android</span></span></span></a></li>
+    <li><a class="family-app" href="https://chamluyen.khangazun.com/" style="--app: #1a9f5a"><img src="../family/icons/chamluyen.png" alt="" width="50" height="50" loading="lazy" class="disc"><span class="family-text"><span class="family-name">Chăm luyện</span><span class="family-tag">Bài luyện tiểu học tiếng Việt, có giọng đọc.</span><span class="family-platforms"><span>Mac</span><span>iPhone &amp; iPad</span><span>Android</span></span></span></a></li>
   </ul>
 </section>
 <!-- /family:apps -->
 <footer>
-<p>Prompette cho Mac, iPhone, iPad và Android · <a href="./">Trang chủ</a> · <a href="support.html">Hỗ trợ</a> · <a href="privacy.html">Quyền riêng tư</a> · <a href="mailto:support@khangazun.com?subject=Prompette%20support&body=What%20happened%3A%0A%0A%0AWhat%20I%20expected%20instead%3A%0A%0A%0ADetails%20that%20help%3A%0A-%20Mac%2C%20iPhone%2C%20iPad%20or%20Android%2C%20and%20its%20system%20version%3A%0A-%20Prompette%20version%20%28Settings%2C%20About%29%3A%0A">support@khangazun.com</a></p>
+<p>Prompette cho Mac, iPhone, iPad và Android · <a href="./">Trang chủ</a> · <a href="support.html">Hỗ trợ</a> · <a href="privacy.html">Quyền riêng tư</a> · <a href="mailto:support@khangazun.com?subject=Prompette%20support&body=What%20happened%3A%0A%0A%0AWhat%20I%20expected%20instead%3A%0A%0A%0ADetails%20that%20help%3A%0A-%20Mac%2C%20iPhone%2C%20iPad%20ho%E1%BA%B7c%20Android%2C%20v%C3%A0%20phi%C3%AAn%20b%E1%BA%A3n%20h%E1%BB%87%20th%E1%BB%91ng%3A%0A-%20Phi%C3%AAn%20b%E1%BA%A3n%20Prompette%20%28C%C3%A0i%20%C4%91%E1%BA%B7t%2C%20Gi%E1%BB%9Bi%20thi%E1%BB%87u%29%3A%0A">support@khangazun.com</a></p>
 </footer>
 </main>
 </body>
